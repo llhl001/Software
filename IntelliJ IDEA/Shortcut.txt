@@ -1,0 +1,109 @@
+######## Frequently Used
+Alt+F12                     打开 Terminal
+F2                          高亮错误
+Shift+F2                    警告快速定位
+Alt+1                       显示 Project 侧边栏
+ESC                         退出当前调出的窗口
+
+######## 光标移动
+Ctrl+[/]                    移动光标到大括号起始、结束
+Ctrl+G                      移动光标到指定行
+Ctrl+Left/Right             单词间跳动
+Home                        行首或字符首
+End                         行尾或字符尾
+Ctrl+Home                   文件首
+Ctrl+End                    文件尾
+Ctrl+Alt+Left/Right         快速返回前进上次代码位置
+Ctrl+Tab                    切换窗口，加 Delete 关闭选中窗口
+Alt+Left/Right              切换编辑器 tab 页
+
+
+######## 快速选择
+Ctrl+W                      选取光标所在的单词
+Ctrl+Shift+[/]              选中当前位置到大括号起始或结束
+Ctrl+Shift+Left/Right       选择光标位置到单词头/尾
+Shift+End                   选中当前光标位置到行尾
+Shift+Home                  选中当前光标位置到行首
+
+######## 快速操作
+Ctrl+Z                      撤销
+Ctrl+Shift+Z                取消撤销
+Ctrl+X
+Ctrl+Y                      删除当前行
+Shift+Enter                 新启一行
+Ctrl+Shift+J                合并两行
+Ctrl+Shift+Enter            完成当前行，并跳到下一行
+Ctrl+D                      复制并粘贴多行
+Ctrl+Shift+Up/Down          多行移动代码
+按住 Alt                     列编辑模式
+Ctrl+Slash                  行注释 //	
+Ctrl+Shift+Slash            块注释 /**/
+Ctrl+Alt+L                  格式化代码 
+Ctrl+Alt+T                  可以把代码包在一块内，例如try/catch
+Ctrl+Shift+Space            自动补全代码
+
+Ctrl+Shift+U                大小写切换
+
+######## 搜索替换
+Ctrl+F                      在当前文件中查找
+Ctrl+Shift+F                全局查找指定匹配模式
+Ctrl+Shift+F7               高亮显示当前选中的文本，ESC 取消高亮
+Shift+F3                    逐个向下查找选中的文本，并高亮显示，ESC 退出 
+
+Ctrl+R                      文件中替换
+Ctrl+Shift+R                全局替换指定匹配模式
+
+Shift+Shift                 查找任何东西
+Ctrl+Shift+N                查找文件
+
+Ctrl+E                      查看最近访问的文件	
+
+Ctrl+Q                      显示注释文档
+ 
+######## Package
+Alt+Enter                   快速修复，手动导包	
+Ctrl+Alt+O                  自动优化导入类和包	
+
+######## Class
+Ctrl+Alt+U                  查看类的关系图，包括实现的接口
+Ctrl+Alt+B                  查看一个类的所有子类或者接口的所有实现
+Ctrl+H                      查看类的继承结构，只展示 extends ，不包含 implements 
+Alt+F7                      查看类在哪些地方被使用
+
+Ctrl+Shift+I                快速查看定义内容，但不打开
+Ctrl+F12                    查看当前类中的所有属性和方法
+
+Ctrl+N                      查找类  
+Ctrl+Shift+T                创建测试类
+Shift+F6                    rename class method variable
+
+
+
+######## Function
+Alt+F7                      查看方法在哪些地方被使用
+Ctrl+Alt+H                  查看当前方法被调用和调用哪些方法的图
+Ctrl+P                      查看方法参数，神器
+Ctrl+B                      跳转到方法声明处
+Ctrl+Alt+B                  跳转到方法实现处
+Alt+Up/Down                 在方法间快速移动定位
+
+Ctrl+O                      重写父类方法
+Ctrl+I                      实现接口方法
+Alt+Insert                  generate getter setter constructor and so on
+
+Ctrl+"+/-"                  折叠展开当前方法
+Ctrl+Shift+"+/-"            折叠展开所有方法
+
+
+######## Variable
+Ctrl+Space                  代码提示
+Ctrl+Alt+Space              代码自动生成，new cast  method's parameters  
+Ctrl+Alt+V                  选择指定的 Identifier(标识符)，自动生成变量
+Ctrl+Alt+F                  选择指定的 Identifier(标识符)，自动生成 Field
+
+######## BookMark
+Ctrl+Shift+[0-9]            添加书签
+Ctrl+[0-9]                  跳转到指定书签
+Shift+F11                   查看所有书签
+Ctrl+F11                    设置、取消书签，在备忘录中
+F11                         设置、取消书签

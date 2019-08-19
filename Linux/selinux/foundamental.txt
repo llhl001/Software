@@ -1,0 +1,18 @@
+Concept {
+    Subject             # 就是操作系统中运行的程序
+    Object              # 就是程序运行过程中所需要的资源，例如文件，端口等
+    Policy              # 由于程序和文件数量庞大，selinux 预先制订了很多权限 rule ，来制定不同的程序，可以使用哪些资源
+    SecurityContext     # 格式: USER:ROLE:TYPE[LEVEL[:CATEGORY]]
+    Authentication      # 鉴权: Subject(程序) -> 分析 Policy 规则 -> SecurityContext 对比 -> rwx 对比 -> 完成鉴权
+}
+
+SELinux Self {
+    shell> sestatus                     # 查看当前 selinux 的状态
+    shell> vim /etc/selinux/config      # 查看 selinux 的配置文件
+    shell> ls /etc/selinux              # 查看所有 selinux type ，该目录下的 子目录名 就是 selinux 的类型名
+    
+}
+
+
+
+

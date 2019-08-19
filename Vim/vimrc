@@ -1,0 +1,129 @@
+" 该文件放置位置
+" /etc/vimrc                Linux 全局配置
+" ~/.vimrc                  Linux 用户级配置
+" D:\Vim\_vimrc             Windows 全局配置
+" %HOME%\_vimrc             Windows 用户级配置
+
+
+" 通用配置
+set nocompatible                                        " 使用 vim 自己的键盘模式，不使用 vi 的默认键盘布局
+set clipboard+=unnamed                                  " 与 windows 共享剪贴板
+set mouse=a                                             " 使 vim 支持鼠标操作
+set autoread                                            " 当文件被外部改变时自动读取
+set viminfo='20                                         " 不限制一次最多可以复制的行数
+set backspace=indent,eol,start                          " 使退格键（backspace）正常处理 indent, eol, start 等
+set nobackup                                            " 不要备份文件
+set noswapfile                                          " 禁止使用 swap 文件， 
+                                                        " Vim 在编辑一个文件的时候首先把文件拷贝成一个临时的 swap 文件，只有你使用 :w 保存之后才写入源文件中
+set nowrap                                              " 关闭 vim 自动换行
+set fo+=mB                                              " 使自动换行对中文也能生效，其中 m 表示允许在两个汉字中间换行，而 B 表示将两行合为一行的时候不要在两个汉字之间加入空格。
+set wildmenu                                            " 智能补全命令行
+set history=64                                          " 设置命令行保留的历史命令个数
+
+" UI 界面配置
+set number                                              " 设置显示行号
+set cursorline                                          " 配置当前行高亮
+set ruler                                               " 显示标尺
+set colorcolumn=81                                      " 显示一条竖线表示代码第 81 个字符
+set showtabline=2                                       " 总是显示标签页
+set go=                                                 " 取消菜单栏
+set showcmd                                             " 输入的命令显示出来，看的清楚些
+set showmatch                                           " 括号匹配模式
+set matchtime=1                                         " 匹配括号高亮的时间（单位是十分之一秒）
+set so=3                                                " 设置页面滚动时保留 3 行原屏幕显示的行
+set scrolloff=3                                         " 光标移动到 buffer 的顶部和底部时保持3行距离
+set laststatus=2                                        " 启动显示状态行(1),总是显示状态行(2)
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}       " 状态行显示格式
+
+
+
+
+" 文件配置
+filetype on                                             " 开启文件类型检测
+filetype plugin on                                      " 根据不同的文件类型载入不同的插件方案
+filetype indent on                                      " 根据不同的文件类型载入不同的缩进方案
+syntax enable                                           " 开启语法高亮功能
+syntax on                                               " 允许用指定语法高亮配色方案替换默认方案
+
+" 语言、字符编码格式配置
+set encoding=utf-8                                      " vim 内部使用的字符编码方式，即 vim 的 buffer、寄存器、脚本中的字符串，都使用该编码格式
+set termencoding=utf-8                                  " vim terminal 编码，显示时，vim 会把内部编码转换成 terminal 编码，如果无法转换，则以 ？ 显示
+set fileencoding=utf-8                                  " 当前文件使用的编码格式，无法在文件打开后，再使用该命令解决乱码问题
+set fileencodings=ucs-bom,utf-8,cp936,latin1            " vim 从硬盘读取文件时，依次使用值中的编码方式对文件进行解码，如果成功，那么把 fileencoding 设置为当前使用的值，cp936 就是 GBK             
+set langmenu=en_US.UTF-8                                " gvim 设置菜单为英文
+language messages en_US.utf-8                           " 设置 consle 提示信息编码
+
+
+" Tab 键处理方式配置
+set autoindent                      " 继承上一行的缩进
+set tabstop=4                       " 设置一个 \t 字符对应的列数
+set expandtab                       " 设置 \t 字符用 Space 替代
+set shiftwidth=4                    " 配置使用一次 << 和 >> 命令移动时的宽度为 4
+set softtabstop=4                   " 设置按一次 tab 键输入的列数，软件计算是否插入 \t 符，
+                                    " 假设 tabstop=6，softtabstop=4， softtabstop 比较小的情况
+                                    " 按一次 tab 键， 结果： 4 space
+                                    " 再按一次 tab 键， 结果： 1 \t + 2 space
+                                    " 假设 tabstop=6，softtabstop=8， softtabstop 比较大的情况
+                                    " 按一次 tab 键， 结果： 1 \t + 2 space
+                                    " 按第二次 tab 键， 结果： 2 \t + 4 space
+                                    " 总的意思就是，满足 tabstop 的空格数替换为 \t，剩余的用 空格 填充
+
+
+
+" 搜索配置
+set ignorecase                      " 设置匹配的时候忽略大小写
+set ignorecase smartcase            " 当查找串中有大写时，就大小写敏感，否则不敏感
+set hlsearch                        " 设置高亮搜索
+set incsearch                       " 实时搜索，即边输入边搜索
+
+
+" 展开折叠配置
+set foldenable                      " 允许折叠
+set foldmethod=manual               " 手动折叠
+
+
+" Vim Script
+" 根据是否是图形界面(GUI)，执行不同的配置
+if has('gui_running')
+    " 是图形界面
+    colorscheme desert                                  " 配置颜色模式，需要 $VIMRUNTIME/rgb.txt
+    if has('gui_win32')
+        " 是 Windows 下的图形界面  
+        set guifont=Consolas:h10                        " 设置字体为 Consolas，大小为 10，注意如果有空格，需要用 \ 转义
+        autocmd GUIEnter * simalt ~x                    " Windwos 设置一打开，窗口就最大化
+    else
+        set guifont=Monospace\ 10                       " 设置字体为 Monospace，大小为 10，注意如果有空格，需要用 \ 转义
+    endif
+endif
+
+
+" Plugin 配置
+" 需要下载 plug.vim 文件放在 $VIMRUNTIME/autoload 文件夹下，vim 中使用 :echo $VIMRUNTIME 查看变量内容
+" 打开 vim 运行 :PlugInstall 即可安装所有列表中的插件
+" vim-plug 默认下载插件保存路径为 '~/.vim/plugged'，Windows 下默认为：%HOME%\vimfiles\plugged 
+call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
+Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
+Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
+Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
+Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'         " java 自动补全
+call plug#end()
+
+" 插件命令，插件安装后才有的命令
+autocmd vimenter * NERDTree                                         " vim 打开时，自动打开文件浏览器
+
+
+" 快捷键配置
+map <C-n> :NERDTreeToggle<CR>                   " 快速打开 nerdtree 插件
+
+
+" 配置括号自动带出
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>O
+
+
+
+
+

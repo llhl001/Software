@@ -1,0 +1,16 @@
+Shortcut {
+    Ctrl+Alt+T      # 启动终端
+    Ctrl+S          # 阻止向屏幕输出
+    Ctrl+Q          # 取消阻止向屏幕输出    
+    Ctrl+C          # 杀掉当前正在执行的进程
+    Ctrl+Shift+C        # 复制
+    Ctrl+Shift+V        # 粘贴
+    Ctrl+A             # 光标移动到行头
+    Ctrl+E            # 光标移动到行尾
+    Ctrl+Left-Arrow     # 光标移动到下一个词首
+    Ctrl+Right-Arrow    # 光标移动到下一个词尾
+    Ctrl+L              # 清屏
+    Ctrl+&              # 撤销删除
+    Ctrl+K              # 剪切光标到行尾的所有字符
+    Ctrl+U              # 剪切行头到光标之前的一个字符
+}

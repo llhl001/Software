@@ -1,0 +1,12 @@
+网络配置方法 {
+    直接修改配置文件 {
+        /etc/sysconfig/network-scripts/ifcfg-ethX
+        /etc/sysconfig/network-scripts/route-ethX
+    }
+    NetworkManager {
+        shell> nmcli            # 管理网络
+    }
+}
+
+    
+   

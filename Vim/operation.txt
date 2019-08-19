@@ -1,0 +1,44 @@
+窗口操作 {
+    新建窗口 {
+        :new winName            # 新建一个名为 winName 的窗口，保存后文件名就是 winName
+        :split winName          # 横向分割当前窗口，新窗口名为 winName，别名 sp
+        :vsplit winName         # 纵向分割当前窗口，新窗口名为 winName，别名 vsp
+    }
+    关闭窗口 {
+        :q!             
+        :close                  # 使用close只是暂时关闭窗口，其内容还在缓存中，只有使用q!、w!或x才能真能退出
+    }
+    切换窗口 {
+        Ctrl+W                  # 连按两次，依次切换窗口
+        Ctrl+W+J/K              # 上下切换窗口
+    }
+    窗口大小调整 {
+        Ctrl+W+'+'              # 纵向扩大，增加行数
+        Ctrl+W+'-'              # 纵向缩小，减少行数
+        :resize 5               # 设置当前窗口为 5 行，别名 res
+        :resize+5               # 当前窗口加 5 行
+        :resize-5               # 当前窗口减 5 行
+        :vertical resize 5      # 设置当前窗口为 5 列，别名 vertical res
+    }
+    
+    :f newWinName               # 重命名窗口
+    :ls                         # 查看当前缓存内容
+    :n                          # 跳到下一个文件
+    :n fileName                 # 跳到指定文件
+    :Ex                         # 打开目录浏览器
+    :Sex                        # 水平分割当前窗口并打开目录浏览器
+    :Vex                        # 垂直分割当前窗口并打开目录浏览器
+    :shell                      # 可以在不关闭vi的情况下切换到shell命令行
+    :exit                       # 从shell回到vi
+    tab 页操作 {
+        :tabnew [++opt] [+cmd] file             # 建立对指定文件新的tab
+        :tabc                                   # 关闭当前的tab
+        :tabo                                   # 关闭所有其他的tab
+        :tabs                                   # 查看所有打开的tab
+        :tabp                                   # 前一个
+        :tabn                                   # 后一个
+        gt                                      # tab 之间切换
+        gT                                      # tab 之间切换
+    }
+    
+}

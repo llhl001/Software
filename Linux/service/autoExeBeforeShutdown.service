@@ -1,0 +1,11 @@
+[Unit]
+Description=autoExeBeforeShutdown
+DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target        #  服务依赖关系，在哪些服务执行之前执行当前服务
+
+[Service]
+Type=oneshot
+ExecStart=/root/Script/autoExeBeforeShutdown.sh         
+
+[Install]
+WantedBy=halt.target reboot.target shutdown.target      # 在哪些启动模式下，需要安装当前服务
