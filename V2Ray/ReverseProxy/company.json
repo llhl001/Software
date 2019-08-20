@@ -1,0 +1,110 @@
+/** todo 反向代理原理及架构
+ * A: 公司内网电脑
+ * B: VPS
+ * C: 自己家里的电脑
+ * 当前配置文件为 B VPS 的 V2ray 配置文件
+ * */
+{
+    "log": {},
+    "api": {},
+    "dns": {},
+    "stats": {},
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "type": "field",
+                "inboundTag": ["external"],
+                "outboundTag": "portal"
+            },
+            {
+                "type": "field",
+                "inboundTag": ["interconn"],
+                "outboundTag": "portal"
+            }
+        ]
+    },
+    "policy": {},
+    "reverse": {
+        "bridges": [{
+            "tag": "bridge",
+            "domain": "haku.kasei"    // 域名不用真是存在，只用作反向代理的标识
+        }],
+        "portals": [{
+            "tag": "portal",
+            "domain": "haku.kasei"
+        }]
+    },
+    "inbounds": [
+        {
+            "tag": "cdnWsTlsVmessIn",  // 翻墙用
+            "protocol": "vmess",
+            "port": 12345,
+            "listen": "0.0.0.0",
+            "settings": {},
+            "streamSettings": {
+                {
+                    "id": "uuid",
+                    "disableInsecureEncryption": true
+                }
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "1291114093.ml",
+                    "alpn": ["http/1.1"],
+                    "allowInsecure": true,
+                    "allowInsecureCiphers": true,
+                    "disableSystemRoot": false,
+                    "certificates": [
+                        {
+                            "usage": "encipherment",
+                            "certificateFile": "/path/to/certificate.crt",
+                            "keyFile": "/path/to/key.key",
+                            "certificate": [],
+                            "key": []
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "tag": "external",
+            "port": 80,  // 开放 80 端口，用于接收外部的 HTTP 访问
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1",
+                "port": 80,
+                "network": "tcp"
+            }
+        },
+        {
+            "port": 1024, // 用于接收 bridge 的连接
+            "tag": "interconn",
+            "protocol": "vmess",
+            "settings": {
+                "clients": [{"id": "27848739-7e62-4138-9fd3-098a63964b6b"}]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "freedomOut",
+            "protocol": "freedom"
+        },
+        {
+            "tag": "blackholeOut",
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            }
+        }
+    ],
+    "transport": {}
+}
+
+
+
