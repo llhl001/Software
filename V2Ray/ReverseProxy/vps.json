@@ -27,7 +27,7 @@
         "portals": [
             {
                 "tag": "portal",
-                "domain": "haku.kasei"      // 域名不用真是存在，只用作反向代理的标识，但是必须和 company.json 中配置的一样
+                "domain": "haku.kasei"      // 域名不用真实存在，只用作反向代理的标识，但是必须和 company.json 中配置的一样
             }
         ]
     },
