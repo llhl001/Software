@@ -21,6 +21,9 @@
 }
 
 Task {
+    shell> ./gradlew tasks --all                # help 分组下面的所有任务都是  gradle 自带的任务
+
+
     shell> ./gradlew taskName                   # 执行一个 gradle task，多模块时，则运行所有项目的 taskName 任务
     shell> ./gradlew :mySubproject:taskName     # 执行一个多模块项目的 task，注意是在 root 模块中执行，如果已经在子模块中，直接使用上面的
     shell> ./gradlew task1 task2                # 执行多个任务
