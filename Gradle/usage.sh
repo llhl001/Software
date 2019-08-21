@@ -2,6 +2,7 @@
     shell> mkdir GradleDemo
     shell> cd GradleDemo
     shell> gradle init
+    shell> gradle init --type java-library  # 使用项目模板创建目录
     
     # 以下是创建的目录结构  
     .
@@ -16,26 +17,29 @@
 }
 
 在原先只有 gradle 的项目中创建 gradle wrapper {
-    shell> gradle wrapper
-    所有 shell> gradle 命令都可以用 shell> ./gradlew 或 shell> ./gradlew.bat 替换
+    shell> gradle wrapper  // 之后所有 shell> gradle 命令都可以用 shell> ./gradlew 或 shell> ./gradlew.bat 替换
 }
 
 Task {
-    shell> ./gradlew taskName                   # 执行一个 gradle task
-
-    #### Build-in Task
-    shell> gradle tasks                         # 列出你所在项目下的所有 task
-    shell> gradle tasks --all                   # 上面命令只会列出所有被分到特定 task group 中的任务，该命令则显示所有 task
-    shell> gradle help --task taskName          # 显示任务的用法
+    shell> ./gradlew taskName                   # 执行一个 gradle task，多模块时，则运行所有项目的 taskName 任务
+    shell> ./gradlew :mySubproject:taskName     # 执行一个多模块项目的 task，注意是在 root 模块中执行，如果已经在子模块中，直接使用上面的
+    shell> ./gradlew task1 task2                # 执行多个任务
+    shell> ./gradlew dist --exclude-task test   # 执行 dist 任务，排除依赖任务 test ，即不执行 test 任务
     
-    shell> gradle projects                      # 列出你所在项目下的所有 subProject
-    shell> gradle properties                    # 查看当前项目的所有属性
+    #### Build-in Task
+    shell> ./gradlew tasks                         # 列出你所在项目下的所有 task，只显示分过组的 task
+    shell> ./gradlew tasks --all                   # 上面命令只会列出所有被分到特定 task group 中的任务，该命令则显示所有 task
+    shell> ./gradlew help --task taskName          # 显示 task 的用法
+    
+    shell> ./gradlew projects                      # 列出你所在项目下的所有 subProject
+    shell> ./gradlew properties                    # 查看当前项目的所有属性
+    shell> ./gradlew model                          # 查看软件模型报告
 
     # Dependency
-    shell> gralde taskName --scan               # 查看当前任务的依赖
-    shell> gradle dependencies                  # 查看当前所在目录的项目的依赖
-    shell> gradle buildEnviorment               # 查看构建时的依赖
-    shell> gradle dependencyInsight             # 提示你所需要的依赖
+    shell> ./gradlew taskName --scan               # 查看当前任务的依赖
+    shell> ./gradlew dependencies                  # 查看当前所在目录的项目的依赖
+    shell> ./gradlew buildEnviorment               # 查看构建时的依赖
+    shell> ./gradlew dependencyInsight             # 提示你所需要的依赖
     
     
 }
