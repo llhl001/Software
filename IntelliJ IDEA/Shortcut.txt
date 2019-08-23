@@ -4,6 +4,7 @@ F2                          高亮错误
 Shift+F2                    警告快速定位
 Alt+1                       显示 Project 侧边栏
 ESC                         退出当前调出的窗口
+Ctrl+Shift+Z                取消撤销（恢复上一次操作）
 
 ######## 光标移动
 Ctrl+[/]                    移动光标到大括号起始、结束
@@ -12,10 +13,14 @@ Ctrl+Left/Right             单词间跳动
 Home                        行首或字符首
 End                         行尾或字符尾
 Ctrl+Home                   文件首
+
 Ctrl+End                    文件尾
+
 Ctrl+Alt+Left/Right         快速返回前进上次代码位置
+Ctrl+Alt+Backspace          移动到上一次修改的地方
 Ctrl+Tab                    切换窗口，加 Delete 关闭选中窗口
 Alt+Left/Right              切换编辑器 tab 页
+Alt+Up/Down                 上一个或下一个方法
 
 
 ######## 快速选择
@@ -24,6 +29,8 @@ Ctrl+Shift+[/]              选中当前位置到大括号起始或结束
 Ctrl+Shift+Left/Right       选择光标位置到单词头/尾
 Shift+End                   选中当前光标位置到行尾
 Shift+Home                  选中当前光标位置到行首
+Ctrl+Shift+Home             选中到文件头
+Ctrl+Shift+End              选中到文件尾
 
 ######## 快速操作
 Ctrl+Z                      撤销
