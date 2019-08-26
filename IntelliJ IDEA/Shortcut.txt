@@ -1,36 +1,38 @@
-######## Frequently Used
-Alt+F12                     打开 Terminal
-F2                          高亮错误
-Shift+F2                    警告快速定位
-Alt+1                       显示 Project 侧边栏
-ESC                         退出当前调出的窗口
-Ctrl+Shift+Z                取消撤销（恢复上一次操作）
-
 ######## 光标移动
-Ctrl+[/]                    移动光标到大括号起始、结束
-Ctrl+G                      移动光标到指定行
 Ctrl+Left/Right             单词间跳动
-Home                        行首或字符首
-End                         行尾或字符尾
-Ctrl+Home                   文件首
 
+Home                        行首个非空白字符，按两次行首
+End                         行末个非空白字符，按两次行尾
+
+Ctrl+G                      移动光标到指定行
+
+Ctrl+[/]                    移动光标到大括号起始、结束
+
+Alt+Up/Down                 上一个或下一个方法
+
+Ctrl+Home                   文件首
 Ctrl+End                    文件尾
 
+Alt+Left/Right              切换编辑器 tab 页
 Ctrl+Alt+Left/Right         快速返回前进上次代码位置
 Ctrl+Alt+Backspace          移动到上一次修改的地方
-Ctrl+Tab                    切换窗口，加 Delete 关闭选中窗口
-Alt+Left/Right              切换编辑器 tab 页
-Alt+Up/Down                 上一个或下一个方法
+
+
+
+
+
 
 
 ######## 快速选择
+Ctrl+Shift+Left/Right       选择光标位置到单词头/尾
 Ctrl+W                      选取光标所在的单词
 Ctrl+Shift+[/]              选中当前位置到大括号起始或结束
-Ctrl+Shift+Left/Right       选择光标位置到单词头/尾
+
 Shift+End                   选中当前光标位置到行尾
 Shift+Home                  选中当前光标位置到行首
 Ctrl+Shift+Home             选中到文件头
 Ctrl+Shift+End              选中到文件尾
+
 
 ######## 快速操作
 Ctrl+Z                      撤销
@@ -50,6 +52,19 @@ Ctrl+Alt+T                  可以把代码包在一块内，例如try/catch
 Ctrl+Shift+Space            自动补全代码
 
 Ctrl+Shift+U                大小写切换
+
+
+######## Frequently Used
+Alt+F12                     打开 Terminal
+F2                          高亮错误
+Shift+F2                    警告快速定位
+Alt+1                       显示 Project 侧边栏
+ESC                         退出当前调出的窗口
+Ctrl+Shift+Z                取消撤销（恢复上一次操作）
+
+
+
+
 
 ######## 搜索替换
 Ctrl+F                      在当前文件中查找
