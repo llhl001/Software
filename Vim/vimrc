@@ -87,6 +87,8 @@ set foldmethod=manual               " 手动折叠
 if has('gui_running')
     " 是图形界面
     colorscheme desert                                  " 配置颜色模式，需要 $VIMRUNTIME/rgb.txt
+    source $VIMRUNTIME/menu.vim                         " 解决菜单乱码问题    
+    source $VIMRUNTIME/delmenu.vim                      " 解决菜单乱码问题
     if has('gui_win32')
         " 是 Windows 下的图形界面  
         set guifont=Consolas:h10                        " 设置字体为 Consolas，大小为 10，注意如果有空格，需要用 \ 转义
