@@ -1,5 +1,12 @@
 :help                               # 获取帮助
 :help command                       # 获取指定命令的帮助
+:h m                                # 获取 Normal 模式下 m 命令
+:h :m                               # 获取 Command 模式下 m 命令
+
+
+
+
+
 :pwd                                # 查看当前路径
 :w                                  # 保存当前文件
 :w fileName                         # 当前文件另存为 fileName，保存路径为当前路径
@@ -103,6 +110,11 @@ Vim 范围参数
 
 
 :set guifont=*                          # 查看 gvim 支持的所有字体
+
+:echo 'abcd' | clip                     # Windows 将内容复制到系统剪贴板
+:echo 'abce' | xsel                     # Linux 下将内容复制到系统剪贴板
+:echo 'abce' | xsel -b                  # 如果上面命令有问题，加 -b 选项试试
+
 
 
 
