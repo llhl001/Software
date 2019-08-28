@@ -1,3 +1,5 @@
+:help                               # 获取帮助
+:help command                       # 获取指定命令的帮助
 :pwd                                # 查看当前路径
 :w                                  # 保存当前文件
 :w fileName                         # 当前文件另存为 fileName，保存路径为当前路径
