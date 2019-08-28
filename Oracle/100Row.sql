@@ -34,9 +34,9 @@ merge into tb1 t1
 using (tb2|view|subQuery) t2 
     on(t1.col1=t2.col1 and ...)
 when matched then
-    update tb1 set col2=val1, col2=val2
+    update set t1.col1=t2.col1, t1.col2=t2.col2
 when not matched then
-    insert (a, b) values (t2.a, t2.b);
+    insert (t1.col1, t1.col2) values (t2.col1, t2.col2);
 
 /********************************* Delete ******************************************/
 truncate table tb; -- 清空表数据
