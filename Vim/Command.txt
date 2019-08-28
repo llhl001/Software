@@ -3,6 +3,7 @@
 :h m                                # 获取 Normal 模式下 m 命令
 :h :m                               # 获取 Command 模式下 m 命令
 
+:r !cmd                             # 将 shell 命令结果插入到最后一行
 
 
 
