@@ -3,7 +3,7 @@
 :h m                                # 获取 Normal 模式下 m 命令
 :h :m                               # 获取 Command 模式下 m 命令
 
-:r !cmd                             # 将 shell 命令结果插入到最后一行
+:r !cmd                             # 将 shell 命令结果插入到当前光标所在行的下一行
 
 
 :put=getcwd()                       # 插入当前目录
@@ -115,6 +115,12 @@ Vim 范围参数
 :echo 'abcd' | clip                     # Windows 将内容复制到系统剪贴板
 :echo 'abce' | xsel                     # Linux 下将内容复制到系统剪贴板
 :echo 'abce' | xsel -b                  # 如果上面命令有问题，加 -b 选项试试
+
+# 重定向命令输出位置
+:redir @a
+:set all
+:redir END
+
 
 
 
