@@ -19,3 +19,5 @@ startup:
     shell> cd /usr/local/nginx
     shell> ./sbin/nginx
     
+    shell> ./sbin/nginx -h      # 查看帮助
+    
