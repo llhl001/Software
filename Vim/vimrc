@@ -119,11 +119,11 @@ map <C-n> :NERDTreeToggle<CR>                   " 快速打开 nerdtree 插件
 
 
 " 配置括号自动带出
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>O
+" inoremap ' ''<ESC>i
+" inoremap " ""<ESC>i
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap { {<CR>}<ESC>O
 
 
 
