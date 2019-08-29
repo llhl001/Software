@@ -1,0 +1,58 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {
+    "hosts": {
+      "haku.kasei": "::1",
+      "haku.kasei": "127.0.0.1"
+    },
+    "servers": [
+      "localhost",
+      "2001:4860:4860::8888",
+      "2001:4860:4860::8844",
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.1.1.1",
+      /** ????????? DNS ????? */
+      {
+        "address": "223.5.5.5",
+        "port": 5353,
+        "domains": [
+          "domain:haku.kasei"
+        ]
+      }
+    ],
+    "clientIp": "66.98.122.202",       // VPS IP ,????? IP
+    "tag": "DnsIn"
+  },
+  "inbounds": [
+    {
+      "tag": "TlsVmessIn",
+      "protocol": "vmess",
+      "port": 443,
+      "settings": {
+        "clients": [
+          {
+            "id": "bb553e11-f08b-e87a-0779-c74cdc0a7e1c",
+            "level": 0,
+            "alterId": 64,
+            "email": "kasei@haku.kasei"
+          }
+        ],
+        "disableInsecureEncryption": true
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "www.1291114093.ml",
+          "alpn": ["http/1.1"],
+          "allowInsecure": true,
+          "allowInsecureCiphers": true,
+          "disableSystemRoot": false,
+          "certificates": [
+            {
+              "usage": "encipherment",
+                "certificate": [
+
