@@ -18,8 +18,8 @@
     },  
     {  
       /** todo 用于连接公司内网 */    
-      "tag":"freedomOut"
-      "protocol":"freedom"
+      "tag": "freedomOut"
+      "protocol": "freedom"
     }
   ],
   "reverse":{ 
