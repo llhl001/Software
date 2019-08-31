@@ -3,12 +3,19 @@
 :h m                                # 获取 Normal 模式下 m 命令
 :h :m                               # 获取 Command 模式下 m 命令
 
+
+:pwd                                # 查看当前路径
+:cd ./dir                           # 切换当前 vim 的工作目录
+:lcd ./dir                          # 切换当前 窗口 的工作目录
+:set autochdir                      # 自动设当前编辑的文件所在目录为当前工作路径
+
+
 :r !cmd                             # 将 shell 命令结果插入到当前光标所在行的下一行
 
 
 :put=getcwd()                       # 插入当前目录
 
-:pwd                                # 查看当前路径
+
 :w                                  # 保存当前文件
 :w fileName                         # 当前文件另存为 fileName，保存路径为当前路径
 :wq                                 # 保存并关闭当前文件，更新文件最后修改时间属性
