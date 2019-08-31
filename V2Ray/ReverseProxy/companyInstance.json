@@ -27,7 +27,7 @@
             "address":"www.1291114093.ml",
             "port":12306,
             "users":[  
-              {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"}
+              {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "security":"chacha20-poly1305"}
             ]
           }
         ]
@@ -42,15 +42,54 @@
           }
         }
       }
+    },
+    {
+      "tag":"companyReverseOut", 
+      "protocol":"vmess",
+      "settings":{  
+        "vnext":[  
+          {  
+            "address":"www.1291114093.ml",
+            "port":12390,
+            "users":[  
+              {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "security":"chacha20-poly1305"}
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/reverse/company",
+          "headers": {
+            "Host": "company.reverse.haku.kasei"
+          }
+        }
+      }
     }
   ],
+  "reverse":{
+    {"tag":"bridge", "domain":"reverse.haku.kasei"}
+  },
   "routing": {
     "rules":[  
       {
         "type":"field",
         "inboundTag":["ladderIn"],
         "outboundTag":"ladderOut"
-      }
+      },
+      {
+        "type": "field",
+        "inboundTag": ["bridge"],
+        "domain": ["full:reverse.haku.kasei"],
+        "outboundTag": "companyReverseOut"
+      },
+      {
+        "type": "field",
+        "inboundTag": ["bridge"],
+        "outboundTag": "freedomOut"
+      }    
     ] 
   }
 }
