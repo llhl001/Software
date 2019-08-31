@@ -1,0 +1,46 @@
+{
+  "log": { "loglevel": "debug" },
+  "dns": {
+    "tag": "dnsIn"
+  },
+  "inbounds":[
+    {
+      "tag": "ladderIn",
+      "protocol": "socks",
+      "port": 12345,
+      "settings":{
+        "auth": "noauth"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "freedomOut",
+      "protocol": "freedom"
+    },
+    {
+      "tag":"ladderOut", 
+      "protocol":"vmess",
+      "settings":{  
+        "vnext":[  
+          {  
+            "address":"www.1291114093.ml",
+            "port":12306,
+            "users":[  
+              {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"}
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules":[  
+      {
+        "type":"field",
+        "inboundTag":["ladderIn"],
+        "outboundTag":"ladderOut"
+      }
+    ] 
+  }
+}
