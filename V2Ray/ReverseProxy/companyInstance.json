@@ -31,6 +31,16 @@
             ]
           }
         ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/ladder",
+          "headers": {
+            "Host": "ksf.haku.kasei"
+          }
+        }
       }
     }
   ],
