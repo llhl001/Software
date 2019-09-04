@@ -45,7 +45,7 @@ where ;
 
 
 /********************************* Update ******************************************/
-update table tb
+update tb
 set col1=val1, col2=val2, col3=val3
 where ;
 
