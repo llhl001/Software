@@ -39,7 +39,6 @@ when not matched then
     insert (t1.col1, t1.col2) values (t2.col1, t2.col2);
 
 /********************************* Delete ******************************************/
-truncate table tb; -- 清空表数据
 delete from tb 
 where ;
 
@@ -344,13 +343,35 @@ from tb
 group by name;
 
 
+/******************************** 删库跑路 ********************************/
+-- oracle 闪回功能：主要用于 delete drop 操作 commit 之后的回滚操作，truncate 操作无法恢复
+-- 前提：被删除数据的块没被新的内容覆写，主要用于补救手速太快，commit 之后反应过来删错的情况
+                         
+-- todo delete 删除后 commit 了，快速回滚
+-- 查询该表在指定时间点的内容，该内容包含被删除的数据，
+select * from tabName as of timestamp to_timestamp('2019-09-05 09:00:00','yyyy-mm-dd hh24:mi:ss'); 
+-- 将误删的数据重新插入到原表中
+insert into tabName (select * from tabName as of timestamp to_timestamp('2019-09-05 09:00:00','yyyy-mm-dd hh24:mi:ss'));
 
+-- todo 闪回整张表，要求用户必须要有 flash any table 权限
+alter table tabName enable row movement; -- 开启行移动功能 
+flashback table tabName to timestamp to_timestamp('2019-09-05 09:00:00','yyyy-mm-dd hh24:mi:ss');  -- 恢复表数据
+alter table tabName disable row movement;-- 关闭行移动功能 ( 千万别忘记 )
+                                                                        
+-- todo drop table 的闪回
+select table_name, dropped from user_tables;  -- 查找 user_tables 中被删除的表
+select object_name,original_name,type,droptime from user_recyclebin; -- 查找回收站中的表     
+flashback table tabName to before drop; -- 直接恢复表，适用于还能记住表名的情况
+flashback table "回收站中的表名(如：Bin$DSbdfd4rdfdfdfegdfsf==$0)" to before drop rename to 新表名;
 
-
-
-
-
-
-
-
-
+-- todo 闪回整个数据库
+alter database flashback on;
+flashback database to scn SCNNO;
+flashback database to timestamp to_timestamp('2007-2-12 12:00:00','yyyy-mm-dd hh24:mi:ss');
+alter database flashback off;
+                                                                        
+-- todo 明确删除，不能闪回，谨慎使用
+truncate table tabName; 
+drop table tabName purge;
+purge recyclebin; --  删除当前用户的回收站:
+purge dba_recyclebin; --   删除全体用户在回收站的数据:
