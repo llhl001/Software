@@ -39,6 +39,7 @@ when not matched then
     insert (t1.col1, t1.col2) values (t2.col1, t2.col2);
 
 /********************************* Delete ******************************************/
+-- 删除数据一定要根据 ID，使用 = 匹配，不能使用 like，踩坑经验
 delete from tb 
 where ;
 
