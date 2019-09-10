@@ -28,7 +28,7 @@ serial                  = $dir/serial                   # 当前 CA 序列号文
 RANDFILE                = $dir/private/.rand            # 随机数种子文件
 unique_subject          = yes                           # no: 当前 CA 允许一个 subject 申请多个证书; yes: 当前 CA 一个 subject 只能申请一个证书
 database                = $dir/index.txt                # database index file.
-default_md              = sha256                        # 当前 CA 对文件进行 数字签名 时所使用的 消息摘要算法
+default_md              = sha384                        # 当前 CA 对文件进行 数字签名 时所使用的 消息摘要算法
 preserve                = no                            # keep passed DN ordering
 policy                  = policy_anything               # 引用 [ policy_anything ] 证书匹配策略
 
