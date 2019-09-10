@@ -22,7 +22,7 @@ default_ca              = default_ca                    # 引用 [ default_ca ] 
 ################################################################ todo 当前 CA 配置
 [ default_ca ]                          
 
-dir                     = /root/kasei/CA                # 证书认证机构根目录
+dir                     = /root/kasei/ca                # 证书认证机构根目录
 certificate             = $dir/cacert.pem               # 当前 CA 的根证书
 private_key             = $dir/private/cakey.pem        # 当前 CA 的密钥（包含公私钥）
 
