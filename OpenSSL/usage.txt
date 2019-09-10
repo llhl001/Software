@@ -17,7 +17,7 @@ CA 目录结构
     shell> openssl ecparam -list_curves    
     
     # 选择一条曲线生成密钥，包含公钥和私钥
-    shell> openssl ecparam -genkey -name secp384r1 -out ./root.pub.key.pem          # 还可以使用 prime256v1 其他椭圆曲线浏览器可能不支持
+    shell> openssl ecparam -genkey -name prime256v1 -out ./root.pub.key.pem          # 还可以使用其他椭圆曲线浏览器可能不支持
     shell> openssl ec -text -in ./root.pub.key.pem                                   # 打印密钥对的组成和参数
     
     # 从密钥对中拆分出私钥
