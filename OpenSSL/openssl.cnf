@@ -1,13 +1,11 @@
-################################################################ todo 默认 section，一般没有名字，也可以自定义 section name
+################################ todo 默认 section，一般没有名字，也可以自定义 section name
 # 默认段中定义一些公共的属性，当搜索指定 section name 时，先搜索有名字的段，如果配置匹配的 section name，然后才会搜索 default section
 HOME                    = .
 RANDFILE                = $ENV::HOME/.rnd           # 随机数种子文件，$ENV::HOME <=> 当前环境变量中的 HOME 变量
 oid_section             = new_oids
 
-
 # todo OID 配置，OID = Object Identifier 对象 IDS
 [ new_oids ]
-
 testoid1                = 1.2.3.4
 testoid2                = ${testoid1}.5.6
 
@@ -16,12 +14,12 @@ tsa_policy1 = 1.2.3.4.1
 tsa_policy2 = 1.2.3.4.5.6
 tsa_policy3 = 1.2.3.4.5.7
 
+
+################################ shell> openssl ca 命令相关的配置
 [ ca ]
 default_ca              = default_ca                    # 引用 [ default_ca ] 的配置
 
-################################################################ todo 当前 CA 配置
 [ default_ca ]                          
-
 dir                     = /root/kasei/ca                # 证书认证机构根目录
 certificate             = $dir/cacert.pem               # 当前 CA 的根证书
 private_key             = $dir/private/cakey.pem        # 当前 CA 的密钥（包含公私钥）
@@ -90,7 +88,7 @@ proxyCertInfo                   = critical,language:id-ppl-anyLanguage,pathlen:3
 basicConstraints                = CA:FALSE              # 该配置是为了避免将一个 用户证书 interpreting(解释) 为一个 CA 证书
 keyUsage                        = nonRepudiation, digitalSignature, keyEncipherment     # 客户端证书使用限制
 nsCertType                      = server, client, email, objsign    # Netscape(网景公司) 证书类型配置, 表示该证书可以用于任何东西的签名认证，包括 object
-nsComment                       = "KaseiHaku User  Certification"   
+nsComment                       = "KaseiHaku Nginx Certification"   
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid,issuer
 subjectAltName                  = email:copy
@@ -103,14 +101,14 @@ authorityKeyIdentifier          = keyid:always
 
 
 
-################################################################ todo 证书请求文件配置
+################################ shell> openssl req 命令相关的配置
 [ req ]
 default_md                      = sha384                        # 证书请求文件的默认 消息摘要 算法
 default_keyfile                 = privkey.pem                   # 默认新建私钥的保存位置
 distinguished_name              = req_distinguished_name        # DN = Distinguish Name; 证书请求文件的唯一性标识
                                                                
 x509_extensions                 = v3_root_ca_req                # 加入到自签名证书请求文件中的扩展项
-req_extensions                  = v3_user_crt_req               # 加入到普通证书请求文件中的扩展项
+req_extensions                  = v3_nginx_crt_req              # 加入到普通证书请求文件中的扩展项
 string_mask                     = utf8only
 
 
@@ -128,10 +126,12 @@ localityName_default            = KH                                            
 0.organizationName_default      = KH                                                        # 默认公司名
 organizationalUnitName          = Organizational Unit Name (eg, section)                    # 部门名
 organizationalUnitName_default  = KH                                                        # 默认部门名
-commonName                      = Common Name (eg, your name or your server\'s hostname)    # 域名 = rootca.haku.kasei
+commonName                      = Common Name (eg, your name or your server\'s hostname)    # 域名 = rootca.kasei.haku
 commonName_max                  = 64                                                        # 最大域名长度
-emailAddress                    = Email Address                                             # 邮箱地址 = kasei@haku.kasei
+commonName_default              = rootca.kasei.haku                                         # 默认域名
+emailAddress                    = Email Address                                             # 邮箱地址 = kasei@kasei.haku
 emailAddress_max                = 64                                                        # 最大邮箱地址长度
+emailAddress_default            = kasei@kasei.haku                                          # 默认邮箱地址
 
 
 [ req_distinguished_name_intermediate_ca_req ]
@@ -147,10 +147,12 @@ localityName_default            = KH                                            
 0.organizationName_default      = KH                                                        # 默认公司名
 organizationalUnitName          = Organizational Unit Name (eg, section)                    # 部门名
 organizationalUnitName_default  = KH                                                        # 默认部门名
-commonName                      = Common Name (eg, your name or your server\'s hostname)    # 域名 = interca.haku.kasei
+commonName                      = Common Name (eg, your name or your server\'s hostname)    # 域名 = interca.kasei.haku
 commonName_max                  = 64                                                        # 最大域名长度
-emailAddress                    = Email Address                                             # 邮箱地址 = kasei@haku.kasei
+commonName_default              = interca.kasei.haku                                        # 默认域名
+emailAddress                    = Email Address                                             # 邮箱地址 = haku@kasei.haku
 emailAddress_max                = 64                                                        # 最大邮箱地址长度
+emailAddress_default            = haku@kasei.haku                                           # 默认邮箱地址
 
 
 
@@ -173,17 +175,16 @@ emailAddress                    = Email Address                                 
 emailAddress_max                = 64                                                        # 最大邮箱地址长度
 
 
-
+#################### 证书中的 v3 扩展字段配置
 ######## todo 添加到自签名证书请求文件中的扩展项
 [ v3_root_ca_req ]
 basicConstraints                = CA:true
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always,issuer
 keyUsage                        = cRLSign, keyCertSign          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
-nsCertType                      = sslCA, emailCA                # 该想表示该证书只能当作 CA 证书，不能当作 自签名证书
+nsCertType                      = sslCA, emailCA                # 该项表示该证书只能当作 CA 证书，不能当作 自签名证书
 subjectAltName                  = email:copy
 issuerAltName                   = issuer:copy
-
 
 [ v3_inter_ca_req ]
 basicConstraints                = CA:true
@@ -193,15 +194,13 @@ keyUsage                        = cRLSign, keyCertSign          # 使用该项�
 subjectAltName                  = email:copy
 issuerAltName                   = issuer:copy
 
-
-
 ######## todo 添加到用户证书请求文件中的扩展项
-[ v3_user_crt_req ]
+[ v3_nginx_crt_req ]
 basicConstraints                = CA:FALSE
 keyUsage                        = nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName                  = @v3_user_crt_req_subject_alt_names
+subjectAltName                  = @v3_nginx_crt_req_subject_alt_names
 
-[ v3_user_crt_req_subject_alt_names ]
+[ v3_nginx_crt_req_subject_alt_names ]
 DNS.1                           = 1291114093.ml
 DNS.2                           = www.1291114093.ml
 DNS.3                           = *.1291114093.ml
