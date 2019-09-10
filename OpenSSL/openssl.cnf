@@ -105,7 +105,7 @@ authorityKeyIdentifier          = keyid:always
 [ req ]
 default_md                      = sha384                        # 证书请求文件的默认 消息摘要 算法
 default_keyfile                 = privkey.pem                   # 默认新建私钥的保存位置
-distinguished_name              = req_distinguished_name        # DN = Distinguish Name; 证书请求文件的唯一性标识
+distinguished_name              = req_distinguished_name_root_ca_req        # DN = Distinguish Name; 证书请求文件的唯一性标识
                                                                
 x509_extensions                 = v3_root_ca_req                # 加入到自签名证书请求文件中的扩展项
 req_extensions                  = v3_nginx_crt_req              # 加入到普通证书请求文件中的扩展项
@@ -156,7 +156,7 @@ emailAddress_default            = haku@kasei.haku                               
 
 
 
-[ req_distinguished_name_user_crt_req ]
+[ req_distinguished_name_nginx_crt_req ]
 countryName                     = Country Name (2 letter code)                              # 国家名
 countryName_default             = KH                                                        # 默认国家名
 countryName_min                 = 2                                                         # 国家名最小长度
