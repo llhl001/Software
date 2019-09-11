@@ -33,8 +33,8 @@
         shell> openssl s_server -accept 4433 -HTTP -cert ./nginx.crt.pem -key ./nginx.key.pem
     }
     
-    将证书转换成 Windows 证书 {
-        shell> openssl pkcs12 -export -inkey ./nginx.key.pem -in ./nginx.crt.pem -out ./nginx.crt.p12
+    将证书安装到 Windows {
+        把 ./rootca.crt.pem 名称改为 rootca.crt 然后安装为 根证书即可
     }
 }
 
