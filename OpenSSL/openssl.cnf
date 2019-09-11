@@ -192,38 +192,91 @@ emailAddress                    = Email Address                                 
 emailAddress_max                = 64                                                        # 最大邮箱地址长度
 
 
-#################### 证书中的 v3 扩展字段配置
-######## todo 添加到自签名证书请求文件中的扩展项
+#################### 证书中的 v3 扩展字段配置，shell> man x509v3_config 
+######## todo 添加到 root ca （自签名）证书请求文件中的扩展项
 [ v3_root_ca_req ]
-basicConstraints                = CA:true
+basicConstraints                = critical, CA:true, pathlen:1  # pathlen:1 表示只能有一级中间证书
+keyUsage                        = critical, keyCertSign, cRLSign          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
+extendedKeyUsage                = critical, @v3_root_ca_req_extendedKeyUsage
 subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always,issuer
-keyUsage                        = cRLSign, keyCertSign          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
-nsCertType                      = sslCA, emailCA                # 该项表示该证书只能当作 CA 证书，不能当作 自签名证书
-subjectAltName                  = email:copy
+authorityKeyIdentifier          = keyid:always,issuer:always
+subjectAltName                  = email:copy, @v3_root_ca_req_subjectAltName
 issuerAltName                   = issuer:copy
+#authorityInfoAccess
+#crlDistributionPoints
+#issuingDistributionPoint
+#certificatePolicies
+#policyConstraints
+#inhibitAnyPolicy
+#nameConstraints
+#noCheck
+#1.2.3.4=critical,ASN1:UTF8String:Some random data      # Arbitrary Extensions: 用于添加 OpenSSL 不支持的扩展
 
+
+[ v3_root_ca_req_keyUsage ]
+digitalSignature                        # 可用于 数字签名
+nonRepudiation                          # 可用于 不可否认
+keyEncipherment                         # 可用于 密钥加密
+dataEncipherment                        # 可用于 数据加密
+keyAgreement                            # 可用于 密钥认证
+keyCertSign                             # 可用于 证书签名
+cRLSign                                 # 可用于 证书吊销签名
+encipherOnly                            # 只能用于 加密
+decipherOnly                            # 只能用于 解密
+
+[ v3_root_ca_req_extendedKeyUsage ]
+serverAuth                              # SSL/TLS Web 服务端认证
+clientAuth                              # SSL/TLS Web 客户端认证
+codeSigning                             # 可用于 代码签名
+emailProtection                         # 可用于 邮件加密
+timeStamping                            # 可用于 时间戳认证
+
+
+[ v3_root_ca_req_subjectAltName ]
+email.1                         = admin@1291114093    
+URI.1                           = http://my.url.here/
+DNS.1                           = 1291114093.ml
+DNS.2                           = www.1291114093.ml
+DNS.3                           = *.1291114093.ml
+# RID.1                           =                 # 不知道是啥
+IP.1                            = 192.168.1.1
+IP.2                            = 192.168.69.14
+dirName                         = @v3_root_ca_req_dirName         # 就是 distinguished_name
+# otherName                       = 1.2.3.4;UTF8:some other identifier    # Arbitrary Extensions
+
+[ v3_root_ca_req_dirName ]
+C=UK
+O=My Organization
+OU=My Unit
+CN=My Name
+
+
+######## todo 添加到 inter ca 证书请求文件中的扩展项
 [ v3_inter_ca_req ]
-basicConstraints                = CA:true
+basicConstraints                = critical, CA:true, pathlen:0  # pathlen:0 表示不能有中间证书了，该证书只能直接签署用户证书
+keyUsage                        = cRLSign, keyCertSign          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always,issuer
-keyUsage                        = cRLSign, keyCertSign          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
+
 subjectAltName                  = email:copy
 issuerAltName                   = issuer:copy
 
-######## todo 添加到用户证书请求文件中的扩展项
+######## todo 添加到 user 或 服务器（nginx） 证书请求文件中的扩展项
 [ v3_nginx_crt_req ]
-basicConstraints                = CA:FALSE
-keyUsage                        = nonRepudiation, digitalSignature, keyEncipherment
+basicConstraints                = critical, CA:FALSE
+keyUsage                        = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement
 subjectAltName                  = @v3_nginx_crt_req_subject_alt_names
 
 [ v3_nginx_crt_req_subject_alt_names ]
+email.1                         = admin@1291114093    
 DNS.1                           = 1291114093.ml
 DNS.2                           = www.1291114093.ml
 DNS.3                           = *.1291114093.ml
 IP.1                            = 192.168.1.1
 IP.2                            = 192.168.69.14
-EMAIL.1                         = admin@1291114093    
+
+
+
 
 
 
