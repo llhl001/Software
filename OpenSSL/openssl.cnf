@@ -19,36 +19,42 @@ tsa_policy3 = 1.2.3.4.5.7
 [ ca ]
 default_ca              = default_ca                    # 引用 [ default_ca ] 的配置
 
-[ default_ca ]                          
+[ default_ca ]     
 dir                     = /root/kasei/ca                # 证书认证机构根目录
-certificate             = $dir/cacert.pem               # 当前 CA 的根证书
-private_key             = $dir/private/cakey.pem        # 当前 CA 的密钥（包含公私钥）
-
-serial                  = $dir/serial                   # 当前 CA 序列号文件，可以设置初始值： shell> echo '01' > serial
-RANDFILE                = $dir/private/.rand            # 随机数种子文件
-unique_subject          = yes                           # no: 当前 CA 允许一个 subject 申请多个证书; yes: 当前 CA 一个 subject 只能申请一个证书
-database                = $dir/index.txt                # database index file.
-default_md              = sha384                        # 当前 CA 对文件进行 数字签名 时所使用的 消息摘要算法
-preserve                = no                            # keep passed DN ordering
-policy                  = policy_anything               # 引用 [ policy_anything ] 证书匹配策略
-
-                        
-# todo 证书文件配置       
-certs                   = $dir/certs                    # 当前 CA 已颁发的证书保存目录
+oid_file                = 
 new_certs_dir           = $dir/newcerts                 # 当前 CA 新生成的证书保存目录
+certificate             = $dir/cacert.pem               # 当前 CA 的根证书
+private_key             = $dir/private/rootca.key.pem   # 当前 CA 的密钥（包含公私钥）
+RANDFILE                = $dir/private/.rand            # 随机数种子文件
 default_days            = 365                           # 默认签署的证书文件有效期
-                                                    
-# todo 吊销列表配置                                   
-crlnumber               = $dir/crlnumber                # 当前 CA 吊销列表序列号
-crl                     = $dir/crl.pem                  # 当前 CA 的吊销列表
-crl_dir                 = $dir/crl                      # 当前 CA 已颁发的吊销列表保存目录
+default_startdate
+default_enddate
+default_crl_hours
 default_crl_days        = 30                            # 默认 CA 颁发的吊销列表的有效期
-
-
-# todo 扩展项配置
-copy_extensions         = none                          # 生成证书时，扩展项的 copy 行为，value = [none, copy, copyall]; 简单使用时，建议设置为 none 
+default_md              = sha384                        # 当前 CA 对文件进行 数字签名 时所使用的 消息摘要算法
+database                = $dir/index.txt                # database index file.
+unique_subject          = yes                           # no: 当前 CA 允许一个 subject 申请多个证书; yes: 当前 CA 一个 subject 只能申请一个证书
+serial                  = $dir/serial                   # 当前 CA 序列号文件，可以设置初始值： shell> echo '01' > serial
+crlnumber               = $dir/crlnumber                # 当前 CA 吊销列表序列号
 x509_extensions         = crt_ext                       # 引用 [ crt_ext ] 添加到证书中的扩展项
 crl_extensions          = crl_ext                       # 引用 [ crl_ext ] 添加到证书吊销列表文件中的扩展项
+preserve                = no                            # keep passed DN ordering
+email_in_dn
+msie_hack
+policy                  = policy_anything               # 引用 [ policy_anything ] 证书匹配策略
+name_opt
+cert_opt
+copy_extensions         = none                          # 生成证书时，扩展项的 copy 行为，value = [none, copy, copyall]; 简单使用时，建议设置为 none 
+
+
+
+# man 文件中没有的配置项   
+certs                   = $dir/certs                    # 当前 CA 已颁发的证书保存目录
+crl                     = $dir/crl.pem                  # 当前 CA 的吊销列表
+crl_dir                 = $dir/crl                      # 当前 CA 已颁发的吊销列表保存目录
+
+
+
 
 
 ######## todo CA 策略配置
