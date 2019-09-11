@@ -112,7 +112,7 @@ authorityKeyIdentifier          = keyid:always
 # RANDFILE
 # encrypt_key
 default_md                      = sha384                        # 证书请求文件的默认 消息摘要 算法
-string_mask                     = utf8only              
+string_mask                     = utf8only                      #     
 req_extensions                  = v3_nginx_crt_req              # 加入到普通证书请求文件中的扩展项
 x509_extensions                 = v3_root_ca_req                # 加入到自签名证书请求文件中的扩展项
 # prompt                        = no                            # 表示不提示，直接取配置文件中配置的 distinguished_name
@@ -180,7 +180,7 @@ organizationalUnitName          = Organizational Unit Name (eg, section)        
 organizationalUnitName_default  = KH                                                        # 默认部门名
 commonName                      = Common Name (eg, your name or your server\'s hostname)    # 域名 = 1291114093.ml
 commonName_max                  = 64                                                        # 最大域名长度
-emailAddress                    = Email Address                                             # 邮箱地址 = master@1291114093.ml
+emailAddress                    = Email Address                                             # 邮箱地址 = admin@1291114093.ml
 emailAddress_max                = 64                                                        # 最大邮箱地址长度
 
 
@@ -215,7 +215,7 @@ DNS.2                           = www.1291114093.ml
 DNS.3                           = *.1291114093.ml
 IP.1                            = 192.168.1.1
 IP.2                            = 192.168.69.14
-EMAIL.1                         = master@1291114093    
+EMAIL.1                         = admin@1291114093    
 
 
 
