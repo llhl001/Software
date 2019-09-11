@@ -24,17 +24,16 @@ stat -f <file>                                      # 查看磁盘信息
 whereis mysql                                       # 查看 mysql 的安装路径
 which command1                                      # 查看 command1 命令执行文件所在的路径
 
-find -P
-find -L
-find -H         # 针对软链接的处理方式
-find -D help    # 调试用
-find -O3        # 断言 的执行优先级类型
-find -not exp
-find exp1 -and exp2
-find exp1 -or exp2
-find exp1, exp2     # 用于不同类型的搜索，比如 文件名 和 创建时间，或的关系
-        exp = operator + option + test + action
-find -P -D tree -O3 /etc (-regextype posix-extended -iname *.bat) -or (-xtype d) -exec command {}+
+
+
+find findOpt path expOpt (tests) action             # find 命令格式
+find / exp1 exp2                    # and
+find / exp1,exp2                    # union
+find / !exp1 -o exp2                # not 和 or
+find / exp1 -print                  # 默认 action 为 print
+
+find . ! -iregex .*\.cnf ! -iregex \.* -print
+find . ! -iregex .*\.cnf ! -iregex \.* -exec command {}+
 
 
 
