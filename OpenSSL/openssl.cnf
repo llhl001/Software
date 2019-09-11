@@ -103,13 +103,22 @@ authorityKeyIdentifier          = keyid:always
 
 ################################ shell> openssl req 命令相关的配置
 [ req ]
+# input_password
+# output_password
+# default_bits
+# default_keyfile
+# oid_file
+# oid_section
+# RANDFILE
+# encrypt_key
 default_md                      = sha384                        # 证书请求文件的默认 消息摘要 算法
-default_keyfile                 = privkey.pem                   # 默认新建私钥的保存位置
-distinguished_name              = req_distinguished_name_root_ca_req        # DN = Distinguish Name; 证书请求文件的唯一性标识
-                                                               
-x509_extensions                 = v3_root_ca_req                # 加入到自签名证书请求文件中的扩展项
+string_mask                     = utf8only              
 req_extensions                  = v3_nginx_crt_req              # 加入到普通证书请求文件中的扩展项
-string_mask                     = utf8only
+x509_extensions                 = v3_root_ca_req                # 加入到自签名证书请求文件中的扩展项
+# prompt                        = no                            # 表示不提示，直接取配置文件中配置的 distinguished_name
+utf8                            = yes                           # 表示 field 字段值使用 utf8 格式解析，否则使用 ascii 码解析
+# attributes                    =                               # 废弃
+distinguished_name              = req_distinguished_name_root_ca_req        # DN = Distinguish Name; 证书请求文件的唯一性标识
 
 
 ######## todo 添加到证书请求文件中的 subject 信息配置
