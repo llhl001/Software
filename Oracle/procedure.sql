@@ -20,13 +20,15 @@ is|as -- 创建视图时只能用 as ；声明游标时只能用 is
 
     
     -- 行
-    rowType1 tabName%rowtype;-- 定义一个行类型：表示行变量 rowType1 的结构跟 tabName 表中的行结构相同
-    type rowType2 is record(-- 记录类型：相当于C语言中的 struct 类型，定义的不是变量，而是一个自定义类型
+    rowVar1 tabName%rowtype;    -- 定义一个行变量：表示 rowVar1 的结构跟 tabName 表中的行结构相同
+    rowVar2 cursorName%rowtype; -- 定义一个行变量：表示 rowVar2 的结构跟 cursorName 返回的结构一样
+    type rowType1 is record(-- 记录类型：相当于C语言中的 struct 类型，定义的不是变量，而是一个自定义类型
         fieldName1 dataType not null default defaultValue,
         fieldName2 dataType not null default defaultValue,
         fieldName3 dataType not null default defaultValue
     ); 
-    rowVar rowType1;-- 定义一个行变量
+    
+    rowVar3 rowType1;-- 定义一个行变量
     
     -- 表
     type tabType1 is table of(-- 定义表类型：相当于行的数组
@@ -74,6 +76,12 @@ begin
     end loop;
     -- 4、关闭游标
     close cursorName;
+                                                 
+                                                 
+    -- for 循环使用 cursor，不需要打开和关闭游标，也不需要判断游标状态来退出循环
+    for rowVar2 in cursorName loop
+        dbms_output.put_line('Log = ' || rowVar.aa);                                          
+    end loop;
     
 exception
     --异常处理语句
