@@ -1,3 +1,4 @@
+# 默认配置文件路径 /etc/pki/tls/openssl.cnf
 ################################ todo 默认 section，一般没有名字，也可以自定义 section name
 # 默认段中定义一些公共的属性，当搜索指定 section name 时，先搜索有名字的段，如果配置匹配的 section name，然后才会搜索 default section
 HOME                    = .
@@ -41,7 +42,8 @@ crl_extensions          = crl_ext                       # 引用 [ crl_ext ] 添
 preserve                = no                            # keep passed DN ordering
 #email_in_dn
 #msie_hack
-policy                  = policy_anything               # 引用 [ policy_anything ] 证书匹配策略
+policy                  = policy_match               # 引用 [ policy_match ] 证书匹配策略
+#policy                  = policy_anything              # 引用 [ policy_anything ] 证书匹配策略
 #name_opt
 #cert_opt
 copy_extensions         = none                          # 生成证书时，扩展项的 copy 行为，value = [none, copy, copyall]; 简单使用时，建议设置为 none 
@@ -187,9 +189,12 @@ localityName_default            = KH                                            
 organizationalUnitName          = Organizational Unit Name (eg, section)                    # 部门名
 organizationalUnitName_default  = KH                                                        # 默认部门名
 commonName                      = Common Name (eg, your name or your server\'s hostname)    # 域名 = 1291114093.ml
+commonName_default              = 1291114093.ml                                             # 默认域名
 commonName_max                  = 64                                                        # 最大域名长度
 emailAddress                    = Email Address                                             # 邮箱地址 = admin@1291114093.ml
 emailAddress_max                = 64                                                        # 最大邮箱地址长度
+emailAddress_default            = admin@1291114093.ml                                       # 默认邮箱地址
+
 
 
 #################### 证书中的 v3 扩展字段配置，shell> man x509v3_config 
