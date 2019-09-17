@@ -21,10 +21,10 @@ ls -al [path]                                       # 查看指定路径下所�
 file -i <file>                                      # 显示文件 MIME 类型，和文件字符编码格式
 stat <file>                                         # 查看文件信息
 stat -f <file>                                      # 查看磁盘信息
-whereis mysql                                       # 查看 mysql 的安装路径
-which command1                                      # 查看 command1 命令执行文件所在的路径
+whereis mysql                                       # 只查找可执行文件，基本只在 $PATH 中查找
+which command1                                      # 查找安装 command1 命令安装位置，比 whereis 搜索范围广
 
-
+locate                                              # 从索引库中查找文件，最好使用 updatedb 命令更新一遍索引，确保新建文件不会遗漏
 
 find findOpt path expOpt (tests) action             # find 命令格式
 find / exp1 exp2                    # and
