@@ -32,7 +32,7 @@ default_days            = 365                           # 默认签署的证书�
 #default_enddate
 #default_crl_hours
 default_crl_days        = 30                            # 默认 CA 颁发的吊销列表的有效期
-default_md              = sha384                        # 当前 CA 对文件进行 数字签名 时所使用的 消息摘要算法
+default_md              = sha256                        # 当前 CA 对文件进行 数字签名 时所使用的 消息摘要算法
 database                = $dir/index.txt                # database index file.
 unique_subject          = yes                           # no: 当前 CA 允许一个 subject 申请多个证书; yes: 当前 CA 一个 subject 只能申请一个证书
 serial                  = $dir/serial                   # 当前 CA 序列号文件，可以设置初始值： shell> echo '01' > serial
@@ -119,7 +119,7 @@ authorityKeyIdentifier          = keyid:always
 # oid_section
 # RANDFILE
 # encrypt_key
-default_md                      = sha384                        # 证书请求文件的默认 消息摘要 算法
+default_md                      = sha256                        # 证书请求文件的默认 消息摘要 算法
 string_mask                     = utf8only                      #     
 req_extensions                  = v3_nginx_crt_req              # 加入到普通证书请求文件中的扩展项
 x509_extensions                 = v3_root_ca_req                # 加入到自签名证书请求文件中的扩展项
