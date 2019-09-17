@@ -24,7 +24,7 @@
     }
     
     使用 CA 证书签署 Nginx 证书 {
-        shell> openssl x509 -req -in ./nginx.csr -extfile ./myOpenssl.cnf -extensions crt_ext -days 365 -sha384 \
+        shell> openssl x509 -req -in ./nginx.csr -extfile ./myOpenssl.cnf -extensions crt_ext -days 365 -sha256 \
                 -CA ./rootca.crt.pem -CAkey ./rootca.key.pem -CAcreateserial -out ./nginx.crt.pem
     }
     
@@ -38,7 +38,7 @@
     }
 }
 
-ECDHE-ECDSA-AES256-GCM-SHA384
+TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 
     
     
