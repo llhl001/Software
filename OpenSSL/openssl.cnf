@@ -201,7 +201,7 @@ emailAddress_default            = admin@1291114093.ml                           
 ######## todo 添加到 root ca （自签名）证书请求文件中的扩展项
 [ v3_root_ca_req ]
 basicConstraints                = critical, CA:true, pathlen:1  # pathlen:1 表示只能有一级中间证书
-keyUsage                        = critical, keyCertSign, cRLSign          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
+keyUsage                        = critical, @v3_root_ca_req_keyUsage          # 使用该项表示该证书只能当作 CA 证书，而不能当作 自签名证书
 extendedKeyUsage                = critical, @v3_root_ca_req_extendedKeyUsage
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always,issuer:always
@@ -219,34 +219,36 @@ issuerAltName                   = issuer:copy
 
 
 [ v3_root_ca_req_keyUsage ]
-digitalSignature                        # 可用于 数字签名
-nonRepudiation                          # 可用于 不可否认
-keyEncipherment                         # 可用于 密钥加密
-dataEncipherment                        # 可用于 数据加密
-keyAgreement                            # 可用于 密钥认证
+#digitalSignature                        # 可用于 数字签名
+#nonRepudiation                          # 可用于 不可否认
+#keyEncipherment                         # 可用于 密钥加密
+#dataEncipherment                        # 可用于 数据加密
+#keyAgreement                            # 可用于 密钥认证
 keyCertSign                             # 可用于 证书签名
 cRLSign                                 # 可用于 证书吊销签名
-encipherOnly                            # 只能用于 加密
-decipherOnly                            # 只能用于 解密
+#encipherOnly                            # 只能用于 加密
+#decipherOnly                            # 只能用于 解密
 
 [ v3_root_ca_req_extendedKeyUsage ]
-serverAuth                              # SSL/TLS Web 服务端认证
-clientAuth                              # SSL/TLS Web 客户端认证
-codeSigning                             # 可用于 代码签名
-emailProtection                         # 可用于 邮件加密
-timeStamping                            # 可用于 时间戳认证
+#serverAuth                              # SSL/TLS Web 服务端认证
+#clientAuth                              # SSL/TLS Web 客户端认证
+#codeSigning                             # 可用于 代码签名
+#emailProtection                         # 可用于 邮件加密
+#timeStamping                            # 可用于 时间戳认证
 
 
 [ v3_root_ca_req_subjectAltName ]
-email.1                         = admin@1291114093    
-URI.1                           = http://my.url.here/
-DNS.1                           = 1291114093.ml
-DNS.2                           = www.1291114093.ml
-DNS.3                           = *.1291114093.ml
+email.1                         = kasei@kasei.haku
+email.2                         = haku@kasei.haku
+URI.1                           = https://kasei.haku/
+DNS.1                           = kasei.haku
+DNS.2                           = *.kasei.haku
+DNS.3                           = localhost
 # RID.1                           =                 # 不知道是啥
-IP.1                            = 192.168.1.1
-IP.2                            = 192.168.69.14
-dirName                         = @v3_root_ca_req_dirName         # 就是 distinguished_name
+IP.1                            = 66.98.122.202
+IP.2                            = 127.0.0.1
+IP.3                            = ::1
+# dirName                         = @v3_root_ca_req_dirName         # 就是 distinguished_name
 # otherName                       = 1.2.3.4;UTF8:some other identifier    # Arbitrary Extensions
 
 [ v3_root_ca_req_dirName ]
@@ -269,16 +271,28 @@ issuerAltName                   = issuer:copy
 ######## todo 添加到 user 或 服务器（nginx） 证书请求文件中的扩展项
 [ v3_nginx_crt_req ]
 basicConstraints                = critical, CA:FALSE
-keyUsage                        = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement
-subjectAltName                  = @v3_nginx_crt_req_subject_alt_names
+keyUsage                        = critical, @v3_nginx_crt_req_keyUsage 
+subjectAltName                  = @v3_nginx_crt_req_subjectAltName
 
-[ v3_nginx_crt_req_subject_alt_names ]
-email.1                         = admin@1291114093    
+[ v3_nginx_crt_req_keyUsage ]
+digitalSignature                        # 可用于 数字签名
+nonRepudiation                          # 可用于 不可否认
+keyEncipherment                         # 可用于 密钥加密
+dataEncipherment                        # 可用于 数据加密
+keyAgreement                            # 可用于 密钥认证
+#keyCertSign                             # 可用于 证书签名
+#cRLSign                                 # 可用于 证书吊销签名
+#encipherOnly                            # 只能用于 加密
+#decipherOnly                            # 只能用于 解密
+
+[ v3_nginx_crt_req_subjectAltName ]
+email.1                         = admin@1291114093.ml    
 DNS.1                           = 1291114093.ml
-DNS.2                           = www.1291114093.ml
-DNS.3                           = *.1291114093.ml
-IP.1                            = 192.168.1.1
-IP.2                            = 192.168.69.14
+DNS.2                           = *.1291114093.ml
+DNS.3                           = localhost
+IP.1                            = 66.98.122.202
+IP.2                            = 127.0.0.1
+IP.3                            = ::1
 
 
 
