@@ -6,6 +6,10 @@
     shell> tar -zxvf nginx-1.16.0.tar.gz
     shell> cd nginx-1.16.0
     
+    
+    shell> yum install pcre-devel.x86_64
+    shell> yum install openssl
+    shell> yum install zlib-devel
     # 源码编译前依赖检查
     shell> ./configure --with-http_ssl_module --with-http_v2_module   # 添加 https 和 http2 协议支持
     
