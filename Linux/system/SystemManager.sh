@@ -7,7 +7,6 @@
 # 检查系统版本
 cat /proc/version       # 查看系统内核版本
 uname -a                # 查看系统内核版本
-lsb_release -a          # 查看系统发行版本   
 
 
 # 常用命令
