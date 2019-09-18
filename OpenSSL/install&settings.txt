@@ -18,5 +18,7 @@ shell> make
 shell> make test
 shell> make install
 
+shell> ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
+shell> ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 
 
