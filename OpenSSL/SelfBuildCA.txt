@@ -1,7 +1,17 @@
 通过 OpenSSL 自建 CA 认证机构 {
-    创建 CA 根目录 {
+    官网下载最新版 openssl-1.1.1d.tar.gz 并默认安装 { 
+        以下所有 shell> openssl 替换为 shell> /usr/local/bin/openssl，否则使用的是系统自带的 openssl
+    }
+
+    创建 CA 目录结构 {
         shell> mkdir ~/ca
         shell> cd ~/ca
+        shell> mkdir private crl certs newcerts 
+        shell> chmod 700 private                # 修改目录权限
+        shell> touch index.txt crlnumber serial private/.rand
+        shell> echo 1000 > serial        
+        shell> touch myOpenssl.conf             # 使用的配置文件   
+        
     }
     
     生成 CA 认证机构根证书（CA 根证书都是 自签名 证书） {
