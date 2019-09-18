@@ -44,7 +44,7 @@ find . ! -iregex '.*.cnf' ! -iregex '.*' -exec command {}+
 # 新建类 ###############################             
 mkdir -p -m 755 test1/test2/test3/test4             # 递归创建目录并设定权限
 touch /home/1.txt                                   # 如果文件已存在则更新时间，否则创建空文件
-ln -s ./aa ./bb                                     # 创建 ./aa 的符号链接 ./bb，软连接是一个真是存在的文件，它有自己的 inodeIndex
+ln -s /root/aa ./bb                                 # 创建 ./aa 的符号链接 ./bb，软连接源文件必须使用绝对路径，软连接是一个真是存在的文件，它有自己的 inodeIndex
 ln -d ./aa.txt ./aa2.txt                            # 创建 硬链接，不允许创建目录的硬链接，硬链接必须在同一文件系统中，硬链接只是一个 inodeIndex
                                                     
                                                     
