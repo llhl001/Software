@@ -102,7 +102,7 @@ proxyCertInfo                   = critical,language:id-ppl-anyLanguage,pathlen:3
 basicConstraints                = critical, CA:FALSE         
 keyUsage                        = critical, digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectKeyIdentifier            = hash
-authorityKeyIdentifier          = keyid:always,issuer:always
+authorityKeyIdentifier          = keyid:always,issuer:always            # 生成请求文件时，这个扩展项要先注释掉，ca 签名时再放出来
 subjectAltName                  = @v3_nginx_crt_ext_subjectAltName
 
 
