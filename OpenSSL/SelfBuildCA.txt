@@ -20,12 +20,19 @@
         
         # 生成 CA 根证书密钥对，包含公私钥
         shell> openssl ecparam -genkey -name prime256v1 -out ./rootca.key.pem       
+        shell> mv ./rootca.key.pem private      # 将私钥移动到 ca private 目录下
         
         # 创建一个自己的 openssl.cnf 配置文件，可以使用 Software/OpenSSL/openssl.cnf 作为模板修改
         shell> touch myOpenssl.cnf          
         
         # 生成 CA 自签名根证书
-        shell> openssl req -new -x509 -days 36500 -config ./myOpenssl.cnf -key ./rootca.key.pem -out ./rootca.crt.pem  
+        方式一：分步完成
+        shell> openssl req -new -config ./myOpenssl.cnf -key ./private/rootca.key.pem -out ./rootca.crs.pem 
+        shell> openssl ca -config ./myOpenssl.cnf -days 36500 -selfsign -utf8 -in ./rootca.crs.pem -out ./rootca.crt.pem 
+        
+        方式二：一步完成
+        shell> openssl req -new -x509 -days 36500 -config ./myOpenssl.cnf -key ./private/rootca.key.pem -out ./rootca.crt.pem  
+        
     }
     
     生成 Nginx 证书 {
@@ -34,8 +41,14 @@
     }
     
     使用 CA 证书签署 Nginx 证书 {
+        方法一：
+        shell> openssl ca -config ./myOpenssl.cnf -in ./nginx.csr 
+    
+        方法二：
         shell> openssl x509 -req -in ./nginx.csr -extfile ./myOpenssl.cnf -extensions crt_ext -days 365 -sha256 \
                 -CA ./rootca.crt.pem -CAkey ./rootca.key.pem -CAcreateserial -out ./nginx.crt.pem
+        
+        openssl x509 -in ./server.crt.pem -text   # 查看证书
     }
     
     测试 Nginx 证书可用性 {
