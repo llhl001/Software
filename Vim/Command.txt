@@ -71,6 +71,7 @@
 :help pattern                       # 获取正则表达式帮助文档
 :/?abc*h                            # 查找字符串 "?abc*h"
 :s/str1/str2                        # 表示将当前行第一个 str1 替换成 str2
+:s/\vstr1/str2                      # nomagic 模式
 :s/str1/str2/g                      # 表示将当前行所有 str1 替换成 str2
 :%s/s1/s2                           # 表示将当前文件中每一行的第一个 str1 替换成 str2
 :%s/s1/s2/g                         # 表示将当前文件中所有 str1 替换成 str2
