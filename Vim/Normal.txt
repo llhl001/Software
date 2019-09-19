@@ -37,6 +37,7 @@ m<a-z>                          # 给当前光标位置打书签
 
 # todo 搜索
 :help pattern                   # 查看帮助
+{-n,m}                          # 非贪婪(greedy)模式
 ?pattern                        # 向前搜索
 /pattern                        # 向后搜索，除了 $ ^ 之外其他元字符都要加反斜杠
 /\vpattern                      # \v 表示 pattern 中除了 _ 0-9 a-z A-Z 之外的所有字符都具有特殊含义
