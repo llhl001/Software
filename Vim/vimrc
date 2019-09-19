@@ -79,12 +79,7 @@ set incsearch                       " 实时搜索，即边输入边搜索
 set regexpengine=1                  " 使用 traditional regexp engine 
 set magic                           " 设置 magic
 autocmd cursorhold * set nohlsearch " 当光标一段时间保持不动了，就禁用高亮
-" 当输入查找命令时，再启用高亮
-noremap n :set hlsearch<CR>n        
-noremap N :set hlsearch<CR>N        
-noremap / :set hlsearch<CR>/        
-noremap ? :set hlsearch<CR>?        
-noremap * *:set hlsearch<CR>        
+    
 
 
 " 展开折叠配置
@@ -124,16 +119,46 @@ call plug#end()
 autocmd vimenter * NERDTree                                         " vim 打开时，自动打开文件浏览器
 
 
-" 快捷键配置
-map <C-n> :NERDTreeToggle<CR>                   " 快速打开 nerdtree 插件
 
 
-" 配置括号自动带出
-" inoremap ' ''<ESC>i
-" inoremap " ""<ESC>i
-" inoremap ( ()<ESC>i
-" inoremap [ []<ESC>i
-" inoremap { {<CR>}<ESC>O
+
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" map 配置 """"""""""""""""""""""""""""""""""""""""""
+" 配置多键映射的 leader
+let mapleader = "-"
+
+" 快速编辑 vimrc 配置文件
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" 快速打开 nerdtree 插件
+noremap <C-n> :NERDTreeToggle<CR>                   
+
+
+
+
+" 当输入查找命令时，再启用高亮
+noremap n :set hlsearch<CR>n        
+noremap N :set hlsearch<CR>N        
+noremap / :set hlsearch<CR>/        
+noremap ? :set hlsearch<CR>?        
+noremap * *:set hlsearch<CR>    
+
+" 自动带出成对的标点符号
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>O
+inoremap ‘ ‘’<ESC>i
+inoremap “ “”<ESC>i
+
+
+
 
 
 
