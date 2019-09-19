@@ -24,6 +24,7 @@ set history=64                                          " 设置命令行保留�
 set number                                              " 设置显示行号
 set cursorline                                          " 配置当前行高亮
 set ruler                                               " 显示标尺
+set rulerformat=%15(%c%V\ %p%%%)
 set colorcolumn=81                                      " 显示一条竖线表示代码第 81 个字符
 set showtabline=2                                       " 总是显示标签页
 set go=                                                 " 取消菜单栏
@@ -34,7 +35,7 @@ set so=3                                                " 设置页面滚动时�
 set scrolloff=3                                         " 光标移动到 buffer 的顶部和底部时保持3行距离
 set laststatus=2                                        " 启动显示状态行(1),总是显示状态行(2)
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}       " 状态行显示格式
-
+behave mswin                                            " 设置鼠标的运行模式为 Windows 模式
 
 
 
