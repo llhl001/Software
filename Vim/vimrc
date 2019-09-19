@@ -78,11 +78,12 @@ set incsearch                       " 实时搜索，即边输入边搜索
 set regexpengine=1                  " 使用 traditional regexp engine 
 set magic                           " 设置 magic
 autocmd cursorhold * set nohlsearch " 当光标一段时间保持不动了，就禁用高亮
-noremap n :set hlsearch<cr>n        " 当输入查找命令时，再启用高亮
-noremap N :set hlsearch<cr>N        " 当输入查找命令时，再启用高亮
-noremap / :set hlsearch<cr>/        " 当输入查找命令时，再启用高亮
-noremap ? :set hlsearch<cr>?        " 当输入查找命令时，再启用高亮
-noremap * *:set hlsearch<cr>        " 当输入查找命令时，再启用高亮
+" 当输入查找命令时，再启用高亮
+noremap n :set hlsearch<CR>n        
+noremap N :set hlsearch<CR>N        
+noremap / :set hlsearch<CR>/        
+noremap ? :set hlsearch<CR>?        
+noremap * *:set hlsearch<CR>        
 
 
 " 展开折叠配置
