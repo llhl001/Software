@@ -20,6 +20,7 @@ V                               # 进入 Visual 行模式
 Ctrl+G                          # 进入 Select 模式
 
 # todo 书签
+:marks                          # 查看所有书签
 m<A-Z>                          # 全局书签
 m<a-z>                          # 给当前光标位置打书签
 `<a-z>                          # 跳转到指定书签位置    
