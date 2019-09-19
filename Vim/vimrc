@@ -75,6 +75,8 @@ set ignorecase                      " 设置匹配的时候忽略大小写
 set ignorecase smartcase            " 当查找串中有大写时，就大小写敏感，否则不敏感
 set hlsearch                        " 设置高亮搜索
 set incsearch                       " 实时搜索，即边输入边搜索
+set regexpengine=1                  " 使用 traditional regexp engine 
+set magic                           " 设置 magic
 
 
 " 展开折叠配置
