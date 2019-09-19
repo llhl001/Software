@@ -33,7 +33,7 @@ find / !exp1 -o exp2                # not 和 or
 find / exp1 -print                  # 默认 action 为 print
 
 find . ! -iregex '.*.cnf' ! -iregex '.*' -print
-find . ! -iregex '.*.cnf' ! -iregex '.*' -exec command {}+
+find . ! -iregex '.*.cnf' ! -iregex '.*' -exec command {} \;  # 注意最后的 \;
 
 
 
