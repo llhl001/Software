@@ -1,4 +1,4 @@
-Shift+Insert                # 插入系统剪贴板的内容
+Shift+Insert                # 插入系统剪贴板的内容，在 paste 模式下不生效
 Ctrl+P                      # 自动补全之前出现过的字符串
 Ctrl+N                      # 自动补全只有出现过的字符串
 Ctrl+X Ctrl+L               # 自动补全一行
