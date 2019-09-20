@@ -1,3 +1,10 @@
+######################################################### Frequently Used
+execute "echo 'Hello World!'"   # 执行一个命令
+normal! /foo<CR>                # 忽略所有用户定义的键映射，normal! 不会解析 <CR> 那样的特殊字符序列，<CR> 不会被解析为回车键，解析为普通的字符串   
+execute "normal! mqA;\<esc>`q"  # execute 中可以使用 \<ESC> 来打出键盘 ESC 按键的效果
+
+
+######################################################### Syntax 
 # Variable
 let var1 = "string"
 let var2 = -123
@@ -20,8 +27,19 @@ endwhile
 let Fn = function("MyFunc")                # VimScript 方法首字母必须大写
 echo Fn()
 
-function MyFunc
-  echom "Hello again, world!"               # echom 输出的内容可以之后使用 :messages 再次查看
+# keyword = range | abort
+function MyFunc(param1, param2, ...) keyword
+    let var1 = a:param1             # 参数引用
+    let var1 = a:0                  # 表示方法所有参数的个数
+    let var2 = a:{2}                # 等价于 a:param2 ，表示方法的 第二个参数
+    let var3 = g:externalVar        # 调用函数外部变量
+    
+    
+    # 函数调用
+    let res = Func(param)
+    range call Func(param)
+    
+    echom "Hello again, world!"               # echom 输出的内容可以之后使用 :messages 再次查看
 endfunction
 call MyFunc()
 
