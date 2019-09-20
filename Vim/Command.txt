@@ -1,8 +1,14 @@
+######## 帮助文档，用户手册
 :help                               # 获取帮助
 :help command                       # 获取指定命令的帮助
-
 :h m                                # 获取 Normal 模式下 m 命令
 :h :m                               # 获取 Command 模式下 m 命令
+
+
+######## 历史命令
+:history                            # : 命令的史命令
+:history /                          # 搜索命令的历史命令
+:se<Up>                             # 带出 se 开头的历史命令
 
 
 :pwd                                # 查看当前路径
