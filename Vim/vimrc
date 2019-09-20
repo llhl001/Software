@@ -153,7 +153,15 @@ autocmd vimenter * NERDTree                 " vim 打开时，自动打开文件
 
 
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 自定义函数 """"""""""""""""""""""""""""""""""""""""""
+function! KHcmd(cmd)
+    redir @k>
+    let l:var1 = execute(a:cmd, 'silent!')
+    echom l:var1
+    vsplit KHCmdResult.txt
+    execute("normal! \"kp", 'silent!')
+    redir END
+endfunction
 
 
 
