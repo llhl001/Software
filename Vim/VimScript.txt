@@ -32,7 +32,11 @@ function MyFunc(param1, param2, ...) keyword
     let var1 = a:param1             # 参数引用
     let var1 = a:0                  # 表示方法所有参数的个数
     let var2 = a:{2}                # 等价于 a:param2 ，表示方法的 第二个参数
-    let var3 = g:externalVar        # 调用函数外部变量
+    let var3 = g:externalVar        # g:var 表示全局变量
+    let var4 = s:var3               # s:var 表示局部变量
+    let var4 = b:var3               # b:var 表示缓冲区的局部变量
+    let var4 = w:var3               # w:var 表示窗口的局部变量
+    let var4 = v:var3               # v:var 表示 Vim 预定义的变量
     
     
     # 函数调用
@@ -43,5 +47,10 @@ function MyFunc(param1, param2, ...) keyword
 endfunction
 call MyFunc()
 
+
+########## Expression 
+$NMAE	环境变量
+&name	选项
+@r	寄存器
 
 
