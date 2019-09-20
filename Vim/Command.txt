@@ -134,8 +134,10 @@ Vim 范围参数
 :echo 'abce' | xsel -b                  # 如果上面命令有问题，加 -b 选项试试
 
 # 重定向命令输出位置
+:help redir                             # 查看重定向帮助
 :redir @a
 :set all
+"ap
 :redir END
 
 
