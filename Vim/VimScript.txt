@@ -4,6 +4,12 @@ normal! /foo<CR>                # 忽略所有用户定义的键映射，normal!
 execute "normal! mqA;\<esc>`q"  # execute 中可以使用 \<ESC> 来打出键盘 ESC 按键的效果
 
 ######################################################### Variable 
+let environmentVar = $VIM       # 访问环境变量 $VIM 的值
+let vimOptionVar = &number      # 访问 set number 的值
+let registerVar = @v            # 访问 v 寄存器的内容
+
+
+
 let var1 = "string"
 let var2 = -123
 let var3 = -123.45
