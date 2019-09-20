@@ -135,7 +135,7 @@ Vim 范围参数
 
 # 重定向命令输出位置
 :help redir                             # 查看重定向帮助
-:redir @a
+:redir @a>
 :set all
 "ap
 :redir END
