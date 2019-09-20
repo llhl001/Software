@@ -1,0 +1,29 @@
+# Variable
+let var1 = "string"
+let var2 = -123
+let var3 = -123.45
+let list1 = ["string", -123, -123.45, ['1', '2']]
+let [var1, var2] = mylist                   " list 解构，参考 ES6 解构函数
+let dictionary = {'key1':'val1', 'key2':-123.4, 'key3':[], 'key4':{} }
+
+# Flow Controll
+for item in list
+    ...
+endfor
+
+
+while
+    ...
+endwhile
+
+# Function
+let Fn = function("MyFunc")                # VimScript 方法首字母必须大写
+echo Fn()
+
+function MyFunc
+  echom "Hello again, world!"               # echom 输出的内容可以之后使用 :messages 再次查看
+endfunction
+call MyFunc()
+
+
+
