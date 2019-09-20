@@ -57,6 +57,8 @@ Vim Shell 切换 {
         <C-W>|                  # 当前窗口宽度扩展到最大
         <C-W>+                  # 纵向扩大，增加行数
         <C-W>-                  # 纵向缩小，减少行数
+        <C-W>>                  # 横向扩大，增加列数
+        <C-W><                  # 横向缩小，减少列数
         :resize 5               # 设置当前窗口为 5 行，别名 res
         :resize+5               # 当前窗口加 5 行
         :resize-5               # 当前窗口减 5 行
@@ -99,15 +101,26 @@ Vim Shell 切换 {
 }
 
 Tab 页操作 {
+    :help tab-page-intro	                # 查询标签页相关命令
+
     :tabnew file                            # 建立对指定文件新的tab
-    :tabc                                   # 关闭当前的tab
-    :tabo                                   # 关闭所有其他的tab
+    :tabe[dit] file                         # 在当前 tab 页后面，新增一个 tab 页，并打开文件 file
+    :tabc[lose]                             # 关闭当前的tab
+    :tabo[nly]                              # 关闭所有其他的tab
     :tabs                                   # 查看所有打开的tab
-    :tabp                                   # 前一个
-    :tabn                                   # 后一个
-    gt                                      # tab 之间切换
-    gT                                      # tab 之间切换
-    <C-PageDown>                            # 下一个 tab
-    <C-PageUp>                              # 上一个 tab
+    
+    :tabp[revious]                          # 切换到前一个 tab
+    gT                                      # 同 :tabp    
+    <C-PageUp>                              # 同 :tabp
+    :tabn[ext]                              # 切换到下一个 tab
+    gt                                      # 同 :tabn
+    <C-PageDown>                            # 同 :tabn    
+    :tabfir[st]                             # 打开第一个 tab 页
+    :tabr[ewind]                            # 同 tabfir
+    
+    
+    :tabm[ove]2                             # 将当前 tab 移动到 2 号 tab 位
+    :tabm[ove]+3                            # 将当前 tab 右移 3 个 tab 位
+    :tabm[ove]-3                            # 将当前 tab 左移 3 个 tab 位  
 }
  
