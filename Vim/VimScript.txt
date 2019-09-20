@@ -28,6 +28,7 @@ let Fn = function("MyFunc")                # VimScript 方法首字母必须大�
 echo Fn()
 
 # keyword = range | abort
+# :help internal-variables          # 查看变量前缀
 function MyFunc(param1, param2, ...) keyword
     let var1 = a:param1             # 参数引用
     let var1 = a:0                  # 表示方法所有参数的个数
