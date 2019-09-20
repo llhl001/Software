@@ -129,9 +129,7 @@ Vim 范围参数
 
 :set guifont=*                          # 查看 gvim 支持的所有字体
 
-:echo 'abcd' | clip                     # Windows 将内容复制到系统剪贴板
-:echo 'abce' | xsel                     # Linux 下将内容复制到系统剪贴板
-:echo 'abce' | xsel -b                  # 如果上面命令有问题，加 -b 选项试试
+
 
 # 重定向命令输出位置
 :help redir                             # 查看重定向帮助
@@ -139,6 +137,14 @@ Vim 范围参数
 :set all
 "ap
 :redir END
+
+# 打印命令
+:echo 'abcd' | clip                     # Windows 将内容复制到系统剪贴板
+:echo 'abce' | xsel                     # Linux 下将内容复制到系统剪贴板
+:echo 'abce' | xsel -b                  # 如果上面命令有问题，加 -b 选项试试
+:messages                               # 查看 echom 输出的所有历史内容
+:messages clear                         # 清空 messages
+
 
 
 
