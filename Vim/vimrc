@@ -154,7 +154,7 @@ autocmd vimenter * NERDTree                 " vim 打开时，自动打开文件
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 自定义函数 """"""""""""""""""""""""""""""""""""""""""
-function! KHcmd(cmd)
+function! KaseiCmd(cmd)
     redir @k>
     let l:var1 = execute(a:cmd, 'silent!')
     echom l:var1
