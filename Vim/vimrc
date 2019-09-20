@@ -159,7 +159,7 @@ function! KHcmd(cmd)
     let l:var1 = execute(a:cmd, 'silent!')
     echom l:var1
     vsplit KHCmdResult.txt
-    execute("normal! \"kp", 'silent!')
+    execute "normal! \"kp"
     redir END
 endfunction
 
