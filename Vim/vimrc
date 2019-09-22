@@ -149,7 +149,7 @@ inoremap “ “”<ESC>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 自动执行命令配置 """"""""""""""""""""""""""""""""""""""""""
 autocmd cursorhold * set nohlsearch         " 当光标一段时间保持不动了，就禁用高亮
-autocmd vimenter * NERDTree                 " vim 打开时，自动打开文件浏览器，plug.vim 插件的命令
+autocmd vimenter * NERDTreeToggle           " vim 打开时，自动打开文件浏览器，plug.vim 插件的命令
 
 
 
