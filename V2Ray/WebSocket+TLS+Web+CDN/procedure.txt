@@ -5,9 +5,9 @@
 申请免费域名：
     https://www.freenom.com/zh/freeandpaiddomains.html      # 注册免费域名
 
-申请免费 CDN:
+申请免费 CDN 不要使用国内的 CDN，跟裸奔没啥区别:
     https://www.cloudflare.com/                             # 最好挂美国代理访问
-    https://www.alibabacloud.com/zh/product/cdn             # 阿里的 CDN
+   
     
 
 VPS 上安装操作系统：
