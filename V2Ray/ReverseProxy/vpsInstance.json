@@ -16,7 +16,6 @@
       },
       "8.8.8.8",
       "1.1.1.1",
-      "10.72.66.36",
       "localhost"
     ]
   },
@@ -34,6 +33,7 @@
         "disableInsecureEncryption": true
       },
       "streamSettings":{
+        /** ws 伪装的配置
         "network": "ws",
         "security": "none",
         "wsSettings": {
@@ -42,6 +42,15 @@
             "Host": "ksf.haku.kasei"
           }
         }
+        */
+        /** http2 伪装配置
+        "network": "http",
+        "security": "none",  // 在 nginx 上配置
+        "httpSettings": {
+          "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
+          "path": "/v2ray/stepladder"
+        }
+        */
       }
     },
     {
