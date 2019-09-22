@@ -1,6 +1,162 @@
 /** 普通客户端的配置 
  * @trap 需要将 dns 流量转发到反向代理流量上 
  * */
+{
+  "log": {"loglevel": "debug"},
+  "inbounds": [
+    {
+      "tag": "In=Socks-Ladder",
+      "protocol": "socks",
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "settings": {
+        "auth": "noauth"
+      }
+    },
+    {
+      "tag": "In=Socks-ReverseProxy",
+      "protocol": "socks",
+      "port": 1081,
+      "listen": "127.0.0.1",
+      "settings": {
+        "auth": "noauth"
+      }
+    }
+  ],
+    "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      /** todo 国内流量直连 */
+      {
+        "type": "field",
+        "domain": [
+          "geosite:tld-cn",
+          "geosite:geolocation-cn",
+          "geosite:cn"
+        ],
+        "ip": [
+          "geoip:private",
+          "geoip:cn"
+        ],
+        "network": "tcp,udp",
+        "outboundTag": "freedomOut"
+      },
+      /** todo 翻墙流量，从 VPS 出 */
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "inboundTag": [ "In=Socks-Ladder""],
+        "outboundTag": "Out=Vmess-WebSocket-TLS-CDN-Nginx-V2ray-Freedom"
+      },
+      /** todo 反向代理流量，过 VPS 从公司虚拟机出
+       * @trap DNS 请求直接发送到服务器解析；即 domainStrategy 必须为 AsIs 或者 IPonDemand 其中之一，
+       * */
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "inboundTag": [ "In=Socks-ReverseProxy"],
+        "outboundTag": "Out=Vmess-HTTP2-TLS-CDN-Nginx-V2ray-Portal"
+      },
+    ]
+  "outbounds": [
+    /** todo 翻墙流量出口 */
+    {
+      "tag": "Out=Vmess-WebSocket-TLS-CDN-Nginx-V2ray-Freedom",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "66.98.122.202",
+            //"address": "www.1291114093.ml",
+            "port": 443,
+            "users": [
+              {
+                "id": "d45499fa-6c4b-3e55-adbb-bd50bc4137b8",
+                "security": "chacha20-poly1305",
+                "alterId": 4,
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/ladder",
+          "headers": {
+            "Host": "ksf.haku.kasei"
+          }
+        },
+        "security": "tls", 
+        "tlsSettings": {
+          "serverName": "1291114093.ml",
+          "alpn": ["http/1.1"],
+          "allowInsecure": false,
+          "allowInsecureCiphers": false,
+          "disableSystemRoot": false,
+          "certificates": [
+            {
+              "usage": "verify",
+              "certificateFile": "/path/to/rootca.crt.pem",
+            }
+          ]
+        },
+        
+      }
+    },
+    /** todo 反向代理出口 */
+    {
+      "tag": "Out=Vmess-HTTP2-TLS-CDN-Nginx-V2ray-Portal",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "66.98.122.202",
+            //"address": "www.1291114093.ml",
+            "port": 443,
+            "users": [
+              {
+                "id": "d45499fa-6c4b-3e55-adbb-bd50bc4137b8",
+                "security": "chacha20-poly1305",
+                "alterId": 4,
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "http",
+        "httpSettings": {
+          "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
+          "path": "/v2ray/stepladder"
+        }
+        "security": "tls",  // 在 nginx 上配置
+        "tlsSettings": {
+          "serverName": "1291114093.ml",
+          "alpn": ["http/1.1"],
+          "allowInsecure": false,
+          "allowInsecureCiphers": false,
+          "disableSystemRoot": false,
+          "certificates": [
+            {
+              "usage": "verify",
+              "certificateFile": "/path/to/rootca.crt.pem",
+            }
+          ]
+        }
+      }
+    },
+    /** todo 直连出口 */
+    {
+      "tag": "freedomOut",
+      "protocol": "freedom"
+    }
+  ],
+  
+  }
+}
 
 
 
