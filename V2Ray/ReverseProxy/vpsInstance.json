@@ -1,58 +1,138 @@
 {
-  "log": {
-    "loglevel": "warning"
-  },
+  "log": { "loglevel": "debug" },
   "dns": {
-    "hosts": {
-      "haku.kasei": "::1",
-      "haku.kasei": "127.0.0.1"
+    "tag": "dnsIn",
+    "clientIp": "66.98.122.202",  // 主要用于主机区域定位，返回就近的 CDN 网络主机
+    "hosts":{
+      "private.kasei": "127.0.0.1"
     },
-    "servers": [
-      "localhost",
-      "2001:4860:4860::8888",
-      "2001:4860:4860::8844",
-      "8.8.8.8",
-      "8.8.4.4",
-      "1.1.1.1",
-      /** ????????? DNS ????? */
+    "servers":[
       {
-        "address": "223.5.5.5",
+        "address": "",
         "port": 5353,
-        "domains": [
-          "domain:haku.kasei"
+        "domains":[
+          "domain:public.kasei"
         ]
-      }
-    ],
-    "clientIp": "66.98.122.202",       // VPS IP ,????? IP
-    "tag": "DnsIn"
+      },
+      "8.8.8.8",
+      "1.1.1.1",
+      "10.72.66.36",
+      "localhost"
+    ]
   },
   "inbounds": [
     {
-      "tag": "TlsVmessIn",
+      "tag": "ladderIn",
       "protocol": "vmess",
-      "port": 443,
+      "port": 12306,
       "settings": {
-        "clients": [
-          {
-            "id": "bb553e11-f08b-e87a-0779-c74cdc0a7e1c",
-            "level": 0,
-            "alterId": 64,
-            "email": "kasei@haku.kasei"
-          }
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@haku.kasei"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@haku.kasei"}
         ],
         "disableInsecureEncryption": true
       },
-      "streamSettings": {
+      "streamSettings":{
         "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "www.1291114093.ml",
-          "alpn": ["http/1.1"],
-          "allowInsecure": true,
-          "allowInsecureCiphers": true,
-          "disableSystemRoot": false,
-          "certificates": [
-            {
-              "usage": "encipherment",
-                "certificate": [
-
+        "security": "none",
+        "wsSettings": {
+          "path": "/ladder",
+          "headers": {
+            "Host": "ksf.haku.kasei"
+          }
+        }
+      }
+    },
+    {
+      "tag": "companyReverseIn",
+      "protocol": "vmess",
+      "port": 12390,
+      "settings": {
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@haku.kasei"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@haku.kasei"}
+        ],
+        "disableInsecureEncryption": true
+      },
+      "streamSettings":{
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/reverse/company",
+          "headers": {
+            "Host": "company.reverse.haku.kasei"
+          }
+        }
+      }
+    },
+    {
+      "tag": "homeReverseIn",
+      "protocol": "vmess",
+      "port": 12360,
+      "settings": {
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@haku.kasei"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@haku.kasei"}
+        ],
+        "sniffing": {
+          "enabled": true,                        
+          "destOverride": ["http", "tls"]
+        },
+        "disableInsecureEncryption": true
+      },
+      "streamSettings":{
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/reverse/home",
+          "headers": {
+            "Host": "home.reverse.haku.kasei"
+          }
+        }
+      }
+    }
+    
+  ],
+  "outbounds": [
+    {
+      "tag": "freedomOut",
+      "protocol": "freedom"
+    }
+  ],
+  "reverse":{
+    "portals":[
+      {"tag": "portal", "domain":"reverse.haku.kasei"}
+    ]
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "10.72.66.36"
+        ],
+        "outboundTag": "portal"
+      },
+      {
+        "type": "field",
+        "inboundTag":["ladderIn"],
+        "outboundTag": "freedomOut"
+      },
+      {
+        "type":"field",
+        "inboundTag":["companyReverseIn"],
+        "domain":["full:reverse.haku.kasei"],
+        "outboundTag":"portal"
+      },
+      {
+        "type": "field",
+        "inboundTag":["homeReverseIn"],
+        "outboundTag":"portal"
+      }
+    ]
+  }
+}
