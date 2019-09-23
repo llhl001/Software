@@ -1,3 +1,40 @@
+######## Find & View & Substitute
+Ctrl+R                      # 文件中替换
+Ctrl+Shift+R                # 全局替换指定匹配模式
+
+Ctrl+F                      # 当前文件中查找字符串
+Ctrl+Shift+F                # 当前项目中查找字符串
+Ctrl+Shift+N                # 当前项目中查找文件
+Ctrl+N                      # 查找项目中的类
+Shift+Shift                 # 查找任何东西
+Ctrl+Shift+Space            # 查找项目中返回值为当前类型的方法
+Ctrl+E                      # 查看最近访问的文件
+
+Alt+Enter                   # 快速修复，手动导包，查找符合的类名
+
+Ctrl+Alt+U                  # 查看类的关系图，包括实现的接口
+Ctrl+Alt+B                  # 查看一个类的所有子类或者接口的所有实现
+Ctrl+H                      # 查看类的继承结构，只展示 extends ，不包含 implements 
+Alt+F7                      # 查看类在哪些地方被使用
+Ctrl+F12                    # 查看当前类中的所有属性和方法
+Ctrl+Q                      # 显示注释文档
+
+Ctrl+B                      # 跳转到方法声明处
+Ctrl+Alt+B                  # 跳转到方法实现处
+Ctrl+Shift+I                # 快速查看定义内容，但不打开
+Alt+F7                      # 查看方法在哪些地方被使用
+Ctrl+Alt+H                  # 查看当前方法被调用和调用哪些方法的图
+Ctrl+P                      # 查看方法参数，神器
+
+Shift+F11                   # 查看所有书签
+
+
+
+
+
+
+
+
 ######## 光标移动
 Ctrl+Left/Right             单词间跳动
 
@@ -16,12 +53,6 @@ Ctrl+End                    文件尾
 Alt+Left/Right              切换编辑器 tab 页
 Ctrl+Alt+Left/Right         快速返回前进上次代码位置
 Ctrl+Alt+Backspace          移动到上一次修改的地方
-
-
-
-
-
-
 
 ######## 快速选择
 Ctrl+Shift+Left/Right       选择光标位置到单词头/尾
@@ -63,24 +94,6 @@ ESC                         退出当前调出的窗口
 Ctrl+Shift+Z                取消撤销（恢复上一次操作）
 
 
-
-
-
-######## 搜索替换
-Ctrl+F                      在当前文件中查找
-Ctrl+Shift+F                全局查找指定匹配模式
-Ctrl+Shift+F7               高亮显示当前选中的文本，ESC 取消高亮
-Shift+F3                    逐个向下查找选中的文本，并高亮显示，ESC 退出 
-
-Ctrl+R                      文件中替换
-Ctrl+Shift+R                全局替换指定匹配模式
-
-Shift+Shift                 查找任何东西
-Ctrl+Shift+N                查找文件
-
-Ctrl+E                      查看最近访问的文件	
-
-Ctrl+Q                      显示注释文档
  
 ######## Package
 Alt+Enter                   快速修复，手动导包	
