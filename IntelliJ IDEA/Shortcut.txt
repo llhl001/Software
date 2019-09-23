@@ -12,6 +12,7 @@ Ctrl+E                      # 查看最近访问的文件
 
 Alt+Enter                   # 快速修复，手动导包，查找符合的类名
 
+Alt+1 点击左上角的 轮子图标    # 查看类在哪个 jar 包下
 Ctrl+Alt+U                  # 查看类的关系图，包括实现的接口
 Ctrl+Alt+B                  # 查看一个类的所有子类或者接口的所有实现
 Ctrl+H                      # 查看类的继承结构，只展示 extends ，不包含 implements 
