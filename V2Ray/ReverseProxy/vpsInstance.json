@@ -72,7 +72,7 @@
         "clients":[
           {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
           {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku}
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
         ],
         "sniffing": {
           "enabled": true,                        
