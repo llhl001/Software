@@ -3,17 +3,7 @@
   "dns": {
     "tag": "dnsIn",
     "clientIp": "66.98.122.202",  // 主要用于主机区域定位，返回就近的 CDN 网络主机
-    "hosts":{
-      "private.kasei": "127.0.0.1"
-    },
     "servers":[
-      {
-        "address": "",
-        "port": 5353,
-        "domains":[
-          "domain:public.kasei"
-        ]
-      },
       "8.8.8.8",
       "1.1.1.1",
       "localhost"
@@ -26,31 +16,29 @@
       "port": 12306,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@haku.kasei"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@haku.kasei"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
         ],
         "disableInsecureEncryption": true
       },
       "streamSettings":{
-        /** ws 伪装的配置
-        "network": "ws",
-        "security": "none",
-        "wsSettings": {
-          "path": "/ladder",
-          "headers": {
-            "Host": "ksf.haku.kasei"
-          }
-        }
-        */
-        /** http2 伪装配置
         "network": "http",
-        "security": "none",  // 在 nginx 上配置
         "httpSettings": {
-          "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
-          "path": "/v2ray/stepladder"
+            "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
+          "path": "/v2ray/ladder"
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "1291114093.ml",
+          "certificates": [
+            {
+              "usage": "encipherment",
+              "certificateFile": "/root/ca/certs/nginx.crt.pem",
+              "keyFile": "/root/ca/nginx.key.pem"
+            }
+          ]
         }
-        */
       }
     },
     {
@@ -59,9 +47,9 @@
       "port": 12390,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@haku.kasei"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@haku.kasei"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
         ],
         "disableInsecureEncryption": true
       },
@@ -82,9 +70,9 @@
       "port": 12360,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@haku.kasei"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@haku.kasei"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@haku.kasei"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku}
         ],
         "sniffing": {
           "enabled": true,                        
