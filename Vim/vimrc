@@ -140,7 +140,7 @@ inoremap “ “”<ESC>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 自动执行命令配置 """"""""""""""""""""""""""""""""""""""""""
 autocmd cursorhold * set nohlsearch         " 当光标一段时间保持不动了，就禁用高亮
-" autocmd vimenter * NERDTreeToggle           " vim 打开时，自动打开文件浏览器，plug.vim 插件的命令，先运行 :PlugInstall 安装插件
+autocmd vimenter * NERDTreeToggle           " vim 打开时，自动打开文件浏览器，plug.vim 插件的命令，先运行 :PlugInstall 安装插件
 
 
 
@@ -159,7 +159,8 @@ endfunction
 " 需要下载 plug.vim 文件放在 $VIMRUNTIME/autoload 文件夹下，vim 中使用 :echo $VIMRUNTIME 查看变量内容
 " 打开 vim 运行 :PlugInstall 即可安装所有列表中的插件
 " vim-plug 默认下载插件保存路径为 '~/.vim/plugged'，Windows 下默认为：%HOME%\vimfiles\plugged 
-call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
+call plug#begin()                                                   " 使用插件默认的保存路径
+"call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
 Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
 Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
 Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
