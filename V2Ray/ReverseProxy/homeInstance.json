@@ -79,20 +79,11 @@
           "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
           "path": "/v2ray/ladder"
         },
-        "wsSettings": {
-          "path": "/v2ray/ladder",
-          "headers": {
-            "Host": "ladder.haku.kasei"
-          }
-        },
         "security": "tls", 
         "tlsSettings": {
           "serverName": "1291114093.ml",
           "certificates": [
-            {
-              "usage": "verify",
-              "certificateFile": "F:/V2Ray/v2ray-windows-64/rootca.crt"
-            }
+            { "usage": "verify", "certificateFile": "F:/V2Ray/v2ray-windows-64/rootca.crt" }
           ]
         }
       }
