@@ -26,7 +26,7 @@
         "network": "http",
         "httpSettings": {
             "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
-          "path": "/v2ray/ladder"
+          "path": "/v2ray/ladder/h2"
         },
         "security": "tls",
         "tlsSettings": {
@@ -38,6 +38,25 @@
               "keyFile": "/root/ca/nginx.key.pem"
             }
           ]
+        }
+      }
+    },
+    {
+      "tag": "ladderIn2",
+      "protocol": "vmess",
+      "port": 12307,
+      "settings": {
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+        ],
+        "disableInsecureEncryption": true
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/v2ray/ladder/ws"
         }
       }
     },
