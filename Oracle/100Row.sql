@@ -343,6 +343,24 @@ select
 from tb
 group by name;
 
+                         
+                         
+/******************************** xmltype 数据类型操作 ********************************/
+/** 常用函数
+ * xmlserialize()   将 xmltype 类型的数据转换为 clob
+ * xmlparse()       将 clob 类型的数据转化为 xmltype
+ * xmlquery()       查询 xmltype 类型
+ * */           
+select t.ofcappdate, t.RmarkOFC, t.xmldata,
+xmlserialize(
+    content 
+    xmlquery(      
+        'for $x in /Items/WFItem[@name="RmarkFFBuyer"][1] return fn:data($x)'       
+         passing by value xmlparse(document t.xmldata wellformed) returning content null on empty    
+    ) 
+as clob) aa,
+xmlquery('/Items/WFItem[@name="OtherOFC"]' passing xmlparse(document t.xmldata wellformed) returning content) bb
+from table1 t ;                       
 
 /******************************** 删库跑路 ********************************/
 -- oracle 闪回功能：主要用于 delete drop 操作 commit 之后的回滚操作，truncate 操作无法恢复
