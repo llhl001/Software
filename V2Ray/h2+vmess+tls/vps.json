@@ -29,6 +29,7 @@
         "security": "tls",
         "tlsSettings": {
           "serverName": "1291114093.ml",
+          "alpn": ["http/1.1"],
           "certificates": [
             {
               "usage": "encipherment",
