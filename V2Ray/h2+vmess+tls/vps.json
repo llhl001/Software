@@ -23,7 +23,7 @@
       "streamSettings":{
         "network": "http",
         "httpSettings": {
-            "host": ["qwer.com", "wasd.com", "ijkl.com", "zxcf.com"],
+          "host": ["qwer.com", "wasd.com", "ijkl.com", "zxcf.com"],
           "path": "/v2ray/ladder/h2"
         },
         "security": "tls",
