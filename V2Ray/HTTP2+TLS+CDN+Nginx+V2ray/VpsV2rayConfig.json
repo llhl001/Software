@@ -11,56 +11,24 @@
   },
   "inbounds": [
     {
-      "tag": "ladderIn",      // http2 协议的，待验证
-      "protocol": "vmess",
-      "port": 12306,
-      "settings": {
-        "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
-        ],
-        "disableInsecureEncryption": true
-      },
-      "streamSettings":{
-        "network": "http",
-        "httpSettings": {
-          "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
-          "path": "/v2ray/ladder"
-        },  
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "1291114093.ml",
-          "certificates": [
-            {
-              "usage": "encipherment",
-              "certificateFile": "/root/ca/certs/nginx.crt.pem",
-              "keyFile": "/root/ca/nginx.key.pem"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "tag": "ladderIn2",
+      "tag": "wsLadderIn",
       "protocol": "vmess",
       "port": 12307,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"kasei@kasei.haku"}
         ],
         "disableInsecureEncryption": true
       },
       "streamSettings":{
         "network": "ws",
         "wsSettings": {
-          "path": "/v2ray/ladder2",
-            "headers": {
-                "Host": "1291114093.ml"
-            } 
-        }
+          "path": "/v2ray/ladder/ws",
+          "headers": {
+            "Host": "1291114093.ml"
+          } 
+        },
+        "security": "none"              // 此处 TLS 加密放在 Nginx 端处理
       }
     }
   ],
@@ -75,7 +43,7 @@
     "rules": [
       {
         "type": "field",
-        "inboundTag":["ladderIn","ladderIn2"],
+        "inboundTag":["wsLadderIn"],
         "outboundTag": "freedomOut"
       }
     ]
