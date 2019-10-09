@@ -36,6 +36,7 @@
         "security": "tls", 
         "tlsSettings": {
           "serverName": "1291114093.ml",
+          "alpn": ["http/1.1"],
           "certificates": [
             { "usage": "verify", "certificateFile": "F:/V2Ray/v2ray-windows-64/rootca.crt" }  // 自建的 CA 根证书，用于验证
           ]
