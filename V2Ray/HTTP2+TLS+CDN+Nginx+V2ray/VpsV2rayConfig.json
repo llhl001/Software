@@ -1,0 +1,83 @@
+{
+  "log": { "loglevel": "debug" },
+  "dns": {
+    "tag": "dnsIn",
+    "clientIp": "*.*.122.202",        // VPS IP 地址，主要用于主机区域定位，返回就近的 CDN 网络主机
+    "servers":[
+      "8.8.8.8",
+      "1.1.1.1",
+      "localhost"
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "ladderIn",      // http2 协议的，待验证
+      "protocol": "vmess",
+      "port": 12306,
+      "settings": {
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+        ],
+        "disableInsecureEncryption": true
+      },
+      "streamSettings":{
+        "network": "http",
+        "httpSettings": {
+          "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
+          "path": "/v2ray/ladder"
+        },  
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "1291114093.ml",
+          "certificates": [
+            {
+              "usage": "encipherment",
+              "certificateFile": "/root/ca/certs/nginx.crt.pem",
+              "keyFile": "/root/ca/nginx.key.pem"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "tag": "ladderIn2",
+      "protocol": "vmess",
+      "port": 12307,
+      "settings": {
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
+          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+        ],
+        "disableInsecureEncryption": true
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/v2ray/ladder2",
+            "headers": {
+                "Host": "1291114093.ml"
+            } 
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "freedomOut",
+      "protocol": "freedom"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag":["ladderIn","ladderIn2"],
+        "outboundTag": "freedomOut"
+      }
+    ]
+  }
+}
