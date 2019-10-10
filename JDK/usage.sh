@@ -36,7 +36,7 @@ shell> native2ascii -reverse -encoding utf8 file1 file2 # 将 unicode 编码的�
 
 
 # jdk 查看 .class 文件的字节码
-shell> javap -verbose HelloWorld.class 
+shell> javap -v -p HelloWorld.class 
 
 
 
