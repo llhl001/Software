@@ -104,6 +104,10 @@ Vim 范围参数
 :set guifont=*                          # 查看 gvim 支持的所有字体
 
 
+# 执行 shell 命令，再回到 vim
+:shell
+shell> exit
+
 
 # 重定向命令输出位置
 :help redir                             # 查看重定向帮助
