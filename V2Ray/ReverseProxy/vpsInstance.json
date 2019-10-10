@@ -2,7 +2,7 @@
   "log": { "loglevel": "debug" },
   "dns": {
     "tag": "dnsIn",
-    "clientIp": "66.98.122.202",  // 主要用于主机区域定位，返回就近的 CDN 网络主机
+    "clientIp": "66.98.122.202",        // VPS IP 地址，主要用于主机区域定位，返回就近的 CDN 网络主机
     "servers":[
       "8.8.8.8",
       "1.1.1.1",
@@ -11,21 +11,19 @@
   },
   "inbounds": [
     {
-      "tag": "ladderIn",
+      "tag": "h2LadderIn",
       "protocol": "vmess",
       "port": 12306,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"ksf@kasei.haku"}
         ],
         "disableInsecureEncryption": true
       },
       "streamSettings":{
         "network": "http",
         "httpSettings": {
-            "host": ["qwer.com", "wasd.com", "jkli.com", "zxcv.com"],
+            "host": ["qwer.com", "wasd.com", "ijkl.com", "zxcf.com"],
           "path": "/v2ray/ladder/h2"
         },
         "security": "tls",
@@ -42,75 +40,76 @@
       }
     },
     {
-      "tag": "ladderIn2",
+      "tag": "wsLadderIn",
       "protocol": "vmess",
       "port": 12307,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"ksf@kasei.haku"}
         ],
         "disableInsecureEncryption": true
       },
       "streamSettings":{
         "network": "ws",
         "wsSettings": {
-          "path": "/v2ray/ladder/ws"
-        }
-      }
-    },
-    {
-      "tag": "companyReverseIn",
-      "protocol": "vmess",
-      "port": 12390,
-      "settings": {
-        "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
-        ],
-        "disableInsecureEncryption": true
-      },
-      "streamSettings":{
-        "network": "ws",
-        "security": "none",
-        "wsSettings": {
-          "path": "/reverse/company",
+          "path": "/v2ray/ladder/ws",
           "headers": {
-            "Host": "company.reverse.haku.kasei"
-          }
-        }
+            "Host": "1291114093.ml"
+          } 
+        },
+        "security": "none"              // 此处 TLS 加密放在 Nginx 端处理
       }
     },
     {
-      "tag": "homeReverseIn",
+      "tag": "wsHomeReverseIn",
       "protocol": "vmess",
       "port": 12360,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "email":"kasei@kasei.haku"},
-          {"id":"2e572e58-6406-803f-791a-8994c7af1bb8", "alterId":4, "email":"lzl@kasei.haku"},
-          {"id":"b9cf233f-79ce-c42f-884d-61dc4fba4e24", "alterId":4, "email":"cy@kasei.haku"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"ksf@kasei.haku"},
+          {"id":"8fe81842-a5cc-82b2-decb-a65ff1f22fa7", "level": 0, "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"ad921af8-2947-a122-43cd-3b557deda1b0", "level": 0, "alterId":4, "email":"cy@kasei.haku"},
+          {"id":"3f0f3c4c-1b36-88fc-4331-01d655977a9b", "level": 0, "alterId":4, "email":"xy@kasei.haku"},
+          {"id":"00b224e6-5e28-9af2-3b80-e4cee8576b2b", "level": 0, "alterId":4, "email":"wwj@kasei.haku"}
         ],
-        "sniffing": {
-          "enabled": true,                        
-          "destOverride": ["http", "tls"]
-        },
         "disableInsecureEncryption": true
       },
       "streamSettings":{
         "network": "ws",
-        "security": "none",
         "wsSettings": {
-          "path": "/reverse/home",
+          "path": "/v2ray/reverse/ws/home",
           "headers": {
-            "Host": "home.reverse.haku.kasei"
-          }
-        }
+            "Host": "1291114093.ml"
+          } 
+        },
+        "security": "none"             
+      }
+    },
+    {
+      "tag": "wsCompanyReverseIn",
+      "protocol": "vmess",
+      "port": 12361,
+      "settings": {
+        "clients":[
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"ksf@kasei.haku"},
+          {"id":"8fe81842-a5cc-82b2-decb-a65ff1f22fa7", "level": 0, "alterId":4, "email":"lzl@kasei.haku"},
+          {"id":"ad921af8-2947-a122-43cd-3b557deda1b0", "level": 0, "alterId":4, "email":"cy@kasei.haku"},
+          {"id":"3f0f3c4c-1b36-88fc-4331-01d655977a9b", "level": 0, "alterId":4, "email":"xy@kasei.haku"},
+          {"id":"00b224e6-5e28-9af2-3b80-e4cee8576b2b", "level": 0, "alterId":4, "email":"wwj@kasei.haku"}
+        ],
+        "disableInsecureEncryption": true
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/v2ray/reverse/ws/company",
+          "headers": {
+            "Host": "1291114093.ml"
+          } 
+        },
+        "security": "none"             
       }
     }
-    
   ],
   "outbounds": [
     {
@@ -120,7 +119,11 @@
   ],
   "reverse":{
     "portals":[
-      {"tag": "portal", "domain":"reverse.haku.kasei"}
+      {"tag": "portal1", "domain":"ksf.reverse.kasei.haku"},
+      {"tag": "portal2", "domain":"lzl.reverse.kasei.haku"},
+      {"tag": "portal3", "domain":"cy.reverse.kasei.haku"},
+      {"tag": "portal4", "domain":"xy.reverse.kasei.haku"},
+      {"tag": "portal5", "domain":"wwj.reverse.kasei.haku"}
     ]
   },
   "routing": {
@@ -128,26 +131,68 @@
     "rules": [
       {
         "type": "field",
-        "ip": [
-          "10.72.66.36"
-        ],
-        "outboundTag": "portal"
-      },
-      {
-        "type": "field",
-        "inboundTag":["ladderIn"],
+        "inboundTag":["h2LadderIn", "wsLadderIn"],
         "outboundTag": "freedomOut"
       },
       {
         "type":"field",
-        "inboundTag":["companyReverseIn"],
-        "domain":["full:reverse.haku.kasei"],
-        "outboundTag":"portal"
+        "inboundTag":["wsCompanyReverseIn"],
+        "domain":["full:ksf.reverse.kasei.haku"],
+        "outboundTag":"portal1"
       },
       {
         "type": "field",
-        "inboundTag":["homeReverseIn"],
-        "outboundTag":"portal"
+        "inboundTag":["wsHomeReverseIn"],
+        "domain":["full:ksf.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type":"field",
+        "inboundTag":["wsCompanyReverseIn"],
+        "domain":["full:lzl.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type": "field",
+        "inboundTag":["wsHomeReverseIn"],
+        "domain":["full:lzl.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type":"field",
+        "inboundTag":["wsCompanyReverseIn"],
+        "domain":["full:cy.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type": "field",
+        "inboundTag":["wsHomeReverseIn"],
+        "domain":["full:cy.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type":"field",
+        "inboundTag":["wsCompanyReverseIn"],
+        "domain":["full:xy.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type": "field",
+        "inboundTag":["wsHomeReverseIn"],
+        "domain":["full:xy.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type":"field",
+        "inboundTag":["wsCompanyReverseIn"],
+        "domain":["full:wwj.reverse.kasei.haku"],
+        "outboundTag":"portal1"
+      },
+      {
+        "type": "field",
+        "inboundTag":["wsHomeReverseIn"],
+        "domain":["full:wwj.reverse.kasei.haku"],
+        "outboundTag":"portal1"
       }
     ]
   }
