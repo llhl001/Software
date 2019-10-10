@@ -16,7 +16,7 @@
       "port": 12306,
       "settings": {
         "clients":[
-          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"kasei@kasei.haku"}
+          {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "level": 0, "alterId":4, "email":"ksf@kasei.haku"}
         ],
         "disableInsecureEncryption": true
       },
