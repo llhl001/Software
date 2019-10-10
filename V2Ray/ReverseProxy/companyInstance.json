@@ -1,93 +1,101 @@
 {
   "log": { "loglevel": "debug" },
-  "dns": {
-    "tag": "dnsIn"
-  },
   "inbounds":[
     {
-      "tag": "ladderIn",
+      "tag": "ladderSocksIn",
       "protocol": "socks",
       "port": 12345,
-      "settings":{
+      "listen": "127.0.0.1",
+      "settings": {
         "auth": "noauth"
       }
     }
   ],
   "outbounds": [
-    {
-      "tag": "freedomOut",
-      "protocol": "freedom"
-    },
-    {
-      "tag":"ladderOut", 
-      "protocol":"vmess",
-      "settings":{  
-        "vnext":[  
-          {  
-            "address":"www.1291114093.ml",
-            "port":12306,
-            "users":[  
-              {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "security":"chacha20-poly1305"}
+   {
+      "tag": "wsLadderOut",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "1291114093.ml",
+            "port": 443,
+            "users": [
+              { "id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "security":"chacha20-poly1305", "alterId":4, "level":0 }
             ]
           }
         ]
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
-          "path": "/ladder",
-          "headers": {
-            "Host": "ksf.haku.kasei"
-          }
+          "path": "/v2ray/ladder/ws",
+ 		  "headers": {
+    		"Host": "1291114093.ml"
+  		  }        
+        },
+        "security": "tls", 
+        "tlsSettings": {
+          "serverName": "1291114093.ml"
         }
       }
-    },
+    }, 
     {
       "tag":"companyReverseOut", 
       "protocol":"vmess",
       "settings":{  
         "vnext":[  
           {  
-            "address":"www.1291114093.ml",
-            "port":12390,
+            "address":"1291114093.ml",
+            "port":12361,
             "users":[  
-              {"id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "alterId":4, "security":"chacha20-poly1305"}
+              { "id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "security":"chacha20-poly1305", "alterId":4, "level":0 }
             ]
           }
         ]
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
-          "path": "/reverse/company",
+          "path": "/v2ray/reverse/ws/company",
           "headers": {
-            "Host": "company.reverse.haku.kasei"
+            "Host": "1291114093.ml"
           }
+        },
+        "security": "tls", 
+        "tlsSettings": {
+          "serverName": "1291114093.ml"
         }
       }
+    },	
+    /** todo 直连出口 */
+    {
+      "tag": "freedomOut",
+      "protocol": "freedom"
     }
   ],
   "reverse":{
-    {"tag":"bridge", "domain":"reverse.haku.kasei"}
+    "bridges":[
+      {"tag":"bridge1", "domain":"ksf.reverse.kasei.haku"} 
+    ]
   },
   "routing": {
+    "domainStrategy": "IPIfNonMatch",
     "rules":[  
       {
         "type":"field",
-        "inboundTag":["ladderIn"],
-        "outboundTag":"ladderOut"
+        "inboundTag":["ladderSocksIn"],
+        "outboundTag":"wsLadderOut"
       },
       {
         "type": "field",
-        "inboundTag": ["bridge"],
-        "domain": ["full:reverse.haku.kasei"],
+        "inboundTag": ["bridge1"],
+        "domain": ["full:reverse.kasei.haku"],    // bridge1 输入流有 domain 的转发到 vps
         "outboundTag": "companyReverseOut"
       },
       {
         "type": "field",
-        "inboundTag": ["bridge"],
+        "inboundTag": ["bridge1"],              // bridge1 输入流无 domain 的直连
         "outboundTag": "freedomOut"
       }    
     ] 
