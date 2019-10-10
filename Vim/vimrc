@@ -7,7 +7,7 @@
 
 " 通用配置
 set nocompatible                                        " 使用 vim 自己的键盘模式，不使用 vi 的默认键盘布局
-set clipboard=unnamedplus                               " 将剪贴板寄存器("+) 设置为默认寄存器，如果不设置 p 命令粘贴的是 "" 寄存器中的内容
+set clipboard=unnamed                                   " 将剪贴板寄存器("+) 设置为默认寄存器，如果不设置 p 命令粘贴的是 "" 寄存器中的内容
 set mouse=a                                             " 使 vim 支持鼠标操作
 set autoread                                            " 当文件被外部改变时自动读取
 set viminfo='20                                         " 不限制一次最多可以复制的行数
