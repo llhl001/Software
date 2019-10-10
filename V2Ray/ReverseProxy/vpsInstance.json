@@ -137,7 +137,7 @@
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "domain":["full:ksf.reverse.kasei.haku"],
+        "user":["ksf@kasei.haku"],
         "outboundTag":"portal1"
       },
       {
@@ -149,50 +149,50 @@
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "domain":["full:lzl.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "user":["lzl@kasei.haku"],
+        "outboundTag":"portal2"
       },
       {
         "type": "field",
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:lzl.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "outboundTag":"portal2"
       },
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "domain":["full:cy.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "user":["cy@kasei.haku"],
+        "outboundTag":"portal3"
       },
       {
         "type": "field",
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:cy.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "outboundTag":"portal3"
       },
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "domain":["full:xy.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "user":["xy@kasei.haku"],
+        "outboundTag":"portal4"
       },
       {
         "type": "field",
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:xy.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "outboundTag":"portal4"
       },
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "domain":["full:wwj.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "user":["wwj@kasei.haku"],
+        "outboundTag":"portal5"
       },
       {
         "type": "field",
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:wwj.reverse.kasei.haku"],
-        "outboundTag":"portal1"
+        "outboundTag":"portal5"
       }
     ]
   }
