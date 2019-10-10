@@ -34,11 +34,13 @@
   },
   "routing": {
     "rules": [
+      /** todo 配置 companyIn 流入的流量（即反向代理流量）全发送到 portal */
       {
         "type": "field",
         "inboundTag": ["companyIn"],
         "outboundTag": "portal"
       },
+      /** todo 配置 homeIn 流入的流量，且带有 domain 的全发送到 portal 跟反向代理流量对接 */
       {
         "type": "field",
         "inboundTag": ["homeIn"],
