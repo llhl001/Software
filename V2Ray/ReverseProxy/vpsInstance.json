@@ -187,13 +187,13 @@
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:wwj.reverse.kasei.haku"],
         "outboundTag":"portal5"
-      }
+      },
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
         "user":["wwj@kasei.haku"],
         "outboundTag":"portal5"
-      },
+      }
       
     ]
   }
