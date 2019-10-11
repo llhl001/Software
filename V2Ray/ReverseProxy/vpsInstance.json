@@ -60,6 +60,7 @@
         "security": "none"              // 此处 TLS 加密放在 Nginx 端处理
       }
     },
+    /** todo 接收 home v2ray 需要通过 company v2ray 发送的请求 */
     {
       "tag": "wsHomeReverseIn",
       "protocol": "vmess",
@@ -83,8 +84,13 @@
           } 
         },
         "security": "none"             
+      },
+      "sniffing": {
+        "enabled": true,            // 必须开启嗅探，否则识别不了域名
+        "destOverride": ["http", "tls"]
       }
     },
+    /** todo 接收 company v2ray 主动发起的请求 */
     {
       "tag": "wsCompanyReverseIn",
       "protocol": "vmess",
@@ -108,6 +114,10 @@
           } 
         },
         "security": "none"             
+      },
+      "sniffing": {
+        "enabled": true,            // 必须开启嗅探，否则识别不了域名
+        "destOverride": ["http", "tls"]
       }
     }
   ],
@@ -119,7 +129,8 @@
   ],
   "reverse":{
     "portals":[
-      {"tag": "portal1", "domain":"ksf.reverse.kasei.haku"},
+      /** domain 不用真实存在，只用作反向代理的标识，但必须和 company.json 中配置的一样 */
+      {"tag": "portal1", "domain":"ksf.reverse.kasei.haku"},  
       {"tag": "portal2", "domain":"lzl.reverse.kasei.haku"},
       {"tag": "portal3", "domain":"cy.reverse.kasei.haku"},
       {"tag": "portal4", "domain":"xy.reverse.kasei.haku"},
@@ -134,12 +145,14 @@
         "inboundTag":["h2LadderIn", "wsLadderIn"],
         "outboundTag": "freedomOut"
       },
-        {
+      /** todo 将 home v2ray 需要反向代理的数据转发到 company v2ray 对接 portal 上 */
+      {
         "type": "field",
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:ksf.reverse.kasei.haku"],
         "outboundTag":"portal1"
       },
+      /** todo 将 company v2ray 主动发起的请求数据转发到 home v2ray 对接 portal 上 */
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
