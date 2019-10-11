@@ -40,6 +40,7 @@
         }
       }
     }, 
+    /** todo 用于将 bridge 流量转发到 vps */
     {
       "tag":"companyReverseOut", 
       "protocol":"vmess",
@@ -80,22 +81,24 @@
     ]
   },
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
+    "domainStrategy": "AsIs",   // 域名策略：直接使用系统的 DNS 解析域名
     "rules":[  
       {
         "type":"field",
         "inboundTag":["ladderSocksIn"],
         "outboundTag":"wsLadderOut"
       },
+      /** todo bridge1 流入的数据，domain == ksf.reverse.kasei.haku 的流量，转发到 vps */
       {
         "type": "field",
         "inboundTag": ["bridge1"],
-        "domain": ["full:reverse.kasei.haku"],    // bridge1 输入流有 domain 的转发到 vps
+        "domain": ["full:ksf.reverse.kasei.haku"],    
         "outboundTag": "companyReverseOut"
       },
+      /** todo bridge1 流入的数据，domain != ksf.reverse.kasei.haku 的流量直连 */
       {
         "type": "field",
-        "inboundTag": ["bridge1"],              // bridge1 输入流无 domain 的直连
+        "inboundTag": ["bridge1"],              
         "outboundTag": "freedomOut"
       }    
     ] 
