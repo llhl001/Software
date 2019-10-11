@@ -134,13 +134,7 @@
         "inboundTag":["h2LadderIn", "wsLadderIn"],
         "outboundTag": "freedomOut"
       },
-      {
-        "type":"field",
-        "inboundTag":["wsCompanyReverseIn"],
-        "user":["ksf@kasei.haku"],
-        "outboundTag":"portal1"
-      },
-      {
+        {
         "type": "field",
         "inboundTag":["wsHomeReverseIn"],
         "domain":["full:ksf.reverse.kasei.haku"],
@@ -149,8 +143,8 @@
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "user":["lzl@kasei.haku"],
-        "outboundTag":"portal2"
+        "user":["ksf@kasei.haku"],
+        "outboundTag":"portal1"
       },
       {
         "type": "field",
@@ -161,8 +155,8 @@
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "user":["cy@kasei.haku"],
-        "outboundTag":"portal3"
+        "user":["lzl@kasei.haku"],
+        "outboundTag":"portal2"
       },
       {
         "type": "field",
@@ -173,8 +167,8 @@
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "user":["xy@kasei.haku"],
-        "outboundTag":"portal4"
+        "user":["cy@kasei.haku"],
+        "outboundTag":"portal3"
       },
       {
         "type": "field",
@@ -185,8 +179,8 @@
       {
         "type":"field",
         "inboundTag":["wsCompanyReverseIn"],
-        "user":["wwj@kasei.haku"],
-        "outboundTag":"portal5"
+        "user":["xy@kasei.haku"],
+        "outboundTag":"portal4"
       },
       {
         "type": "field",
@@ -194,6 +188,13 @@
         "domain":["full:wwj.reverse.kasei.haku"],
         "outboundTag":"portal5"
       }
+      {
+        "type":"field",
+        "inboundTag":["wsCompanyReverseIn"],
+        "user":["wwj@kasei.haku"],
+        "outboundTag":"portal5"
+      },
+      
     ]
   }
 }
