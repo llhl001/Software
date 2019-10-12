@@ -130,58 +130,52 @@ select * from tab1 left join tab2; -- 用创建的别名写 sql
 
 
 /*********************************************** 行列转换 ****************************************************/
--- 多列转一列
-id      name        age
-a       kasei       22
-b       haku        18
-转
-id      newCol 
-a       kasei22
-b       haku18
+-- 合并多列到一列
+with
+aa as (
+   select 1 p_id, 'kasei' p_name, 23 age from dual
+)
+-- select p_id, concat(p_name, age) combined from aa  -- 方式一
+select p_id, p_name||age combined from aa         -- 方式二
+;
 
-select concat(col1, col2) as A from tab;
-select col1||col2 as A from tab;
-
--- 一列转多列
-name        ageList
-kasei       22,34
-haku        14,56,32
-转
-name        age1        age2        age3
-kasei       22          34
-haku        14          56          32
-
-实际上就是拆分字符串的问题，可以使用 substr、instr、regexp_substr函数方式
-问题：这样只能拆分单行，多行的话，无法判定 ageList 中可以分出多少列
-
-
--- 多行转一行（内容合并）
-name        age
-kasei       aa
-kasei       bb
-转
-name        newCol
-kasei       aa,bb
-
-select name, listagg(age, ',') within group(order by age) as ageList
-from ta
-group by name;
-
--- 多行转一行 (内容聚合)
-select * 
-from (select name, nums from demo) 
-pivot (sum(nums) for name in ('苹果' as apple, '橘子', '葡萄', '芒果')); -- 将查询结果根据 name 列的值，做 sum() 合并
+-- 拆分一列到多列
+with
+aa as (
+   select 'kasei' p_name, 'math=32,english=23,' grade from dual
+)
+select 
+  p_name, 
+  substr(
+      grade, 
+      0, 
+      instr(grade, ',', 1, 1)-1
+  ) math,
+  substr(
+      grade, 
+      instr(grade, ',', 1, 1)+1, 
+      instr(grade, ',', 1, 2)-1-instr(grade, ',', 1, 1)
+  ) english,
+  instr(grade, ',', 1, 2) position
+from aa
+;
 
 
-select * from 
-(select sum(nums) 苹果 from demo where name = '苹果'),
-(select sum(nums) 橘子 from demo where name = '橘子'),
-(select sum(nums) 葡萄 from demo where name = '葡萄'),
-(select sum(nums) 芒果 from demo where name = '芒果');
+-- group by 合并同一个分组的指定列内容到一行
+with
+aa as (
+   select 'kasei' p_name, 'math=83' grade from dual
+	 union
+	 select 'kasei' p_name, 'engilish=23' grade from dual
+)
+select p_name, listagg(grade, ',') within group(order by grade) as ageList
+from aa
+group by p_name
+;
 
 
                               
-/** todo 一行转多行 */
+/** todo 拆分一行到多行 */
 /** Oracle Hierarchical Queries 层级查询
  * syntax:    start with <condition1> connect by [nocycle] <condition2>
  * illustrate： 
@@ -254,35 +248,47 @@ select * from res order by x;
       
 
 -- 多列转多行
-id      kasei       haku
-a        22          18
-转
-id      name        age
-a       kasei       22
-a       haku        18
-
-select id, 'kasei' as name, kasei as age from tab
-union
-select id, 'haku' as name, haku as age from tab
-
-select id, name, age from Fruit 
-unpivot (age for name in(kasei, haku)); -- 将原表中的 q1,q2,q3,q4 几个列名，当做 col1 列的值展示，并将对应的列值放入到 val1 列的列值中 
-
+with 
+aa as (     -- 初始数据构建
+  select 1 "P_ID", 22 "kasei", 18 "haku" from dual
+),
+bb as (     -- 实现方式一
+  select p_id, 'kasei' p_name, "kasei" age from aa
+  union
+  select p_id, 'haku' p_name, "haku" age from aa
+),
+cc as (     -- 实现方式二
+  select p_id, p_name, age
+  from aa unpivot(age for p_name in("kasei", "haku")) -- 将原表中的 ["kasei", "haku"] 几个列值，当做 age 列的值展示，并将对应的列名放入到 p_name 列的列值中 
+)
+select * from cc
+;
+                                                   
 
 -- 多行转多列
-id      name        age
-a       kasei       22
-b       haku        18
-转
-kasei       haku
-22          18
-
-select 
-    id,
-    max(decode(name, 'kasei'), age) as kasei, -- decode 表示：如果 col2 的值为 ‘值1’，那么返回 col3 的值
-    max(decode(name, 'haku'), age) as haku,
-from tb
-group by name;
+with 
+aa as(
+  -- 初始数据构建
+  select 'kasei' p_name, 'math' subject, 32 score from dual
+  union
+  select 'kasei' p_name, 'english' subject, 54 score from dual
+  union
+  select 'haku' p_name, 'chinese' subject, 99 score from dual
+),
+bb as (
+  select 
+	p_name,
+    max(decode(subject, 'math', score, -1)) as math, 
+    max(decode(subject, 'english', score, -1)) as english,
+    max(decode(subject, 'chinese', score, -1)) as chinese
+  from aa 
+  group by p_name
+),
+cc as (
+   select * from aa pivot(max(score) for subject in('math', 'english', 'chinese'))
+)
+select * from bb
+;
 
                          
                          
