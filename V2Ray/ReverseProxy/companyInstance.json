@@ -77,7 +77,7 @@
   ],
   "reverse":{
     "bridges":[
-      {"tag":"bridge1", "domain":"ksf.reverse.kasei.haku"} 
+      {"tag":"bridge1", "domain":"ksf.reverse.kasei.haku"}  // bridge 向 portal 建立的连接，都会使用这个域名进行发送
     ]
   },
   "routing": {
