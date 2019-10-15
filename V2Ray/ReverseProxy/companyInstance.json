@@ -30,9 +30,9 @@
         "network": "ws",
         "wsSettings": {
           "path": "/v2ray/ladder/ws",
- 		  "headers": {
-    		"Host": "1291114093.ml"
-  		  }        
+           "headers": {
+            "Host": "1291114093.ml"
+            }        
         },
         "security": "tls", 
         "tlsSettings": {
@@ -48,6 +48,7 @@
         "vnext":[  
           {  
             "address":"1291114093.ml",
+            //"address":"66.98.122.202",
             "port":443,
             "users":[  
               { "id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "security":"chacha20-poly1305", "alterId":4, "level":0 }
@@ -68,7 +69,7 @@
           "serverName": "1291114093.ml"
         }
       }
-    },	
+    },    
     /** todo 直连出口 */
     {
       "tag": "freedomOut",
@@ -77,11 +78,11 @@
   ],
   "reverse":{
     "bridges":[
-      {"tag":"bridge1", "domain":"ksf.reverse.kasei.haku"}  // bridge 向 portal 建立的连接，都会使用这个域名进行发送
+      {"tag":"bridge1", "domain":"ksf.reverse.kasei.haku"} 
     ]
   },
   "routing": {
-    "domainStrategy": "AsIs",   // 域名策略：直接使用系统的 DNS 解析域名
+    "domainStrategy": "IPIfNonMatch",   // 域名策略：直接使用系统的 DNS 解析域名
     "rules":[  
       {
         "type":"field",
