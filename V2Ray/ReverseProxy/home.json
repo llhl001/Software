@@ -4,7 +4,7 @@
     {
       "tag": "reverseIn",
       "protocol": "socks",
-      "port": 1081,
+      "port": 12345,
       "listen": "127.0.0.1",
       "settings": { "auth": "noauth" },
       /** 当代理 qq 流量时，因为 qq 不会像 Browser 一样能识别 socks 代理，并将 Domain 放入到代理中，所以需要开启流量嗅探，
@@ -60,7 +60,8 @@
     }
   ],
   "routing": {
-    "domainStrategy": "AsIs",
+    // IPIfNonMatch 使用域名没有匹配到任何路由规则时，使用 v2ray 内置的 DNS 把域名解析为 IP,再次匹配路由规则
+    "domainStrategy": "IPIfNonMatch", 
     "rules": [
       /** todo 反向代理流量，过 VPS 从公司虚拟机出
        * @trap DNS 请求直接发送到服务器解析；即 domainStrategy 必须为 AsIs 或者 IPonDemand 其中之一，
@@ -70,7 +71,7 @@
         "inboundTag":["reverseIn"],
         "outboundTag":"reverseOut"
       },
-      /** 默认流量直连 */
+      /** 默认任何流量，走直连通道 */
       {
         "type": "field",
         "outboundTag": "freedomOut"
