@@ -61,7 +61,7 @@
   ],
   "routing": {
     // IPIfNonMatch 使用域名没有匹配到任何路由规则时，使用 v2ray 内置的 DNS 把域名解析为 IP,再次匹配路由规则
-    "domainStrategy": "IPIfNonMatch", 
+    "domainStrategy": "IPIfNonMatch",  
     "rules": [
       /** todo 反向代理流量，过 VPS 从公司虚拟机出
        * @trap DNS 请求直接发送到服务器解析；即 domainStrategy 必须为 AsIs 或者 IPonDemand 其中之一，
