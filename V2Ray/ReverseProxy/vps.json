@@ -55,7 +55,7 @@
           "path": "/v2ray/ladder/ws",
           "headers": {
             "Host": "1291114093.ml"
-          } 
+          }
         },
         "security": "none"              // 此处 TLS 加密放在 Nginx 端处理
       }
@@ -78,13 +78,10 @@
           "path": "/v2ray/reverse/ws/home",
           "headers": {
             "Host": "1291114093.ml"
-          } 
+          }
         },
-        "security": "none"             
-      },
-      "sniffing": {
-        "enabled": false,            // 必须开启嗅探，否则识别不了域名
-        "destOverride": ["http", "tls"]
+        "sniffing": { "enabled": true, "destOverride": ["http", "tls"] },
+        "security": "none"
       }
     },
     /** todo 接收 company v2ray 主动发起的请求 */
@@ -105,14 +102,11 @@
           "path": "/v2ray/reverse/ws/company",
           "headers": {
             "Host": "1291114093.ml"
-          } 
+          }
         },
-        "security": "none"             
+        "security": "none"
       },
-      "sniffing": {
-        "enabled": true,            // 必须开启嗅探，否则识别不了域名
-        "destOverride": ["http", "tls"]
-      }
+      "sniffing": { "enabled": true,  "destOverride": ["http", "tls"] }
     }
   ],
   "outbounds": [
@@ -124,7 +118,7 @@
   "reverse":{
     "portals":[
       /** domain 不用真实存在，只用作反向代理的标识，但必须和 company.json 中配置的一样 */
-      {"tag": "portal1", "domain":"ksf.reverse.kasei.haku"},  
+      {"tag": "portal1", "domain":"ksf.reverse.kasei.haku"},
       {"tag": "portal2", "domain":"lzl.reverse.kasei.haku"}
     ]
   },
@@ -147,21 +141,9 @@
       },
       {
         "type": "field",
-        "inboundTag":["wsPortalIn"],
-        "user":["lzl@kasei.haku"],
-        "outboundTag":"portal2"
-      },
-      {
-        "type":"field",
-        "inboundTag":["wsBridgeIn"],
-        "domain":["full:lzl.reverse.kasei.haku"],        
-        "outboundTag":"portal2"
-      },
-      {
-        "type": "field",
         "inboundTag":["h2LadderIn", "wsLadderIn"],
         "outboundTag": "freedomOut"
-      }   
+      }
     ]
   }
 }
