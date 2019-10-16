@@ -45,16 +45,62 @@ Concept {
 
 }
 
+
+
+
+
+V2ray DNS 解析完整流程 {
+    坑： 只有 Socks5 和 Vmess 协议才支持 DNS 远程解析
+    
+    Application 使用代理，将流量转发到 socksIn 
+    socksIn  开启 sniffing 嗅探 domain
+    使用 domain 匹配路由规则
+    
+    for( 路由规则 routeRule : routeRuleList ){
+        if( routeRule 是基于 IP 的路由规则 && domainStrategy == "IPOnDemand" ){
+            var domainIp = 使用内置 DNS 解析 domain;
+            if( domainIp 和 routeRule 匹配){
+                将流量直接转发到 匹配的 出站协议
+                break;
+            }
+        } else {
+            if( domain 和 routeRule 匹配 ){
+                将流量直接转发到 匹配的 出站协议
+                break;
+            }
+        }
+    }
+    
+    if( 一个路由规则都没匹配到 && domainStrategy == "IPIfNonMatch" ){
+        var domainIp = 使用内置 DNS 解析 domain;
+        使用 domianIp 再次匹配 路由规则列表 中的所有 路由规则
+    }
+}
+
+function v2rayBuildinDnsAnalyze(domain){
+    根据配置的 DNS server 产生 dnsIn 流量
+    dnsIn 流量再次经过 路由规则列表匹配，找到 出站协议，发送 dns 请求
+}
+
+
+
+
+
+
+
+
+
+
+
+
 使用 V2Ray 内置的 DNS 解析 {
     v2ray 默认配置 {
         {
           "dns": {},
           "inbounds":[
             {
-              "sniffing": {
-                "enabled": true,                        // 需要开启对流量进行域名嗅探，才能使用内置的 DNS
-                "destOverride": ["http", "tls"]
-              },
+              // 需要开启对流量进行域名嗅探，才能使用内置的 DNS
+              "sniffing": { "enabled": true,"destOverride": ["http", "tls"]},
             }
           ],
           "routing":{
