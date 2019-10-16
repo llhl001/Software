@@ -85,7 +85,7 @@
     "domainStrategy": "IPIfNonMatch",   // 域名策略：直接使用系统的 DNS 解析域名
     "rules":[  
       {
-        "type":"field",
+        "type":"field", 
         "inboundTag":["ladderSocksIn"],
         "outboundTag":"wsLadderOut"
       },
