@@ -295,6 +295,7 @@ select * from bb
 /******************************** xmltype 数据类型操作 ********************************/
 /** 常用函数
  * xmlserialize()   将 xmltype 类型的数据转换为 clob
+ * xmlcast()        将 xmltype 类型的数据转换为 指定类型
  * xmlparse()       将 clob 类型的数据转化为 xmltype
  * xmlquery()       查询 xmltype 类型
  * */           
@@ -306,5 +307,6 @@ xmlserialize(
          passing by value xmlparse(document t.xmldata wellformed) returning content null on empty    
     ) 
 as clob) aa,
-xmlquery('/Items/WFItem[@name="OtherOFC"]' passing xmlparse(document t.xmldata wellformed) returning content) bb
+xmlquery('/Items/WFItem[@name="OtherOFC"]' passing xmlparse(document t.xmldata wellformed) returning content) bb,
+xmlcast( xmltypedata as varchar2(400)) -- 将 xmltype 类型的数据转化成 varchar2
 from table1 t ;                       
