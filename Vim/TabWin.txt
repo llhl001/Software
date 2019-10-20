@@ -118,7 +118,7 @@ Tab 页操作 {
     gT                                      # 同 :tabp    
     <C-PageUp>                              # 同 :tabp
     :tabn[ext]                              # 切换到下一个 tab
-    gt                                      # 同 :tabn
+    4gt                                     # 同 :tabn, 跳转到 4号 tab 页上
     <C-PageDown>                            # 同 :tabn    
     :tabfir[st]                             # 打开第一个 tab 页
     :tabr[ewind]                            # 同 tabfir
