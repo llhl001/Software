@@ -1,20 +1,15 @@
 {
-  "log": {
-    "loglevel": "debug"
-  },
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "type": "field",
-        "network": "tcp,udp",
-        "inboundTag": ["DokodemoDoorIn", "SocksIn"],
-        "outboundTag": "CdnTlsWsVmessOut"
-      }
-    ],
-    "balancers": []
-  },
+  "log": { "loglevel": "debug"  },
   "inbounds": [
+    {
+      "tag": "SocksIn",
+      "protocol": "socks",
+      "port": 12346,
+      "listen": "127.0.0.1",
+      "settings": {
+        "auth": "noauth"
+      }
+    },
     {
       "tag": "DokodemoDoorIn",
       "protocol": "dokodemo-door",
@@ -33,82 +28,39 @@
         "enabled": true,      // 透明代理必须开启
         "destOverride": ["http", "tls"]
       }
-    },
-    {
-      "tag": "SocksIn",
-      "protocol": "socks",
-      "port": 12346,
-      "listen": "127.0.0.1",
-      "settings": {
-        "auth": "noauth"
-      }
     }
   ],
   "outbounds": [
     {
-      "tag": "CdnTlsWsVmessOut",
+      "tag": "wsLadderOut",
       "protocol": "vmess",
-      "sendThrough": "0.0.0.0",     // 主机有多个 ip 时，使用指定 ip 发送数据
       "settings": {
         "vnext": [
           {
-            "address": "www.1291114093.ml",
+            "address": "1291114093.ml",
             "port": 443,
             "users": [
-              {
-                "id": "bb553e11-f08b-e87a-0779-c74cdc0a7e1c",
-                "security": "chacha20-poly1305",
-                "alterId": 64,
-                "level": 0
-              }
+              { "id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "security":"chacha20-poly1305", "alterId":4, "level":0 }
             ]
           }
         ]
       },
       "streamSettings": {
         "network": "ws",
-        "security": "tls",
+        "wsSettings": {
+          "path": "/v2ray/ladder/ws",
+ 		  "headers": {
+    		"Host": "1291114093.ml"
+  		  }        
+        },
+        "security": "tls", 
         "tlsSettings": {
-          "serverName": "www.1291114093.ml",
-          "allowInsecure": true,
-          "allowInsecureCiphers": true,
-          "alpn": ["http/1.1"],
-          "certificates": [
-            {
-              "usage": "verify",
-              "certificate": [
-                  "-----BEGIN CERTIFICATE-----",
-                  "MIIDEDCCAfigAwIBAgIRAPSShToyNePlC5DXe352V/owDQYJKoZIhvcNAQELBQAw",
-                  "KDESMBAGA1UEChMJVjJSYXkgSW5jMRIwEAYDVQQDEwlWMlJheSBJbmMwHhcNMTkw",
-                  "NjE1MTM1MzMyWhcNMTkwOTEzMTQ1MzMyWjAoMRIwEAYDVQQKEwlWMlJheSBJbmMx",
-                  "EjAQBgNVBAMTCVYyUmF5IEluYzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC",
-                  "ggEBAMwCJxzdhSFgeLAAfdS2bSSXuQdoKs1GOxqDmvGbAyIt2RVdwietoet8godv",
-                  "K5zbSkLIinJSymCjISy3g1O5DnUzN3ZYi3aXRWnj5TsX3H+R+yR5dR35BQVbR/n5",
-                  "YMSJsFslkpASBt6w3zIUrvJA/g2B2TEE3Vcw7GW+y81tGPLiSvvFURvEiy6X9kQj",
-                  "SGA/hCppOMho/yAHxl+dYo/G5kkTP1TGBinxN0uHgQaMdiOn+ZzU0Qo85E9zHmYy",
-                  "zBvEEhGE86ztqxlgRiOaxyH3usBrAfe/uagBcBN6tLA4zh21AALNECANp/qR/K4T",
-                  "nWlVq46pGRk1hitxOEqOjnGyJcUCAwEAAaM1MDMwDgYDVR0PAQH/BAQDAgWgMBMG",
-                  "A1UdJQQMMAoGCCsGAQUFBwMBMAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQAD",
-                  "ggEBAAkCFZ1pGJKZERjXojmBpt4fOyEnrT0lXwTvng7ij8gNJKd5w6XeJdlhkGX7",
-                  "JTUq0mEQGSnSobSyhx/xwtzSHLs/gIZctIK7SWIlBbEbZPWQQNOOBTnsEOonzzw9",
-                  "0DIxSLkNnWOB4Lk3nBuqh8GSqvQdhxhCVPHtN656p6Aa3lXxQxdMucFtnLomHABp",
-                  "D+0bT4BONLPDo4rNqOkdz/wovpHn5RCCsbWaBjsAhLXGZC0npxnTQh4HgFRgPXJn",
-                  "/e7Yr2aqwdZklkvt1S0L/hVhwDZC0t06vp12b0L6N2wLjdIvVOFe8itjJGrD0j/n",
-                  "LYRhfyU4CV/I/Es67V9phc9rs2M=",
-                  "-----END CERTIFICATE-----"
-              ]
-            }
-          ],
-          "disableSystemRoot": false
+          "serverName": "1291114093.ml"
         },
         "tcpSettings": {
           "header": {
             "type": "none"
           }
-        },
-        "wsSettings": {
-          "path": "/",
-          "headers": {}
         },
         "sockopt": {
           "mark": 128, //这里是 SO_MARK，用于 iptables 识别，每个 outbound 都要配置；255可以改成其他数值，但要与下面的 iptables 规则对应；如果有多个 outbound，最好奖所有 outbound 的 SO_MARK 都设置成一样的数值
@@ -117,5 +69,16 @@
         } 
       }
     }
-  ]
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "inboundTag": ["DokodemoDoorIn", "SocksIn"],
+        "outboundTag": "wsLadderOut"
+      }
+    ]
+  }
 }
