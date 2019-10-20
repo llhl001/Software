@@ -119,7 +119,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 noremap <C-n> :NERDTreeToggle<CR>                   
 
 " 插入模式下，粘贴系统剪贴板的内容，以下两个 map 效果相同
-inoremap <S-Insert> <ESC>:setl paste<CR>gi<C-R>+<ESC>:setl nopaste<CR>gi
+inoremap <S-Insert> <ESC>:set paste<CR>gi<C-R>+<ESC>:set nopaste<CR>gi
 " inoremap <S-Insert> <ESC>"+p`]a           
 
 
