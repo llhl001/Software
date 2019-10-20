@@ -17,13 +17,10 @@
       "listen": "0.0.0.0",      
       "settings": {
         "network": "tcp,udp",
-        "timeout": 0,
+        "timeout": 300,
         "followRedirect": true,   // 这里要为 true 才能接受来自 iptables 的流量
         "userLevel": 0
-      },
-      "streamSettings": {
-        
-      },     
+      },   
       "sniffing": {
         "enabled": true,      // 透明代理必须开启
         "destOverride": ["http", "tls"]
