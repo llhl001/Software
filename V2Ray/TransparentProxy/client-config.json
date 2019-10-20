@@ -2,6 +2,18 @@
   "log": {
     "loglevel": "debug"
   },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "inboundTag": ["DokodemoDoorIn", "SocksIn"],
+        "outboundTag": "CdnTlsWsVmessOut"
+      }
+    ],
+    "balancers": []
+  },
   "inbounds": [
     {
       "tag": "DokodemoDoorIn",
@@ -21,6 +33,15 @@
         "enabled": true,      // 透明代理必须开启
         "destOverride": ["http", "tls"]
       }
+    },
+    {
+      "tag": "SocksIn",
+      "protocol": "socks",
+      "port": 12346,
+      "listen": "127.0.0.1",
+      "settings": {
+        "auth": "noauth"
+      }
     }
   ],
   "outbounds": [
@@ -35,7 +56,7 @@
             "port": 443,
             "users": [
               {
-                "id": "bb553e11-f08b-e87a-0779-*****a7e1c",
+                "id": "bb553e11-f08b-e87a-0779-c74cdc0a7e1c",
                 "security": "chacha20-poly1305",
                 "alterId": 64,
                 "level": 0
@@ -57,6 +78,23 @@
               "usage": "verify",
               "certificate": [
                   "-----BEGIN CERTIFICATE-----",
+                  "MIIDEDCCAfigAwIBAgIRAPSShToyNePlC5DXe352V/owDQYJKoZIhvcNAQELBQAw",
+                  "KDESMBAGA1UEChMJVjJSYXkgSW5jMRIwEAYDVQQDEwlWMlJheSBJbmMwHhcNMTkw",
+                  "NjE1MTM1MzMyWhcNMTkwOTEzMTQ1MzMyWjAoMRIwEAYDVQQKEwlWMlJheSBJbmMx",
+                  "EjAQBgNVBAMTCVYyUmF5IEluYzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC",
+                  "ggEBAMwCJxzdhSFgeLAAfdS2bSSXuQdoKs1GOxqDmvGbAyIt2RVdwietoet8godv",
+                  "K5zbSkLIinJSymCjISy3g1O5DnUzN3ZYi3aXRWnj5TsX3H+R+yR5dR35BQVbR/n5",
+                  "YMSJsFslkpASBt6w3zIUrvJA/g2B2TEE3Vcw7GW+y81tGPLiSvvFURvEiy6X9kQj",
+                  "SGA/hCppOMho/yAHxl+dYo/G5kkTP1TGBinxN0uHgQaMdiOn+ZzU0Qo85E9zHmYy",
+                  "zBvEEhGE86ztqxlgRiOaxyH3usBrAfe/uagBcBN6tLA4zh21AALNECANp/qR/K4T",
+                  "nWlVq46pGRk1hitxOEqOjnGyJcUCAwEAAaM1MDMwDgYDVR0PAQH/BAQDAgWgMBMG",
+                  "A1UdJQQMMAoGCCsGAQUFBwMBMAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQAD",
+                  "ggEBAAkCFZ1pGJKZERjXojmBpt4fOyEnrT0lXwTvng7ij8gNJKd5w6XeJdlhkGX7",
+                  "JTUq0mEQGSnSobSyhx/xwtzSHLs/gIZctIK7SWIlBbEbZPWQQNOOBTnsEOonzzw9",
+                  "0DIxSLkNnWOB4Lk3nBuqh8GSqvQdhxhCVPHtN656p6Aa3lXxQxdMucFtnLomHABp",
+                  "D+0bT4BONLPDo4rNqOkdz/wovpHn5RCCsbWaBjsAhLXGZC0npxnTQh4HgFRgPXJn",
+                  "/e7Yr2aqwdZklkvt1S0L/hVhwDZC0t06vp12b0L6N2wLjdIvVOFe8itjJGrD0j/n",
+                  "LYRhfyU4CV/I/Es67V9phc9rs2M=",
                   "-----END CERTIFICATE-----"
               ]
             }
@@ -79,18 +117,5 @@
         } 
       }
     }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "type": "field",
-        "network": "tcp,udp",
-        "inboundTag": ["DokodemoDoorIn"],
-        "protocol":["http", "tls", "bittorrent"],
-        "outboundTag": "CdnTlsWsVmessOut"
-      }
-    ],
-    "balancers": []
-  }
+  ]
 }
