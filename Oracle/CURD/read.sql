@@ -176,7 +176,7 @@ group by p_name
 
                               
 /** todo 拆分一行到多行 */
-/** Oracle Hierarchical Queries 层级查询
+/** Hierarchical Queries 层级查询
  * syntax:    start with <condition1> connect by [nocycle] <condition2>
  * illustrate： 
  *      start with：以表中所有符合 condition1 条件的行作为 tree 的 root 节点，如果 condition2 成立那么把符合条件的行追加到结果集中
@@ -194,9 +194,8 @@ with
   ）
 select x, level 
 from temp t connect by level<=length(t.x) and prior x=x and prior sys_guid() is not null;
-
-      
--- 层级查询 Demo
+ 
+-- 层级查询 demo
 with 
   temp as (
     select 'id1' as kasei, '1,11,111' as x  from dual
