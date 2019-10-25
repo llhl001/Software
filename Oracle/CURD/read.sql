@@ -218,11 +218,11 @@ with
     select '11' as x  from dual
     union select '222' as x  from dual
   ),
-  recursive (x, idx, len) as (
+  recursive (x, x_index, len) as (
     select x, 1, length(x) from temp
     union all
-    select r.x, r.idx + 1, r.len from recursive r
-    where r.idx < r.len
+    select r.x, r.x_index + 1, r.len from recursive r
+    where r.x_index < r.len
   )
 select x from recursive
 order by x;
@@ -236,13 +236,13 @@ with
     union
     select 'id3' as kasei , '' as x from dual
   ),
-  recursive (kasei, x, idx, max_len) as (
+  recursive (kasei, x, x_index, max_len) as (
     select t.kasei, t.x, 1, length(t.x || ',')-nvl(length(replace(t.x, ',')),0) max_len from temp t
     union all
-    select r.kasei, r.x, r.idx+1, r.max_len from recursive r
-    where r.idx < r.max_len
+    select r.kasei, r.x, r.x_index+1, r.max_len from recursive r
+    where r.x_index < r.max_len
   ),
-  res as(select t.kasei, t.x, t.idx, t.max_len, regexp_substr(t.x, '[^,]+', 1, t.idx) eventually from recursive t)
+  res as(select t.kasei, t.x, t.x_index, t.max_len, regexp_substr(t.x, '[^,]+', 1, t.x_index) eventually from recursive t)
 select * from res order by x;
       
 
