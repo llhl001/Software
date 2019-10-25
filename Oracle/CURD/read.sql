@@ -180,8 +180,10 @@ group by p_name
  * syntax:    start with <condition1> connect by [nocycle] <condition2>
  * illustrate： 
  *      start with：以表中所有符合 condition1 条件的行作为 tree 的 root 节点，如果 condition2 成立那么把符合条件的行追加到结果集中
- *      parentId=prior id : 在查找第二层时，使用第二层 parentId 列的值去对比第一层的 id 列的值，想等则表明，是该第一层行的下一层（根=>叶子，可能理解有错）
- *      id = prior parentId： 在查找第二层时，使用第二层 id 列的值，取比较第一层 parentId 列的值，（叶子=>根，可能理解有错）
+ *      parentId = prior id : 
+ *          表示 上一层(第1层) 的 id 等于 当前层(第2层) 的 parentId; 所以表示的意思是 第1层的是根，第2层的是叶子
+ *      prior parentId = id： 
+ *          表示 上一层(第1层) 的 parentId 等于 当前层(第2层) 的 id; 所以表示的意思是 第1层的是叶子，第2层的是根
  * CONNECT_BY_ROOT： 伪列，类似与 rowid, rownum 用于表示当前行是哪棵树下的行
  * CONNECT_BY_ISCYCLE: 伪列，用于表示，如果节点存在闭环，则显示 1
  * level 关键字：表示当前所在的层级
