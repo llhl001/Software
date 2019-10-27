@@ -7,6 +7,7 @@ Ctrl+Shift+F                # 当前项目中查找字符串
 Ctrl+Shift+N                # 当前项目中查找文件
 Ctrl+N                      # 查找项目中的类
 Shift+Shift                 # 查找任何东西
+Ctrl+Space                  # 自动补全代码
 Ctrl+Shift+Space            # 查找项目中返回值为当前类型的方法
 Ctrl+E                      # 查看最近访问的文件
 
