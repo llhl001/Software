@@ -20,7 +20,7 @@ Git 中文件状态的改变，例如一下操作仅针对一个文件 H.txt
         |                |                  |  - git add -> |                   |                   |
         |                |                  |               | - git commit ->   |                   |
         |                |                  |               |                   |  - git push ->    |
-        |                |                  |               |                   |  <- git pull -    |
+        |                |                  |               |                   |  <- git fetch -   |
         |                |             <- git checkout <- git reset -           |                   |
         |                |   <- git checkout -- H.txt -     |                   |                   |
         |  <- git rm -   |                  |               |                   |                   |
