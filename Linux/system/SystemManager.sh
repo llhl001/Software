@@ -5,6 +5,7 @@
 # CentOS7 中一共有 7 个 tty ，每个终端相互独立，1-6 是命令行终端，7 是 X-window 图形终端
 
 # 检查系统版本
+lsb_release -a          # 查看系统发行版本
 cat /proc/version       # 查看系统内核版本
 uname -a                # 查看系统内核版本
 
