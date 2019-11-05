@@ -105,11 +105,10 @@ set regexpengine=1                          " 使用 traditional regexp engine
 set magic                                   " 设置 magic
 
 " 当输入查找命令时，再启用高亮
-nnoremap n :set hlsearch<CR>n        
-nnoremap N :set hlsearch<CR>N   
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
 nnoremap * :set hlsearch<CR>*
+nnoremap <ESC> :set nohlsearch<CR><ESC>
    
 
 autocmd cursorhold * set nohlsearch         " 当光标一段时间保持不动了，就禁用高亮
