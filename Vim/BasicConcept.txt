@@ -20,6 +20,16 @@
 :h <name>
 
 
+" Vim 所有模式
+nnoremap, nunmap          Normal mode
+inoremap, iunmap          Insert and Replace mode
+vnoremap, vunmap          Visual and Select mode
+xnoremap, xunmap          Visual mode
+snoremap, sunmap          Select mode
+cnoremap, cunmap          Command-line mode
+onoremap, ounmap          Operator pending mode
+
+
 
 
 
