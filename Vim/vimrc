@@ -1,26 +1,11 @@
+"""""""""""""""""""""""""""""""""""""""""""""""" 基本概念介绍 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " 该文件放置位置
 " /etc/vimrc                Linux 全局配置
 " ~/.vimrc                  Linux 用户级配置
 " D:\Vim\_vimrc             Windows 全局配置
 " %HOME%\_vimrc             Windows 用户级配置
 
-
-" 通用配置
-set nocompatible                                        " 使用 vim 自己的键盘模式，不使用 vi 的默认键盘布局
-set clipboard=unnamedplus                               " 将剪贴板寄存器("+) 设置为默认寄存器，如果不设置 p 命令粘贴的是 ""(未命名) 寄存器中的内容
-set mouse=a                                             " 使 vim 支持鼠标操作
-set autoread                                            " 当文件被外部改变时自动读取
-set viminfo='20                                         " 不限制一次最多可以复制的行数
-set backspace=indent,eol,start                          " 使退格键（backspace）正常处理 indent, eol, start 等
-set nobackup                                            " 不要备份文件
-set noswapfile                                          " 禁止使用 swap 文件， 
-                                                        " Vim 在编辑一个文件的时候首先把文件拷贝成一个临时的 swap 文件，只有你使用 :w 保存之后才写入源文件中
-set nowrap                                              " 关闭 vim 自动换行
-set fo+=mB                                              " 使自动换行对中文也能生效，其中 m 表示允许在两个汉字中间换行，而 B 表示将两行合为一行的时候不要在两个汉字之间加入空格。
-set wildmenu                                            " 智能补全命令行
-set history=64                                          " 设置命令行保留的历史命令个数
-
-" UI 界面配置
+"""""""""""""""""""""""""""""""""""""""""""""""" UI 界面配置 """""""""""""""""""""""""""""""""""""""""""""""""""""
 set number                                              " 设置显示行号
 set cursorline                                          " 配置当前行高亮
 set ruler                                               " 显示标尺
@@ -35,18 +20,59 @@ set so=3                                                " 设置页面滚动时�
 set scrolloff=3                                         " 光标移动到 buffer 的顶部和底部时保持3行距离
 set laststatus=2                                        " 启动显示状态行(1),总是显示状态行(2)
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}       " 状态行显示格式
+set foldenable                                          " 允许折叠
+set foldmethod=manual                                   " 手动折叠
+set nowrap                                              " 关闭 vim 自动换行
+set fo+=mB                                              " 使自动换行对中文也能生效，其中 m 表示允许在两个汉字中间换行，而 B 表示将两行合为一行的时候不要在两个汉字之间加入空格。
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""" Edit Settings """"""""""""""""""""""""""""""""""""""""""
+set nocompatible                                        " 使用 vim 自己的键盘模式，不使用 vi 的默认键盘布局
+set clipboard=unnamedplus                               " 将剪贴板寄存器("+) 设置为默认寄存器，如果不设置 p 命令粘贴的是 ""(未命名) 寄存器中的内容
+set mouse=a                                             " 使 vim 支持鼠标操作
+set viminfo='20                                         " 不限制一次最多可以复制的行数
+set backspace=indent,eol,start                          " 使退格键（backspace）正常处理 indent, eol, start 等
+
+
+" 自动带出成对的标点符号
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>O
+inoremap ‘ ‘’<ESC>i
+inoremap “ “”<ESC>i
+
+" 插入模式下，粘贴系统剪贴板的内容，以下两个 map 效果相同
+inoremap <S-Insert> <ESC>:set paste<CR>gi<C-R>+<ESC>:set nopaste<CR>gi
+" inoremap <S-Insert> <ESC>"+p`]a   
+
+"""""""""""""""""""""""""""""""""""""""""""""""" 通用配置 """""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildmenu                                            " 智能补全命令行
+set history=64                                          " 设置命令行保留的历史命令个数
+
+" 配置多键映射的 leader
+let mapleader = "-"
+" 快速编辑 vimrc 配置文件
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""" 文件配置 """""""""""""""""""""""""""""""""""""""""""""""""""""
+set autoread                                            " 当文件被外部改变时自动读取
+set nobackup                                            " 不要备份文件
+set noswapfile                                          " 禁止使用 swap 文件， 
+                                                        " Vim 在编辑一个文件的时候首先把文件拷贝成一个临时的 swap 文件，只有你使用 :w 保存之后才写入源文件中
 
-" 文件配置
+
 filetype on                                             " 开启文件类型检测
 filetype plugin on                                      " 根据不同的文件类型载入不同的插件方案
 filetype indent on                                      " 根据不同的文件类型载入不同的缩进方案
 syntax enable                                           " 开启语法高亮功能
 syntax on                                               " 允许用指定语法高亮配色方案替换默认方案
 
-" 语言、字符编码格式配置
+"""""""""""""""""""""""""""""""""""""""""""""""" 语言、字符编码格式配置 """""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8                                      " vim 内部使用的字符编码方式，即 vim 的 buffer、寄存器、脚本中的字符串，都使用该编码格式
 set termencoding=utf-8                                  " vim terminal 编码，显示时，vim 会把内部编码转换成 terminal 编码，如果无法转换，则以 ？ 显示
 set fileencoding=utf-8                                  " 当前文件使用的编码格式，无法在文件打开后，再使用该命令解决乱码问题
@@ -55,7 +81,7 @@ set langmenu=en_US.UTF-8                                " gvim 设置菜单为�
 language messages en_US.utf-8                           " 设置 consle 提示信息编码
 
 
-" Tab 键处理方式配置
+"""""""""""""""""""""""""""""""""""""""""""""""" Tab 键处理方式配置 """"""""""""""""""""""""""""""""""""""""""
 set autoindent                      " 继承上一行的缩进
 set tabstop=4                       " 设置一个 \t 字符对应的列数
 set expandtab                       " 设置 \t 字符用 Space 替代
@@ -70,24 +96,28 @@ set softtabstop=4                   " 设置按一次 tab 键输入的列数，�
                                     " 总的意思就是，满足 tabstop 的空格数替换为 \t，剩余的用 空格 填充
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""" 搜索配置 """"""""""""""""""""""""""""""""""""""""""
+set ignorecase                              " 设置匹配的时候忽略大小写
+set ignorecase smartcase                    " 当查找串中有大写时，就大小写敏感，否则不敏感
+set hlsearch                                " 设置高亮搜索
+set incsearch                               " 实时搜索，即边输入边搜索
+set regexpengine=1                          " 使用 traditional regexp engine 
+set magic                                   " 设置 magic
 
-" 搜索配置
-set ignorecase                      " 设置匹配的时候忽略大小写
-set ignorecase smartcase            " 当查找串中有大写时，就大小写敏感，否则不敏感
-set hlsearch                        " 设置高亮搜索
-set incsearch                       " 实时搜索，即边输入边搜索
-set regexpengine=1                  " 使用 traditional regexp engine 
-set magic                           " 设置 magic
+" 当输入查找命令时，再启用高亮
+noremap n :set hlsearch<CR>n        
+noremap N :set hlsearch<CR>N        
+noremap / :set hlsearch<CR>/        
+noremap ? :set hlsearch<CR>?        
+noremap * *:set hlsearch<CR>    
+
+autocmd cursorhold * set nohlsearch         " 当光标一段时间保持不动了，就禁用高亮
 
     
 
 
-" 展开折叠配置
-set foldenable                      " 允许折叠
-set foldmethod=manual               " 手动折叠
 
-
-" Vim Script
+"""""""""""""""""""""""""""""""""""""""""""""""" Vim Script """"""""""""""""""""""""""""""""""""""""""
 " 根据是否是图形界面(GUI)，执行不同的配置
 if has('gui_running')
     " 是图形界面
@@ -105,48 +135,29 @@ endif
 
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""" Plugin 配置 """"""""""""""""""""""""""""""""""""""""""
+" 需要下载 plug.vim 文件放在 $VIMRUNTIME/autoload 文件夹下，vim 中使用 :echo $VIMRUNTIME 查看变量内容
+" 打开 vim 运行 :PlugInstall 即可安装所有列表中的插件
+" vim-plug 默认下载插件保存路径为 '~/.vim/plugged'，Windows 下默认为：%HOME%\vimfiles\plugged 
+call plug#begin()                                                   " 使用插件默认的保存路径
+"call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
+Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
+Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
+Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
+Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'         " java 自动补全
+call plug#end()
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" map 配置 """"""""""""""""""""""""""""""""""""""""""
-" 配置多键映射的 leader
-let mapleader = "-"
-
-" 快速编辑 vimrc 配置文件
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " 快速打开 nerdtree 插件
-noremap <C-n> :NERDTreeToggle<CR>                   
+noremap <C-n> :NERDTreeToggle<CR>    
 
-" 插入模式下，粘贴系统剪贴板的内容，以下两个 map 效果相同
-inoremap <S-Insert> <ESC>:set paste<CR>gi<C-R>+<ESC>:set nopaste<CR>gi
-" inoremap <S-Insert> <ESC>"+p`]a           
-
-
-" 当输入查找命令时，再启用高亮
-noremap n :set hlsearch<CR>n        
-noremap N :set hlsearch<CR>N        
-noremap / :set hlsearch<CR>/        
-noremap ? :set hlsearch<CR>?        
-noremap * *:set hlsearch<CR>    
-
-" 自动带出成对的标点符号
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>O
-inoremap ‘ ‘’<ESC>i
-inoremap “ “”<ESC>i
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 自动执行命令配置 """"""""""""""""""""""""""""""""""""""""""
-autocmd cursorhold * set nohlsearch         " 当光标一段时间保持不动了，就禁用高亮
 autocmd vimenter * NERDTreeToggle           " vim 打开时，自动打开文件浏览器，plug.vim 插件的命令，先运行 :PlugInstall 安装插件
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 自定义函数 """"""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""" 自定义函数 """"""""""""""""""""""""""""""""""""""""""
 function! KaseiCmd(cmd)
     redir @k>
     let l:var1 = execute(a:cmd, 'silent!')
@@ -229,17 +240,6 @@ function MyTabLine()
 endfunction
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Plugin 配置 """"""""""""""""""""""""""""""""""""""""""
-" 需要下载 plug.vim 文件放在 $VIMRUNTIME/autoload 文件夹下，vim 中使用 :echo $VIMRUNTIME 查看变量内容
-" 打开 vim 运行 :PlugInstall 即可安装所有列表中的插件
-" vim-plug 默认下载插件保存路径为 '~/.vim/plugged'，Windows 下默认为：%HOME%\vimfiles\plugged 
-call plug#begin()                                                   " 使用插件默认的保存路径
-"call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
-Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
-Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
-Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
-Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'         " java 自动补全
-call plug#end()
 
 
 
