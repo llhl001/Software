@@ -1,5 +1,19 @@
 {
   "log": { "loglevel": "debug" },
+  "dns": {
+    "tag": "dnsIn",                 // v2ray 内建 DNS 服务器发出的流量的标签，用于 routing 匹配
+    "servers":[
+      {
+        "address": "10.72.66.36",   
+        "port": 53,
+        "domains": [
+          "domain:h3c.com"          // 指定域名使用指定 DNS 服务器解析
+        ]
+      },      
+      "223.5.5.5",
+      "localhost"
+    ]
+  },
   "inbounds":[
     {
       "tag": "ladderSocksIn",
@@ -48,7 +62,6 @@
         "vnext":[  
           {  
             "address":"1291114093.ml",
-            //"address":"66.98.122.202",
             "port":443,
             "users":[  
               { "id":"d45499fa-6c4b-3e55-adbb-bd50bc4137b8", "security":"chacha20-poly1305", "alterId":4, "level":0 }
@@ -99,7 +112,7 @@
       /** todo bridge1 流入的数据，domain != ksf.reverse.kasei.haku 的流量直连 */
       {
         "type": "field",
-        "inboundTag": ["bridge1"],              
+        "inboundTag": ["dnsIn", "bridge1"],              
         "outboundTag": "freedomOut"
       }    
     ] 
