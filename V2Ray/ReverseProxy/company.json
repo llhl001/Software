@@ -25,8 +25,13 @@
       }
     }
   ],
-  "outbounds": [
-   {
+  "outbounds": [    
+    /** todo 直连出口 */
+    {
+      "tag": "freedomOut",
+      "protocol": "freedom"
+    },
+    {
       "tag": "wsLadderOut",
       "protocol": "vmess",
       "settings": {
@@ -82,11 +87,6 @@
           "serverName": "1291114093.ml"
         }
       }
-    },    
-    /** todo 直连出口 */
-    {
-      "tag": "freedomOut",
-      "protocol": "freedom"
     }
   ],
   "reverse":{
