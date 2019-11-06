@@ -34,8 +34,13 @@
   ],
   "outbounds": [
     {
-      "tag": "freedomOut",
-      "protocol": "freedom"
+      "tag": "freedomOut",                              // 出站协议唯一标签
+      "protocol": "freedom",                            // 出站协议名称
+      //"sendThrough": "0.0.0.0",                         // 指定使用当前主机的哪张网卡发送数据
+      "settings": {"domainStrategy": "AsIs"},           // 协议配置，各个协议各不相同
+      //"streamSettings": {},                             // 底层传输方式配置
+      //"proxySettings": {"tag": "anotherOutboundTag"},   // 使用其他出站代理发送该出站协议接收的数据
+      //"mux": {"enabled": false, "concurrency": 8}       // Mux 功能是在一条 TCP 连接上分发多个 TCP 连接的数据
     }
   ],
   "routing": {
