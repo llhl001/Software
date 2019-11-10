@@ -39,47 +39,40 @@ Concept:
         
  
 Netfilter Packet Flow：
+    /** todo 数据流入 过程介绍
+     * @param dataPacket: Network 上接收到的数据包
+     * */
+    function packetTrendIngress(dataPacket){
+        dataPacket 匹配 raw 表中 PREROUTING 链中的规则;
+        dataPacket 匹配 mangle 表中 PREROUTING 链中的规则;
+        dataPacket 匹配 nat 表中 PREROUTING 链中的规则;
+        if(dataPacket 的目的地是 firewall 本身){        
+            dataPacket 匹配 mangle 表中 INPUT 链中的规则;
+            dataPacket 匹配 nat 表中 INPUT 链中的规则;
+            dataPacket 匹配 filter 表中 INPUT 链中的规则;
 
-    伪代码模式：
-        /** todo 数据流入 过程介绍
-         * @param dataPacket: Network 上接收到的数据包
-         * */
-        function Ingress(dataPacket){    
-            DataPacket dp = null;
-            dataPacket 匹配 raw 表中 PREROUTING 链中的规则;
-            dataPacket 匹配 mangle 表中 PREROUTING 链中的规则;
-            dataPacket 匹配 nat 表中 PREROUTING 链中的规则;
-            执行路由选择
-            if(dataPacket 的目的地是 firewall 本身){        
+            dataPacket 被送往 上层协议栈 到达应用程序;
+        } else {
+            dataPacket 匹配 mangle 表中 FORWARD 链中的规则;
+            dataPacket 匹配 filter 表中 FORWARD 链中的规则;
 
-                dataPacket 匹配 mangle 表中 INPUT 链中的规则;
-                dataPacket 匹配 nat 表中 INPUT 链中的规则;
-                dataPacket 匹配 filter 表中 INPUT 链中的规则;
+            dataPacket 匹配 mangle 表中 POSTROUTING 链中的规则;
+            dataPacket 匹配 nat 表中 POSTROUTING 链中的规则;
 
-                dataPacket 被送往 上层协议栈 到达应用程序;
-            } else {
-                dataPacket 匹配 mangle 表中 FORWARD 链中的规则;
-                dataPacket 匹配 filter 表中 FORWARD 链中的规则;
-
-                dataPacket 匹配 mangle 表中 POSTROUTING 链中的规则;
-                dataPacket 匹配 nat 表中 POSTROUTING 链中的规则;
-
-                dataPacket 被送往网卡，通过网线发送出去;
-            }
+            dataPacket 被送往网卡，通过网线发送出去;
         }
+    }
 
-        /** todo 数据流出 过程介绍
-         * @param dataPacket: Application 中发送的数据包
-         * */
-        function Egress(dataPacket){
-            执行路由选择
-            dataPacket 匹配 raw 表中 OUTPUT 链中的规则;
-            dataPacket 匹配 mangle 表中 OUTPUT 链中的规则;
-            dataPacket 匹配 nat 表中 OUTPUT 链中的规则;
-
-            if(dataPacket 被上面 mangle 或 nat 表中的规则修改过){
-                重新执行路由选择
-            }
+    /** todo 数据流出 过程介绍
+     * @param dataPacket: Application 中发送的数据包
+     * */
+    function packetTrendEgress(dataPacket){        
+        dataPacket 匹配 raw 表中 OUTPUT 链中的规则;
+        dataPacket 匹配 mangle 表中 OUTPUT 链中的规则;
+        dataPacket 匹配 nat 表中 OUTPUT 链中的规则;
+        if(dataPacket 被上面 mangle 或 nat 表中的规则修改过){
+            packetTrendIngress(dataPacket);
+        } else {
             dataPacket 匹配 filter 表中 OUTPUT 链中的规则;
 
             dataPacket 匹配 mangle 表中 POSTROUTING 链中的规则;
@@ -87,18 +80,12 @@ Netfilter Packet Flow：
 
             dataPacket 被送往网卡，通过网线发送出去;
         }
-        
-    文字描述模式：
-        网线上传递一个数据包 DataPackage(以下简称 DP ) 到网卡 
-        -> DP 经过 PREROUTING 链，依次匹配 raw mangle nat 表中的规则，表中的规则是从 1~n 顺序进行匹配的 
-        -> 路由判断，是不是发往本机的 DP 
-            -> 是： DP 经过 INPUT 链，依次匹配 mangle nat filter 表中的规则，DP 被送往 上层协议栈 到达用户软件
-            -> 否： DP 经过 FORWARD 链，依次匹配 mangle filter 表中的规则， DP 被送往 POSTROUTING 链
-                -> DP 经过 POSTROUTING 链，依次匹配 mangle nat 表中的规则，DP 被送至网线上发送
-
-        用户软件 经过 上层协议栈 发送 DP 至 网卡
-        -> DP 经过 OUTPUT 链，依次匹配 raw mangle nat filter 表中的规则
-        -> DP 经过 POSTROUTING 链，依次匹配 mangle nat 表中的规则，DP 被送至网线上发送
+    }
     
+Netfilter Pit:
+    1. UDP 只能使用 tproxy 做转发
+    2. tproxy 不能用于 OUTPUT 链
+    3. 由于 Netfilter 的特性，在 OUTPUT 链打标记会使相应的包重路由到 PREROUTING 链上，
+       在已经配置好了 PREROUTING 相关的透明代理的情况下，OUTPUT 链也可以透明代理了，也就是网关对自身的 UDP 流量透明代理自身
 
 
