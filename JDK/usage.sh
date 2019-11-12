@@ -74,12 +74,12 @@ jdk 查看已经启动的 jvm 启动参数 {
 手工批量编译 {
     Linux {
         shell> find -name "*.java" > sources.txt
-        shell> javac @sources.txt
+        shell> javac -d ./out @sources.txt
     }
     
     Windows {
         shell> dir /s /B *.java > sources.txt
-        shell> javac @sources.txt
+        shell> javac -d .\out @sources.txt
     }
 }
 
