@@ -18,10 +18,7 @@
       "protocol": "socks",
       "port": 12346,                // v2ray 代理监听的端口
       "settings": {
-        "auth": "password",
-        "accounts": [
-          { "user": "kasei", "pass": "kasei" }
-        ],
+        "auth": "noauth",
         "udp": true,
         "ip": "127.0.0.1",
         "userLevel": 0
@@ -38,10 +35,10 @@
         "followRedirect": true,   // 这里要为 true 才能接受来自 iptables 的流量
         "userLevel": 0
       },
-      "sniffing": { "enabled": true, "destOverride": ["http", "tls"] } // 透明代理必须开启，否则无法使用域名进行路由选择
+      "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }, // 透明代理必须开启，否则无法使用域名进行路由选择
       /** todo inbound 中的 streamSettings 是配置接收到的数据是采用什么样的传输方式的 */
       "streamSettings": {
-        "sockopt": { "tcpFastOpen": true, "tproxy": "tproxy" } // 表示接收到的数据是使用透明代理传过来的，且透明代理的方式为 TPROXY 方式
+        "sockopt": { "tcpFastOpen": true, "tproxy": "tproxy" } // 表示接收到的数据是使用透明代理传过来的，且透明代理的方式为 TPROXY 方式，这里有 mark 表示接收到的数据包都带有防火墙标记
       }
     }
   ],
@@ -62,14 +59,14 @@
       },
       /** todo outbound 中的 streamSettings 是配置采用什么样的方式发送数据的 */
       "streamSettings": {
-        "sockopt": { "mark": 128, "tcpFastOpen": true, "tproxy": "tproxy" } // 表示使用透明代理发送数据，且透明代理方式为 TPROXY，mark 只能用于出站协议上
+        "sockopt": { "mark": 255, "tcpFastOpen": true, "tproxy": "tproxy" } // 表示使用透明代理发送数据，且透明代理方式为 TPROXY，mark 只能用于出站协议上
       }
     },
     {
       "tag": "dnsOut",    // 会将 dns 请求发送给内建 dns,
       "protocol": "dns",
       "streamSettings": {
-        "sockopt": { "mark": 128 }
+        "sockopt": { "mark": 255 } // 表示 v2ray 发送的数据包的防火墙标记都为 255
       }
     },
     {
@@ -105,7 +102,7 @@
           "disableSystemRoot": false
         },
         "sockopt": {
-          "mark": 128, //这里是 SO_MARK，用于 iptables 识别，每个 outbound 都要配置；255可以改成其他数值，但要与下面的 iptables 规则对应；如果有多个 outbound，最好将所有 outbound 的 SO_MARK 都设置成一样的数值
+          "mark": 255, //这里是 SO_MARK，用于 iptables 识别，每个 outbound 都要配置；255可以改成其他数值，但要与下面的 iptables 规则对应；如果有多个 outbound，最好将所有 outbound 的 SO_MARK 都设置成一样的数值
           "tcpFastOpen": true,
           "tproxy": "tproxy"
         }
