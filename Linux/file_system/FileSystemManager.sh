@@ -82,7 +82,9 @@ unzip -d ./unzip filename                           # 将文件解压到当前�
                                                     
 chown -R oracle:dba /home/oracle                    # 更改文件夹属主为 oracle:dba
 chgrp                                               # 修改文件属组
-chmod -R 775 file                                   # 递归更改文件属性
+chmod -Rc MODE dir                                  # 更改文件属性
+                                                    # MODE 的格式符合以下正则表达式 [ugoa]*([-+=]([rwxXst]*|[ugo]))+
+
                                                     
 iconv -l                                             # 查看所有可用的字符编码格式
 iconv -f GB2312 -t UTF-8 file1 -o file2             # 将 file1 从 GB2312 格式转化到 UTF-8 格式，并输出到 file2 中
