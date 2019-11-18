@@ -35,6 +35,9 @@ mongo> db.createUser(       # 创建 user
     writeConcern
 )        
 
+mongo> use admin
+mongo> db.system.users.find().pretty();
+
 
 # Collection CRUD
 mongo> db.myCollection.help()   # 查看当前 collection 能使用哪些方法
