@@ -54,7 +54,7 @@ Ctrl+Home                   文件首
 Ctrl+End                    文件尾
 
 Alt+Left/Right              切换编辑器 tab 页
-Ctrl+Alt+Left/Right         快速返回前进上次代码位置
+Ctrl+Alt+Left/Right         快速返回前进上次代码位置，备用方案：Ctrl+Alt+,/. 来替代
 Ctrl+Alt+Backspace          移动到上一次修改的地方
 
 ######## 快速选择
