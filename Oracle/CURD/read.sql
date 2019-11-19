@@ -64,7 +64,7 @@ select distinct col1 as alias1, col2 as alias2
 from tab as t1 left join tab2 as t2 on(t1.col1=t2.col1, t1.col2=t2.col2)
 where t1.col1>30
 group by(col1, col2) having(col1>2)
-order by col1 desc, col2 asc, nlssort(col3, 'NLS_SORT=SCHINESE_PINYIN_M');;
+order by col1 desc nulls last, col2 asc, nlssort(col3, 'NLS_SORT=SCHINESE_PINYIN_M');;
 
 -- 表连接
 t1 inner join t2    -- t1 和 t2 做笛卡尔积，然后在笛卡尔积中返回符合条件的行，且仅返回匹配的行
