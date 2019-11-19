@@ -18,7 +18,7 @@ TNSNAME = (
     
 
 #### sample
-TNSNAME1 = (
+TNS_NAME1 = (
     DESCRIPTION = (
         ADDRESS_LIST = ( 
             ADDRESS = (PROTOCOL = TCP) (HOST = 127.0.0.1) (PORT = 1521) 
@@ -31,14 +31,3 @@ TNSNAME1 = (
 ) 
 
 
-TNSNAME1 = (
-    DESCRIPTION = (
-        ADDRESS_LIST = ( 
-            ADDRESS = (PROTOCOL = TCP) (HOST = 192.168.16.4) (PORT = 1521) 
-        ) 
-    )
-    (
-        CONNECT_DATA = 
-            (SERVICE_NAME = BPM)   
-    )
-) 
