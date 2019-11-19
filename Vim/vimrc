@@ -31,7 +31,8 @@ set laststatus=2                                        " 启动显示状态行(
 " %( %)         表示一个 item 分组
 " %1*           开始一个高亮分组 
 " %0*           结束一个高亮分组，恢复成正常颜色
-set statusline=%(%1*%F%m%r%h%w%0*%)\ [Format=%{&fileformat}:%{&fileencoding}]\ [POS=%l/%L,%v,%p%%]\ [Type=%Y]\ [%{strftime(\"%Y-%m-%d\ %T\")}]\ %<
+set statusline=%(%1*%F%m%r%h%w%0*%)\ [Format:%{&fileformat},%{&fileencoding}]\ [POS:%l/%L=%p%%,%v]\ [Type:%Y]\ [%{strftime(\"%Y-%m-%d\ %T\")}]\ %<
+
 highlight User1 guibg=blue                              " 设置 %1* 开启的高亮分组图形界面背景色为 blue
 
 """""""""""""""""""""""""""""""""""""""""""""""" Edit Settings """"""""""""""""""""""""""""""""""""""""""
