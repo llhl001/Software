@@ -19,6 +19,8 @@
 ######## 书签
 :marks                              # 查看书签列表
 :marks a                            # 查看 a 书签的信息
+:delmarks!                          # 删除所有书签
+:delmarks a                         # 删除书签 a
 
 ######## 字体
 :set guifont=*                      # 查看 gvim 支持的所有字体
