@@ -1,7 +1,10 @@
-######## 帮助
-:help                               # 打开自带的帮助文档
-:help m                             # 获取 Normal 模式下 m 命令
-:help :m                            # 获取 Command 模式下 m 命令
+帮助 {
+    :h[elp]                               # 打开自带的帮助文档
+    :help m                             # 获取 Normal 模式下 m 命令
+    :help :m                            # 获取 Command 模式下 m 命令
+    :helpc[lose]                        # 关闭帮助
+    :h[elp]! subject                    # 打开同语言的 vim 帮助文档
+}
 
 ######## 自动执行的命令
 :verbose autocmd                    # 查看所有 autocmd 命令，verbose 显示其定义位置
@@ -42,6 +45,36 @@
 
 
  
+
+文件对比 {
+    开启对比模式 {
+        一个 tab 页只能开起一个对比模式
+    
+        shell> vim -d file1 file2 file3     # 打开多个文件进行对比
+        shell> vimdiff file1 file2 file3    # 同上
+        :diffs[plit] file1                  # 打开 file1 跟当前窗口中的文件对比
+        :difft[his]                         # 将当前窗口中的文件加入对比
+        :diffp[atch] file1                  # 使用 file1 给当前缓冲区的内容打补丁
+        :vert[ical] diffsplit file1         # 纵向分割当前窗口做对比
+        :diffupdate                         # 重新执行比较
+    }
+   
+    关闭对比模式 {
+        :diffo[ff]                          # 当前窗口退出对比模式
+        :diffo[ff]!                         # 当前 tab 页的所有窗口退出对比模式
+        
+    }
+    
+    不同点跳转 {
+        [c          # 跳转到上一个不同点
+        ]c          # 跳转到下一个不同点
+    }
+    
+    展开折叠 {
+        zo          # 展开
+        zc          # 折叠
+    }
+}
 
 
     
