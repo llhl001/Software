@@ -22,7 +22,10 @@ set foldenable                                          " 允许折叠
 set foldmethod=manual                                   " 手动折叠
 set nowrap                                              " 关闭 vim 自动换行
 set fo+=mB                                              " 使自动换行对中文也能生效，其中 m 表示允许在两个汉字中间换行，而 B 表示将两行合为一行的时候不要在两个汉字之间加入空格。
-set diffopt=context:3                                   " 对比模式下，额外显示前后各3行
+set diffopt=context:6                                   " 对比模式下，额外显示前后各6行
+set foldmethod=indent                                   " 依据缩进来计算折叠点
+set foldlevelstart=99                                   " 从第 99 层开始折叠
+
 
 """""""""""""""""""""""""""""""""""""""""""""""" Status Line Settings """"""""""""""""""""""""""""""""""""""""""
 set laststatus=2                                        " 启动显示状态行(1),总是显示状态行(2)
