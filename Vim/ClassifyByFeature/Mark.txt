@@ -1,3 +1,7 @@
+帮助 {
+    :h mark-motions     
+}
+
 查看书签 {
     :marks      # 列出所有当前书签
     :marks aB   # list marks a, B
