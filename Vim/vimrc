@@ -18,14 +18,18 @@ set showmatch                                           " 括号匹配模式
 set matchtime=1                                         " 匹配括号高亮的时间（单位是十分之一秒）
 set so=3                                                " 设置页面滚动时保留 3 行原屏幕显示的行
 set scrolloff=3                                         " 光标移动到 buffer 的顶部和底部时保持3行距离 
-set foldenable                                          " 允许折叠
-set foldmethod=manual                                   " 手动折叠
 set nowrap                                              " 关闭 vim 自动换行
 set fo+=mB                                              " 使自动换行对中文也能生效，其中 m 表示允许在两个汉字中间换行，而 B 表示将两行合为一行的时候不要在两个汉字之间加入空格。
-set diffopt=context:6                                   " 对比模式下，额外显示前后各6行
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""" Fold Settings """"""""""""""""""""""""""""""""""""""""""
+set foldenable                                          " 允许折叠
 set foldmethod=indent                                   " 依据缩进来计算折叠点
 set foldlevelstart=99                                   " 从第 99 层开始折叠
 
+"""""""""""""""""""""""""""""""""""""""""""""""" Different Settings """"""""""""""""""""""""""""""""""""""""""
+set diffopt=context:6                                   " 对比模式下，额外显示前后各6行
 
 """""""""""""""""""""""""""""""""""""""""""""""" Status Line Settings """"""""""""""""""""""""""""""""""""""""""
 set laststatus=2                                        " 启动显示状态行(1),总是显示状态行(2)
@@ -35,7 +39,6 @@ set laststatus=2                                        " 启动显示状态行(
 " %1*           开始一个高亮分组 
 " %0*           结束一个高亮分组，恢复成正常颜色
 set statusline=%(%1*%F%m%r%h%w%0*%)\ [Format:%{&fileformat},%{&fileencoding}]\ [POS:%l/%L=%p%%,%v]\ [Type:%Y]\ [%{strftime(\"%Y-%m-%d\ %T\")}]\ %<
-
 highlight User1 guibg=blue                              " 设置 %1* 开启的高亮分组图形界面背景色为 blue
 
 """""""""""""""""""""""""""""""""""""""""""""""" Edit Settings """"""""""""""""""""""""""""""""""""""""""
@@ -121,12 +124,8 @@ set magic                                   " 设置 magic
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
 nnoremap * :set hlsearch<CR>*
-nnoremap <ESC> :set nohlsearch<CR><ESC>
    
-
 autocmd cursorhold * set nohlsearch         " 当光标一段时间保持不动了，就禁用高亮
-
-    
 
 
 
