@@ -40,7 +40,7 @@ LocalRepo,LocalRemoteRepo,RemoteRepo 交互 {
         shell> git remote prune origin                          # 修剪 origin 远程库 陈旧(stale) 的分支
         shell> git remote --dry-run                             # 仅执行命令，并打印输出，但是不执行实际的操作，用户查看当前命令会做哪些操作
         
-        shell> git push origin -all                             # 推送所有分支
+        shell> git push origin --all                            # 推送所有分支
         shell> git push origin localBranch:remoteBranch         # 将本库的 localBranch 分支的更新推送到 origin 远程库的 remoteBranch 分支上
         shell> git push --set-upstream origin localBranch:remoteBranch      # 推送更新的同时，将本地库的 localBranch 分支，关联到 origin 远程库的 remoteBranch 分支上
         shell> git push --force origin localBranch:remoteBranch     # 强制覆盖远程库分支内容
