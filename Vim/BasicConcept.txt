@@ -1,3 +1,9 @@
+" 查看命令的帮助文档
+:h <name>
+
+" 查看所有映射
+:map
+
 " 显示版本及默认 vimrc 配置文件加载路径
 :version 
 
@@ -16,8 +22,8 @@
 " 显示script搜索路径
 :set runtimepath?
 
-" 查看命令的帮助文档
-:h <name>
+
+
 
 
 " Vim 所有模式
