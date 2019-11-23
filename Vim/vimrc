@@ -40,7 +40,7 @@ highlight User1 guibg=blue                              " 设置 %1* 开启的�
 
 """""""""""""""""""""""""""""""""""""""""""""""" Edit Settings """"""""""""""""""""""""""""""""""""""""""
 set nocompatible                                        " 使用 vim 自己的键盘模式，不使用 vi 的默认键盘布局
-set clipboard=unnamed                                   " 将剪贴板寄存器("+) 设置为默认寄存器，如果不设置 p 命令粘贴的是 ""(未命名) 寄存器中的内容
+set clipboard^=unnamed,unnamedplus                      " 将剪贴板寄存器("+) 和 选择寄存器("*) 设置为默认寄存器，如果不设置 p 命令粘贴的是 ""(未命名) 寄存器中的内容
 set mouse=a                                             " 使 vim 支持鼠标操作
 set viminfo='20                                         " 不限制一次最多可以复制的行数
 set backspace=indent,eol,start                          " 使退格键（backspace）正常处理 indent, eol, start 等
@@ -57,6 +57,7 @@ inoremap “ “”<ESC>i
 
 " 插入模式下，粘贴系统剪贴板的内容，以下两个 map 效果相同
 inoremap <S-Insert> <ESC>:set paste<CR>gi<C-R>+<ESC>:set nopaste<CR>gi
+nnoremap <S-Insert> "+p
 " inoremap <S-Insert> <ESC>"+p`]a   
 
 """""""""""""""""""""""""""""""""""""""""""""""" 通用配置 """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -151,8 +152,8 @@ endif
 " 需要下载 plug.vim 文件放在 $VIMRUNTIME/autoload 文件夹下，vim 中使用 :echo $VIMRUNTIME 查看变量内容
 " 打开 vim 运行 :PlugInstall 即可安装所有列表中的插件
 " vim-plug 默认下载插件保存路径为 '~/.vim/plugged'，Windows 下默认为：%HOME%\vimfiles\plugged 
-call plug#begin()                                                   " 使用插件默认的保存路径
-"call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
+"call plug#begin()                                                   " 使用插件默认的保存路径
+call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
 Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
 Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
 Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
