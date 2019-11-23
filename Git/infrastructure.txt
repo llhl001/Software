@@ -12,18 +12,20 @@ Git 基本概念介绍：
     
 
 Git 中文件状态的改变，例如一下操作仅针对一个文件 H.txt
-      未跟踪           未修改             已修改            缓存区              本地仓库            远程仓库
-    untracked       unmodified          modified          staged            localRepo           remoteRepo
-        |                |                  |               |                   |                   |
-        |  - git add ->  |                  |               |                   |                   |
-        |                |  - edit file ->  |               |                   |                   |
-        |                |                  |  - git add -> |                   |                   |
-        |                |                  |               | - git commit ->   |                   |
-        |                |                  |               |                   |  - git push ->    |
-        |                |                  |               |                   |  <- git fetch -   |
-        |                |             <- git checkout <- git reset -           |                   |
-        |                |   <- git checkout -- H.txt -     |                   |                   |
-        |  <- git rm -   |                  |               |                   |                   |
+      未跟踪           未修改             已修改            缓存区              本地仓库            本地远程库             远程仓库
+    untracked       unmodified          modified          staged            localRepo       localRemoteRepo       remoteRepo
+        |  - git add ->  |                  |               |                   |                  |                   |
+        |                | - edit file ->   |               |                   |                  |                   |
+        |                |                  |  - git add -> |                   |                  |                   |
+        |                |                  |               | - git commit ->   |                  |                   |
+        |                |                  |               |                   |  - git push ->   |                   |
+        |                |                  |               |                   |  ----------- git push ---------->    |
+        |                |                  |               |                   |                  |                   |
+        |                |                  |               |                   |  <- git merge -  |  <- git fetch -   |
+        |                |      <------------- git reset ----------------       |                  |                   |
+        |                |      <------------- git checkout -------------       |                  |                   |
+        |                |   <- git checkout -- H.txt -     |                   |                  |                   |
+        |  <- git rm -   |                  |               |                   |                  |                   |
 
 
 
