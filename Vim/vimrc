@@ -153,13 +153,17 @@ endif
 " 需要下载 plug.vim 文件放在 $VIMRUNTIME/autoload 文件夹下，vim 中使用 :echo $VIMRUNTIME 查看变量内容
 " 打开 vim 运行 :PlugInstall 即可安装所有列表中的插件
 " vim-plug 默认下载插件保存路径为 '~/.vim/plugged'，Windows 下默认为：%HOME%\vimfiles\plugged 
-"call plug#begin()                                                   " 使用插件默认的保存路径
-call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
+if has('win64') || has('win32')
+    call plug#begin()                                                   " 使用插件默认的保存路径
+else
+    call plug#begin('/usr/share/vim/vimfiles/plugged')                  " 修改插件默认保存路径为 '/usr/share/vim/vimfiles/plugged'            
+endif
 Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
 Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
 Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
 Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'         " java 自动补全
 call plug#end()
+
 
 
 " 快速打开 nerdtree 插件
