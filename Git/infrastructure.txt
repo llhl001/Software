@@ -15,6 +15,11 @@ Git 数据结构
     Tree: 一个版本所有文件所在的路径
     Blob: 就是文件，存储实际数据
     关系: Commit <- 1:1 -> Tree <- 1:n -> Blob
+    
+Git Reference
+    HEAD: 当前正在编辑的 Commit 的 parent commit
+    Tag: 指向一个 Commit
+    Remote: 可以有多个 remote 仓库，命令行中的使用方式 远程仓库名/分支名，例如： origin/dev
 
 Git 中文件状态的改变，例如一下操作仅针对一个文件 H.txt
       未跟踪           未修改             已修改            缓存区              本地仓库            本地远程库             远程仓库
