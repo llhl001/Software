@@ -22,4 +22,7 @@ for /f %%a in ('dir .\source\*.java /b /s') do (
     native2ascii -reverse -encoding utf8 %%a %%a
 )
 
+set /p userInputVar=输入任意字符串结束:
+echo %userInputVar%
+pause
 
