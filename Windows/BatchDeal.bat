@@ -47,6 +47,9 @@ echo %errorlevel%           rem # 获取 choice 返回值
                             rem # 用户选择列表中的第一个选项，返回 1，第二个选项返回 2，以此类推
                             rem # Ctrl+Break 或 Ctrl+C 返回 0
                             rem # 错误 返回 255
+                            
+set /p userInputVar=promptString        rem 等待用户输入一行字符串，并将该字符串赋值给变量 userInputVar
+echo %userInputVar%
                                             
 
 rem ################ General Command
