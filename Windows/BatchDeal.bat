@@ -36,10 +36,10 @@ rem ################ Interaction Command
 pause                                               rem 暂停，用户输入任意键继续执行
 
 
-choice /C abc /N /CS /T 9999 /D b /M select:        rem # /C 选项列表
+choice /C abc /N /CS /T 9999 /D b /M select:        rem # /C 选项列表，默认 YN
                                                     rem # /CS 选项列表区分大小写
                                                     rem # /N 不显示选项列表[a,b,c]
-                                                    rem # /T 设置超时时间
+                                                    rem # /T 做出默认选择前，暂停的秒数，0~9999，0 表示直接选择默认值
                                                     rem # /D 超时默认选择的选项
                                                     rem # /M 显示的消息
                                                     rem # 选项1请选a，选项2请选b，选项3请选c。最大等待时间9999秒，超过默认选择b，/CS 选项区分大小写
