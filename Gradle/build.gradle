@@ -1,20 +1,96 @@
+/*
+Concept:
+    Project 表示一个项目，就是你想要做的某一件事
+    Task 表示运行 Gradle 时执行的操作
+    allprojects{} 和 subprojects{} 可用于配置整体项目，其他 DSL 都是用于配置当前项目的
+*/
+
 /** todo Gradle 中两个概念，Project 和 Task
  * Project 表示一个项目，就是你想要做的某一件事
  * Task 表示运行 Gradle 时执行的操作
+ * 
  * */
+
+
+/** todo 所有项目及子项目公共配置 */
+allprojects { 
+    ext {
+        SpringBootVersion = '2.2.0.RELEASE'
+        SpringCloudVersion = 'Greenwich.SR3'
+        JunitVersion = '5.5.1'
+    }
+}
+
+/** todo 子项目配置 */
+subprojects { }
+
+
+
+/** todo 项目所需的插件 */
 plugins {
     id 'java'
+    id 'idea'
     id 'war'
 }
 
-group 'bpm'
-version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+
+/** todo 产品配置 */
+artifacts { }
+
+
+/** todo Gradle 脚本本身执行所需要的配置 */
+buildscript { 
+    ext {
+        SpringBootVersion = '2.2.0.RELEASE'
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        mavenCentral()
+        
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${SpringBootVersion}"
+    }
 }
+
+
+/** todo 配置 */
+configurations { 
+    all*.exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+}
+
+
+/** todo 依赖管理 */
+dependencies { 
+    /** 加载本地 lib 目录下的 jar 包 */
+    compile fileTree(dir:'src/main/webapp/WEB-INF/lib',include:['*.jar'])
+
+    /** 单元测试 */
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${JunitVersion}"
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${JunitVersion}"
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "${JunitVersion}"
+
+}
+
+
+/** todo 仓库 */
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    mavenCentral()      // maven 中央仓库
+    jcenter()           // jcenter 仓库
+}
+
+/** todo 源码位置配置 */
+sourceSets { }
+
+
+
+/** todo 发布配置 */
+publishing { }
+ 
+ 
 
 
 
@@ -22,25 +98,6 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"      // 编译JAVA文件时采用UTF-8
 }
 
-dependencies {
-
-    compile fileTree(dir:'src/main/webapp/WEB-INF/lib',include:['*.jar'])
-
-
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.1'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.1'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.5.1'
-}
-
-
-/** todo 创建一个 Gradle 构建任务
- * shell> gradle -q hello    # 使用该命令运行这个任务，-q quiet 不打印 gradle 自身的 log
- * */
-task hello {
-    doLast {
-        println 'Hello world!'
-    }
-}
 
 /** todo 创建一个带参数的 task
  * */
