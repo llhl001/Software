@@ -89,15 +89,17 @@ repositories {
 
 /** todo 源码位置配置 */
 sourceSets { 
+    sourceSets {
     main {
         java {
-            srcDir 'src/java' // 指定源码目录
-            exclude 'src/java/cn/linkey/sap/**'
+            srcDir 'src/main/java' // 指定源码目录
+            exclude 'cn/linkey/sap/**'   // 直接以 ${srcDir}/ 为当前相对路径的起始点
         }
         resources {
-            srcDir 'src/resources' //资源目录
+            srcDir 'src/main/resources' //资源目录
         }
     }
+}
 }
 
 
