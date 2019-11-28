@@ -88,7 +88,17 @@ repositories {
 }
 
 /** todo 源码位置配置 */
-sourceSets { }
+sourceSets { 
+    main {
+        java {
+            srcDir 'src/java' // 指定源码目录
+            exclude 'src/java/cn/linkey/sap/**'
+        }
+        resources {
+            srcDir 'src/resources' //资源目录
+        }
+    }
+}
 
 
 
