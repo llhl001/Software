@@ -62,8 +62,9 @@ inoremap “ “”<ESC>i
 
 " 插入模式下，粘贴系统剪贴板的内容，以下两个 map 效果相同
 inoremap <S-Insert> <ESC>:set paste<CR>gi<C-R>+<ESC>:set nopaste<CR>gi
+inoremap <C-v> <ESC>"+p`]a
 nnoremap <S-Insert> "+p
-" inoremap <S-Insert> <ESC>"+p`]a   
+   
 
 """""""""""""""""""""""""""""""""""""""""""""""" 通用配置 """""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu                                            " 智能补全命令行
