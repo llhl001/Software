@@ -1,5 +1,6 @@
 shell> man man          # 查看 page=man 的内容
 shell> man 8 man        # 查看指定 section 的内容
+shell> man -f cmd       # 查看命令的简短描述，等价于 shell> whatis cmd
 
 h                   # 查看帮助
 q                   # 推出
