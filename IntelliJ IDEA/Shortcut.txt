@@ -89,6 +89,8 @@ Ctrl+Shift+U                大小写切换
 
 
 ######## Frequently Used
+Ctrl+Tab                    切换 Tab 页及窗口(长按)，Delete 键关闭 Tab 页
+Ctrl+F4                     关闭当前 Tab 页
 Alt+F12                     打开 Terminal
 F2                          高亮错误
 Shift+F2                    警告快速定位
