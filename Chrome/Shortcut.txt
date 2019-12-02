@@ -1,0 +1,5 @@
+Ctrl+Tab                    # 切换到下一个 tab 页
+Ctrl+Shift+Tab              # 切换到上一个 tab 页
+Ctrl+[1-8]                  # 切换到第 1-8 个 tab 页
+Ctrl+9                      # 切换到最后一个 tab 页
+Ctrl+Shift+T                # 重新打开最近关闭的 tab 页
