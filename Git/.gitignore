@@ -30,8 +30,6 @@
 /**/out/    
 /**/build/
 
-# 排除 /ProjectName/.idea 目录
-/.idea/
 
 # 排除 /ProjectName/.gradle 目录
 /.gradle/
