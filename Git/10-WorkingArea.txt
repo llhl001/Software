@@ -1,3 +1,14 @@
+File Content {
+    Query { 直接打开文件看啊 }
+    Create { 直接创建文件啊 }
+    Delete { 直接删文件啊 }
+    Update { 直接改文件啊 }
+}
+
+File Status {
+    
+}
+
 # 查看工作区文件状态
     shell> git status --untracked-files             # 查看工作区没有被 git 管理的文件
     shell> git status --ignored                     # 显示出被忽略的文件，被忽略即 push 远程的时候不上传       
