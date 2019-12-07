@@ -14,19 +14,29 @@ Update {
     shell> git remote --mirror=push                         # 从 本地库 push 所有内容覆盖 远程库
     shell> git remote --dry-run                             # 仅执行命令，并打印输出，但是不执行实际的操作，用户查看当前命令会做哪些操作
 
-    Create RemoteRepo Branch {        
-        shell> git push origin localBranch:                     # 将本地分支 push 到远程库        
-    }
-    
-    Delete RemoteRepo Branch {
-        shell> git remote prune origin                          # 修剪 origin 远程库 陈旧(stale) 的分支
-        shell> git push origin :debug                           # 将删除的远程分支 push 到远程仓库
-    }
-    
-    Update RemoteRepo Branch {
-        shell> git push origin --all                            # 推送所有分支
-        shell> git push origin localBranch:remoteBranch         # 将本库的 localBranch 分支的更新推送到 origin 远程库的 remoteBranch 分支上
-        shell> git push --force origin localBranch:remoteBranch     # 强制覆盖远程库分支内容
+    RemoteRepo Branch {
+        Query { 先 fetch 到 LocalRemoteRepo 再查询 }
         
+        Create  {        
+            shell> git push origin localBranch:                     # 将本地分支 push 到远程库        
+        }
+
+        Delete {
+            shell> git remote prune origin                          # 修剪 origin 远程库 陈旧(stale) 的分支
+            shell> git push origin :debug                           # 将删除的远程分支 push 到远程仓库
+        }
+
+        Update {
+            shell> git push origin --all                            # 推送所有分支
+            shell> git push origin localBranch:remoteBranch         # 将本库的 localBranch 分支的更新推送到 origin 远程库的 remoteBranch 分支上
+            shell> git push --force origin localBranch:remoteBranch     # 强制覆盖远程库分支内容    
+            
+            RemoteRepo Commit {
+                Query { 先 fetch 到 LocalRemoteRepo 再查询 }
+                Create { 通过 push branch }
+                Delete { 通过 push branch }
+                Update { 通过 push branch }
+            }
+        }    
     }
 }
