@@ -11,13 +11,11 @@ Delete {
 }
 
 Update {
-    @trap 所有 push 操作都会同时修改 LocalRemoteRepo 和 RemoteRepo
+    shell> git remote --mirror=push                         # 从 本地库 push 所有内容覆盖 远程库
     shell> git remote --dry-run                             # 仅执行命令，并打印输出，但是不执行实际的操作，用户查看当前命令会做哪些操作
 
-    Create RemoteRepo Branch {
-        shell> git remote --mirror=push                         # 从 本地库 push 所有内容覆盖 远程库
-        shell> git push origin localBranch:                     # 将本地分支 push 到远程库
-        
+    Create RemoteRepo Branch {        
+        shell> git push origin localBranch:                     # 将本地分支 push 到远程库        
     }
     
     Delete RemoteRepo Branch {
