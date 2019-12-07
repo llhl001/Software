@@ -11,12 +11,12 @@ Create {
     
     添加远程库关联方式创建 {
         shell> git remote add origin url        # 为本地库添加一个名为 origin 的远程库关联
-        shell> git remote remove origin         # 删除一个远程库关联
+        
     }
 }
 
 Delete {
-    
+    shell> git remote remove origin         # 删除一个远程库关联
 }
 
 LocalRemoteRepo Branch {
@@ -31,7 +31,7 @@ LocalRemoteRepo Branch {
         LocalRepo 中 push 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
     }
     Update {
-        shell> git remote --mirror=fetch                    # 从 远程库 fetch 所有内容覆盖 本地库
+        
         shell> git fetch origin                             # 拉取 origin 远程库中的所有分支到本地
         shell> git fetch origin master                      # 拉取 origin 远程库中的 master 分支到本地 master 分支
         shell> git fetch origin remoteBranch:localBranch    # 拉取 origin 远程库中的 remoteBranch 分支到本地的 localBranch 分支
