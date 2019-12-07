@@ -1,1 +1,42 @@
-df
+Query {
+    shell> git remote -v        # 查看当前本地库关联的远程库
+}
+
+Create {
+    克隆远程库方式创建 {
+        @trap 该方式会同时创建 LocalRepo
+        shell> git init                         # 初始化一个本地仓库
+        shell> git clone git@github.com:KaseiHaku/RemoteRepository.git # 从远程库中克隆一个到本地库，同时会创建一个本地远程库
+    }
+    
+    添加远程库关联方式创建 {
+        shell> git remote add origin url        # 为本地库添加一个名为 origin 的远程库关联
+        shell> git remote remove origin         # 删除一个远程库关联
+    }
+}
+
+Delete {
+    
+}
+
+Query Associate {
+
+}
+
+Create Associate {
+
+}
+
+Delete Associate {
+
+}
+
+Update Associate {
+
+}
+
+
+
+
+
+
