@@ -4,7 +4,7 @@ Branch Infrastructure {
     HEAD            # 表示当前所在分支的别名
 }
 
-Local Repository {
+LocalRepo Branch {
     query {
         shell> git branch --list --verbose              # 查看本地库所有分支
         shell> git branch --all --verbose               # 查看本地库和本地远程库所有分支
@@ -23,6 +23,8 @@ Local Repository {
     delete {
         shell> git branch -d debug              # 删除当前分支上的 debug 分支
         shell> git branch -D debug              # 强制删除 debug 分支
+         shell> git fetch --force origin                     # 强制覆盖本地库
+            shell> git fetch --prune origin                     # 修剪所有远程库中不存在的本地分支
     }
     
     switch {
