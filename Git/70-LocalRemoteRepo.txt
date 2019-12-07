@@ -19,21 +19,22 @@ Delete {
     
 }
 
-Query Associate {
+LocalRemoteRepo Branch {
 
+    Query {
+        
+    }
+    Create {
+        shell> git remote -t branch1 -t branch2             # 只抓取指定的分支到本地库
+    }
+    Delete {
+        LocalRepo 中 push 和 pull 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
+    }
+    Update {
+        LocalRepo 中 push 和 pull 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
+    }
 }
 
-Create Associate {
-
-}
-
-Delete Associate {
-
-}
-
-Update Associate {
-
-}
 
 
 
