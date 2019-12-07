@@ -12,7 +12,9 @@ Delete {
 }
 
 Update {
+    shell> git remote add --mirror=fetch origin url         # 将 RemoteRepo 覆盖到 LocalRepo，该命令只对 BareRepo 有效
     本地 commit   # 查看额外的文件
     本地 branch   # 查看额外的文件 
+    
 }
 
