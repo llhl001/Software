@@ -1,3 +1,8 @@
+Infrastructure {
+    LocalRemoteRepo 只是用来保存 LocalRepo 跟 RemoteRepo 之间的关联关系，不实际保存任何数据，
+    删除任何 LocalRemoteRepo 中的东西，都只是删除关联关系而已
+}
+
 Query {
     shell> git remote -v        # 查看当前本地库关联的远程库
 }
@@ -19,24 +24,26 @@ Delete {
     shell> git remote remove origin         # 删除一个远程库关联
 }
 
-LocalRemoteRepo Branch {
+Update {     
+    shell> git fetch origin                             # 拉取 origin 远程库中的所有分支到本地
+    shell> git fetch origin master                      # 拉取 origin 远程库中的 master 分支到本地 master 分支
+    shell> git fetch origin remoteBranch:localBranch    # 拉取 origin 远程库中的 remoteBranch 分支到本地的 localBranch 分支
+    shell> git fetch --dry-run --prune origin           # Show what would be done, without making any changes 
+}
+
+LocalBranch and RemoteBranch Associate Relation {
 
     Query {
-        
+        shell> git branch -remotes --list --verbose      # 查看远程库所有分支
+        shell> git branch --all --verbose                # 查看本地库和本地远程库所有分支
     }
     Create {
         LocalRepo 中 push 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
     }
     Delete {
-        LocalRepo 中 push 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
+        shell> git branch -r -d origin/debug        # 删除本地库中的 远程分支 
     }
-    Update {
-        
-        shell> git fetch origin                             # 拉取 origin 远程库中的所有分支到本地
-        shell> git fetch origin master                      # 拉取 origin 远程库中的 master 分支到本地 master 分支
-        shell> git fetch origin remoteBranch:localBranch    # 拉取 origin 远程库中的 remoteBranch 分支到本地的 localBranch 分支
-        shell> git fetch --dry-run --prune origin           # Show what would be done, without making any changes 
-    }
+    
 }
 
 
