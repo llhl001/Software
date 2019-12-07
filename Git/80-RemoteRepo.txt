@@ -19,8 +19,10 @@ Update {
         }
 
         Delete {
-            shell> git remote prune origin                          # 修剪 origin 远程库 陈旧(stale) 的分支
+            shell> git push --prune origin                  # 删除 RemoteRepo 中 LocalRepo 中没有的分支
+            shell> git push --delete origin dev             # 删除 RemoteRepo 中的 dev 分支
             shell> git push origin :debug                           # 将删除的远程分支 push 到远程仓库
+            
         }
 
         Update {
