@@ -22,8 +22,8 @@ Git Reference
     Remote: 可以有多个 remote 仓库，命令行中的使用方式 远程仓库名/分支名，例如： origin/dev
 
 Git 中文件状态的改变，例如一下操作仅针对一个文件 H.txt
-      未跟踪           未修改             已修改            缓存区              本地仓库            本地远程库             远程仓库
-    untracked       unmodified          modified          staged            localRepo       localRemoteRepo       remoteRepo
+      未跟踪           未修改             已修改            缓存区              本地仓库            关联关系库             远程仓库
+    untracked       unmodified          modified          staged            localRepo       associateRelationRepo  remoteRepo
         |  - git add ->  |                  |               |                   |                  |                   |
         |                | - edit file ->   |               |                   |                  |                   |
         |                |                  |  - git add -> |                   |                  |                   |
