@@ -1,5 +1,5 @@
 Query {
-    本地库就一个查个鬼
+    shell> git remote --verbose         # 查看 LocalRepo 的 RelatedRepo
 }
 
 Create {
