@@ -25,13 +25,17 @@ LocalRemoteRepo Branch {
         
     }
     Create {
-        shell> git remote -t branch1 -t branch2             # 只抓取指定的分支到本地库
+        LocalRepo 中 push 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
     }
     Delete {
-        LocalRepo 中 push 和 pull 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
+        LocalRepo 中 push 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
     }
     Update {
-        LocalRepo 中 push 和 pull 命令会同时更新 LocalRemoteRepo 和 RemoteRepo
+        shell> git remote --mirror=fetch                    # 从 远程库 fetch 所有内容覆盖 本地库
+        shell> git fetch origin                             # 拉取 origin 远程库中的所有分支到本地
+        shell> git fetch origin master                      # 拉取 origin 远程库中的 master 分支到本地 master 分支
+        shell> git fetch origin remoteBranch:localBranch    # 拉取 origin 远程库中的 remoteBranch 分支到本地的 localBranch 分支
+        shell> git fetch --dry-run --prune origin           # Show what would be done, without making any changes 
     }
 }
 
