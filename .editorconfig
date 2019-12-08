@@ -1,12 +1,12 @@
 # top-most EditorConfig file
 root = true
 
-end_of_line = lf
-charset = utf8
-
-
 # all files
 [*]
+charset = utf8
 indent_style = space
 indent_size = 4
 tab_width = 4 
+end_of_line = lf
+insert_final_newline = true
+
