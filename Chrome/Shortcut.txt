@@ -11,6 +11,8 @@ F6                          # 转到地址栏输入
 Alt+Enter                   # 新 tab 页中打开
 
 
+Ctrl+Shift+Delete           # 清空缓存
+
 Ctrl+T                      # 新建一个 tab 页
 Ctrl+Shift+T                # 重新打开最近关闭的 tab 页
 Ctrl+Tab                    # 切换到下一个 tab 页
