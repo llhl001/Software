@@ -1,4 +1,5 @@
 jvm 启动参数：{
+
     shell> $JAVA_HOME/bin/java -XX:+PrintFlagsInitial >> AllBootParam.txt   # 查看所有 jvm 启动参数
 
     category {
@@ -13,6 +14,11 @@ jvm 启动参数：{
                     -javaagent:/root/agent.jar  # 加载 java 变成语言代理
                     -xshowSettings      # 显示所有 jvm 设置
                     
+    }
+    
+    
+    Debug 方式启动 JVM {
+        shell> java -jar myapp.jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
     }
     
     
