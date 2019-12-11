@@ -228,7 +228,7 @@ Personalize Settings {
     }
 
 
-    配置 IDEA 支持 ECMAScript 6 语法 {
+    配置 IDEA 支持 ECMAScript 6(ES6) 语法 {
     
         File -> Settings -> Languages & Frameworks -> JavaScript
         => JavaScript language version: ECMAScript 6
