@@ -12,7 +12,7 @@
 }
 
 端口扫描工具 {
-    Nmap                    https://nmap.org/download.html              Cross-platform
+    NMap                    https://nmap.org/download.html              Cross-platform
     AdvancePortScanner      https://www.advanced-port-scanner.com/      only windows    
 }
 
