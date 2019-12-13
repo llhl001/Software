@@ -3,9 +3,13 @@
 
 # 查看
 shell> yum list                                                         # 查看 yum 源中的所有软件包
-shell> yum grouplist                                                    # 查看 yum 源中的所有软件组
+shell> yum search str                                                   # 查询仓库中，包含指定字符串的包
+shell> yum --showduplicates list                                        # 查看仓库中一个包的所有版本
+
 shell> yum list installed                                               # 列出所有采用 yum 安装的软件
 shell> yum list extras                                                  # 列出已安装但不在yum源中的软件（本地）
+
+shell> yum group list                                                   # 查看 yum 源中的所有软件组
 
 # 安装
 shell> yum install *.rpm                                                # 安装软件包
@@ -22,6 +26,7 @@ shell> yum groupupdate "GNOME Desktop"                               # 更新程
 
 shell> yum update                                                       # 升级所有包，改变软件设置和系统设置，系统版本内核都升级
 shell> yum upgrade                                                   # 升级所有包，不改变软件设置和系统设置，系统版本升级，内核不改变
+shell> yum downgrade                                                    # 降级
 
 
 # 卸载
