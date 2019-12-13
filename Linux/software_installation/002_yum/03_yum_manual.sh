@@ -1,11 +1,15 @@
 # yum 安装：安装的其实还是 rpm 软件包，只是自动解决依赖关系，像 maven； 所以 yum 安装的软件还是能用 rpm 命令管理
 # 使用该方式需先确保两个条件，1： yum 软件包自身已经安装   2： yum 源已经配置完成
 
-# 查看
-shell> yum list                                                         # 查看 yum 源中的所有软件包
-shell> yum search str                                                   # 查询仓库中，包含指定字符串的包
-shell> yum --showduplicates list                                        # 查看仓库中一个包的所有版本
 
+# 查看
+shell> yum info package                                                 # 查看软件包的信息
+shell> yum info yum                                                     # 查看 yum 自己的信息
+
+shell> yum search str                                                   # 查询仓库中，包含指定字符串的包
+
+shell> yum list                                                         # 查看 yum 源中的所有软件包
+shell> yum --showduplicates list                                        # 查看仓库中一个包的所有版本
 shell> yum list installed                                               # 列出所有采用 yum 安装的软件
 shell> yum list extras                                                  # 列出已安装但不在yum源中的软件（本地）
 
