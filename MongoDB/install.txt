@@ -22,7 +22,7 @@ Settings {
 }
 
 Run {
-    shell> mongod -f /etc/mongod.conf   # 使用配置文件启动 mongodb
+    shell> mongod -f /etc/mongod.conf   # 使用配置文件启动 mongodb, root 权限
 
     shell> mongo --host 127.0.0.1 --port 27017          # MongoDB 默认是不需要认证就能读写任何数据库
     mongo> show dbs                 # 查看所有数据库
