@@ -43,6 +43,8 @@
         shell> git checkout .               # 该命令表示放弃工作区所有修改
         shell> git checkout -- fileName     # 使用该命令放弃工作区修改，注意中间有 -- ，不加的话表示是分支名        
         shell> git checkout branchName      # 切换到指定分支，当前该分支的内容将会显示到工作区
+        shell> git ls-files -d | grep repository/mongo | xargs git checkout --    # 恢复被删除的文件
+
     }
 } 
 
