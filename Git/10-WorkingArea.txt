@@ -59,6 +59,9 @@
     shell> git stash stash@{0} branch testBranch    # 将 stash 中指定的 工作状态 转变成一个名为 testBranch 的分支
 }
 
+Plumbing Commands(探測命令, Plumbing: 垂直，探测， Plumb: 铅,) {
+    shell> git ls-files                 # 查看跟踪文件跟工作区文件的信息，状态
+}
 
 
 
