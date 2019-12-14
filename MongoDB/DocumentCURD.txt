@@ -1,0 +1,23 @@
+# Document CRUD
+mongo> db.org.insertOne({name:"orgName", year:2019})
+mongo> db.org.insertMany([{name:"orgName", year:2019},{name:"orgName2", year:1902}])
+mongo> db.org.remove(
+   <query>,
+   {
+     justOne: <boolean>,
+     writeConcern: <document>
+   }
+)
+mongo> db.org.find({name:"orgName1"})
+mongo> db.org.update(<query>,
+   <update>,
+   {
+     upsert: <boolean>,
+     multi: <boolean>,
+     writeConcern: <document>
+   }
+)
+
+
+
+
