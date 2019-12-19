@@ -33,8 +33,11 @@ to_char(+00123.870, 'LS00999D999')
 
 
 /************************************ Date Function ******************************************/
-to_date('1994-04-01 00:52:37','yyyy-mm-dd hh24:mi:ss')      --oracle: 字符串 转 日期 函数
-to_char(sysdate,'yyyy-mm-dd hh24:mi:ss')                    --oracle: 日期 转 字符串 函数
+select current_date from dual;                  -- current_date 返回的是当前会话时间
+select sysdate from dual;                       -- sysdate 返回的是安装 oracle 数据库的操作系统的时间
+select to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') from dual;                  --oracle: 日期 转 字符串 函数
+select to_date('1994-04-01 00:52:37','yyyy-mm-dd hh24:mi:ss') from dual;     --oracle: 字符串 转 日期 函数
+
 select (createDate + INTERVAL '1' YEAR) as cDate from tb;   -- 日期 +1 年
 select (createDate + INTERVAL '1' MONTH) as cDate from tb;  -- 日期 +1 月
 select (createDate + INTERVAL '1' DAY) as cDate from tb;    -- 日期 +1 日
