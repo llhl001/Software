@@ -24,10 +24,13 @@ select * from dual;
 
 
 -- 存在即更新，不存在即插入
-merge into tb1 t1
-using (tb2|view|subQuery) t2 
-    on(t1.col1=t2.col1 and ...)
-when matched then
-    update set t1.col1=t2.col1, t1.col2=t2.col2
-when not matched then
-    insert (t1.col1, t1.col2) values (t2.col1, t2.col2);
+merge into tab1 t1
+using (select * from tab2) t2 on (t1.col1 = t2.col1 )
+when matched then 
+	update set t1.col2=v2, t1.col3=v3 where t2.col2>100
+  delete where t2.col2<100
+when not matched then 
+	insert(t1.col1, t1.col2, t1.col3) 
+  values(t2.col1, t2.col2, t2.col3) 
+  where t2.col2=100 
+;
