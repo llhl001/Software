@@ -22,8 +22,8 @@ Create {
 Delete {
     shell> git branch -d debug              # 删除当前分支上的 debug 分支
     shell> git branch -D debug              # 强制删除 debug 分支
-     shell> git fetch --force origin                     # 强制覆盖本地库
-        shell> git fetch --prune origin                     # 修剪所有远程库中不存在的本地分支
+    shell> git fetch --force origin                     # 强制覆盖本地库
+    shell> git fetch --prune origin                     # 修剪所有远程库中不存在的本地分支
 }
 
 Update {
