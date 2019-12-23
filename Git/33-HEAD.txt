@@ -1,0 +1,23 @@
+HEAD 指针基本概念 {
+    1. HEAD 指针指向一个 branch 时，HEAD 指针会和 branch 指针绑定，当有新的 commit 时，HEAD 指针和 branch 指针会同时移动到新的 commit
+    2. HEAD 指针指向一个 commit 时，不管该 commit 有没有被 branch 指针指向，当前 HEAD 指针都为 detached 状态，
+}
+
+
+HEAD 指针移动 {
+    shell> git reset 
+    shell> git checkout commit1     # 会导致 HEAD 指针成为 detached 状态
+    shell> git checkout branch1     # 将 HEAD 指针指向 branch1 指针，此时 HEAD 指针和 branch 是绑定状态
+    
+    
+}
+
+给没有 branch 指针指向的 detached commit 创建 branch 指针 {
+    shell> git checkout commit1     # 将 HEAD 指针指向一个 detached commit
+    shell> git branch newBranch     # 为当前 HEAD 指针指向的 commit 创建一个新的分支，分支名为 newBranch 
+    shell> git checkout newBranch   # 让 HEAD 指针和 newBranch 指针绑定，就相当于正常的分支了
+}
+
+移动已经存在的 branch 指针到一个 detached commit  {
+    shell> git branch -f master commit1     # 将 master 分支指针移动到 commit 上，原先 master 分支指向的 commit 就变成了 detached commit
+}
