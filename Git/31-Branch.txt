@@ -1,7 +1,6 @@
-Branch Infrastructure {
-    # 其实不管 本地分支 还是 远程分支 都是保存在 本地的，当 fetch 的时候，会根据远程库 更新 本地对应远程库的分支
-    master          # 主分支，仓库创建时自动创建的分支名
-    HEAD            # 表示当前所在分支的别名
+基本概念 {
+    1. 一个分支 branch 就是一个指针，指向了一个 commit
+    2. 远程分支也是指向一个 commit ，且不管远程分支还是本地分支都是以 init commit 为 root 的 tree 
 }
 
 
@@ -102,4 +101,3 @@ Demerged {
 
     
          
-
