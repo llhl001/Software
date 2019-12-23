@@ -1,4 +1,4 @@
-查看文件状态 {
+查看工作区文件状态 {
     shell> git status --untracked-files             # 查看工作区没有被 git 管理的文件
     shell> git status --ignored                     # 显示出被忽略的文件，被忽略即 push 远程的时候不上传    
     shell> git ls-files                             # Plumbing Command: 查看跟踪文件跟工作区文件的信息，状态等
@@ -23,7 +23,7 @@
 }
 
 
-查看文件版本差异 {
+查看工作区文件版本差异 {
     shell> git diff                             # 比较工作区和缓存区之间的差别
     shell> git diff HEAD                        # 比较工作区和版本库之间的差别
     shell> git diff HEAD -- demo.txt            # 查看工作区和版本库中最新版本文件的区别
