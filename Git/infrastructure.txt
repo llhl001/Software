@@ -2,6 +2,18 @@
     千万不能用 window 记事本编辑文本文件，下载 UltraEdit 修改默认编码格式为： UTF-8 without BOM
     所有版本控制系统都只能跟踪 txt 文件的改动，二进制文件虽然能管理，但是不能跟踪改动
 
+Git 的本质：
+    Concept:
+        commit: 用于表示一次提交，以提交来记录每一次的文件变动
+        tree: 用于保存一次提交相关的所有文件的索引
+        blob: 就是文件系统中的文件
+        关系: Commit - 1:1 - Tree - 1:n - Blob
+    
+    Essence:
+        git 是以 commit 为节点，组成的一个有向无环图(DAG)，所有 commit 之间形成一颗提交树
+
+
+
 Git 基本概念介绍：
     工作区 -> 缓存区 -> Local Repository -> Remote Repository 
     
@@ -10,11 +22,7 @@ Git 基本概念介绍：
     本地仓库：存储在本地仓库中的版本
     远程仓库：存储在远程仓库中的版本，比如：存储在 GitHub 服务器中的版本 
 
-Git 数据结构
-    Commit: 表示一个提交版本，Commit 之间形成一个 DAG(有向无环图)
-    Tree: 一个版本所有文件所在的路径
-    Blob: 就是文件，存储实际数据
-    关系: Commit <- 1:1 -> Tree <- 1:n -> Blob
+
     
 Git Reference
     Branch: 指向一个 Commit 
