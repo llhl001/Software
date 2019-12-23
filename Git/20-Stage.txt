@@ -1,4 +1,23 @@
-# Stage 提交到 LocalRepo
+查看缓存区中的文件 {
+    
+}
+
+清空缓存区 {
+    
+}
+
+修改缓存区 {
+    shell> git reset -- .               # 使用本地库中 HEAD 指向的版本覆盖当前缓存区
+}
+
+
+查看缓存区文件版本差异 {
+    shell> git diff --cached                    # 比较缓存区和版本库之间的差别
+}
+
+
+
+提交缓存区中的修改到本地库 {
     shell> git commit . -m 'comment'            # 提交 缓存区 内容到 本地仓库，并输入 -m 为本次提交的 说明
     shell> git commit -- .                      # 不解析所有参数 
     shell> git commit . -i                      # 提交一个没有保存的内容之前，先保存命令行路径中的内容
@@ -6,9 +25,7 @@
     shell> git commit --reedit-message=<commit>     # 重新编辑一个提交的注释信息
     shell> git commit --amend                       # 替换上一次 commit
     shell> git commit --patch                       # 交互模式提交
+}
 
-# 从 LocalRepo 获取数据，覆盖 Stage
-    shell> git reset -- .           # 
 
-# 差异比较
-    shell> git diff --cached                    # 比较缓存区和版本库之间的差别
+
