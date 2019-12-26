@@ -162,7 +162,6 @@ endif
 Plug 'https://github.com/scrooloose/nerdtree.git'                   " 文件浏览器插件，:NERDTreeToggle 切换该插件
 Plug 'https://github.com/tpope/vim-ragtag.git'                      " xml 格式文件辅助编辑
 Plug 'https://github.com/Shougo/neocomplete.vim.git'                " 自动补全插件
-Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'         " java 自动补全
 call plug#end()
 
 
