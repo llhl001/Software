@@ -29,9 +29,9 @@
     
     复制文本 {
         :[range]diffg[et] [bufspec]         # 从对比文件中获取数据
-        [count]do
+        [count]do                           # diff obtain
         
         :[range]diffpu[t] [bufspec]         # 将当前文件中的不同写入到对比文件
-        [count]dp	
+        [count]dp	                        # diff put
     }
 }
