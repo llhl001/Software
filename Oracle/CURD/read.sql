@@ -45,15 +45,19 @@ from person t;
 select t.name, decode(t.gender, 1, '男', 2, '女', '空') sex from person t;
 
 
-/********************************* select 语句中的运算符 ******************************************/
+/********************************* Comparison Conditions ******************************************/
 >, <, >=, <=, !=
 like, not like
 is null, is not null
 between and 
 in(subQuery)
+exist(subQuery)     -- 如果子查询中有记录，那么表达式为 true，exist 肯定是相关子查询
 col > any(subQuery)
 col < all(subQuery)
-exist(subQuery)     -- 如果子查询中有记录，那么表达式为 true，exist 肯定是相关子查询
+col > some(suQuery)
+
+
+
 
 
 
