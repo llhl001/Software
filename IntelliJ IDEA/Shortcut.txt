@@ -3,6 +3,8 @@ Ctrl+R                      # 文件中替换
 Ctrl+Shift+R                # 全局替换指定匹配模式
 
 Ctrl+F                      # 当前文件中查找字符串
+F3                          # 查找下一个
+Shift+F3                    # 查找上一个
 Ctrl+Shift+F                # 当前项目中查找字符串
 Ctrl+Shift+N                # 当前项目中查找文件
 Ctrl+N                      # 查找项目中的类
