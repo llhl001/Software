@@ -96,6 +96,14 @@ git 配置文件及配置命令详解
     shell> git config --global core.safecrlf true   # 拒绝提交包含混合换行符的文件
     shell> git config --global core.safecrlf false  # 允许提交包含混合换行符的文件
     shell> git config --global core.safecrlf warn   # 提交包含混合换行符的文件时给出警告
+
+空白符检查配置
+    shell> git config --global core.whitespace blank-at-eol         # 检查行尾的空格，默认打开
+    shell> git config --global core.whitespace blank-at-eof         # 检查文件底部的空行，默认打开
+    shell> git config --global core.whitespace space-before-tab     # 警惕行头 tab 前面的空格，默认打开
+    shell> git config --global core.whitespace indent-with-non-tab  # 揪出以空格而非 tab 开头的行，默认关闭
+    shell> git config --global core.whitespace tab-in-indent        # 监视在行头表示缩进的 tab，默认关闭
+    shell> git config --global core.whitespace cr-at-eol            # 告诉 Git 忽略行尾的回车，默认关闭
     
     
 gitignore 文件配置
