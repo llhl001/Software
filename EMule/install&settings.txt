@@ -9,6 +9,14 @@ Settings {
     
     服务器配置 {
         Servers -> Update server.met from URL -> click 'Update' button
+        
+        Ed2k 链接
+        http://upd.emule-security.org/server.met
+        
+        Kad 链接：
+        http://upd.emule-security.org/nodes.dat
+        http://kademlia.ru/download/nodes.dat
+        http://sn.im/nodes.dat
     }
 }
     
