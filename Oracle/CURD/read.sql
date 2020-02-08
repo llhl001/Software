@@ -50,8 +50,8 @@ select t.name, decode(t.gender, 1, '男', 2, '女', '空') sex from person t;
 like, not like
 is null, is not null
 between and 
-in(subQuery)
-exist(subQuery)     -- 如果子查询中有记录，那么表达式为 true，exist 肯定是相关子查询
+col in(subQuery)        -- 如果数据量大，使用 exist 效果更好
+exist(subQuery)         -- 如果子查询中有记录，那么表达式为 true，exist 肯定是相关子查询
 col > any(subQuery)
 col < all(subQuery)
 col > some(suQuery)
