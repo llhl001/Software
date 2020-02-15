@@ -1,0 +1,27 @@
+事务：指一连串不可分割的动作的集合，要么全部成功，要么全部失败
+
+事务隔离级别：
+
+锁：
+    DML 锁：
+        行锁：当事务执行数据库插入、更新、删除操作时，该事务自动获得操作表中操作行的排它锁
+        表锁：当事务获得行锁后，此事务也将自动获得该行的表锁(共享锁),以防止其它事务进行DDL语句影响记录行的更新。
+             可以显示使用 LOCK TABLE 语句定义一个表级排它锁
+    DDL 锁：
+        排它DDL锁：创建、删除、修改数据库对象的 DDL 语句，获取操作对象的 排它锁
+        共享DDL锁：
+        分析锁：
+
+
+
+
+set transaction isolation level serializable read write name 'tran'; -- 开启一个事务
+
+savepoint a; -- 创建保存点
+
+rollback; -- 回滚事务
+rollback to a; -- 回滚部分事务
+COMMIT [ WORK ] [ COMMENT clause ] [ WRITE clause ] [ FORCE clause ]; -- 提交一个事务
+
+
+
