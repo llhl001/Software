@@ -57,6 +57,21 @@ Paragraph {
     }               # 段尾
 }
 
+Page {
+    Ctrl+Y                          # 下滚
+    Ctrl+E                          # 上滚
+    
+    Ctrl+D                          # 向下翻半页
+    Ctrl+U                          # 向上翻半页
+    
+    Ctrl+F                          # 下一页
+    Ctrl+B                          # 上一页
+    
+    9Ctrl+F                         # 向下翻页, 9 表示翻 9 页
+    9Ctrl+B                         # 向上翻页, 9 表示翻 9 页  
+       
+}
+
 
 
 
