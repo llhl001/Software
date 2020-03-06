@@ -58,9 +58,9 @@ Paragraph {
 }
 
 Page {
-    Ctrl+Y                          # 下滚
     Ctrl+E                          # 上滚
-    
+    Ctrl+Y                          # 下滚
+        
     Ctrl+D                          # 向下翻半页
     Ctrl+U                          # 向上翻半页
     
