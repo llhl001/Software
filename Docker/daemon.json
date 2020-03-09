@@ -1,0 +1,7 @@
+{
+  // 配置远程访问 docker daemon 的端口
+  "hosts": ["unix:///var/run/docker.sock", "tcp://127.0.0.1:2375"],
+  
+  // 配置 docker daemon 使用的 dns 服务器
+	"dns": ["8.8.8.8", "8.8.4.4"]
+}
