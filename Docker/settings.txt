@@ -1,0 +1,12 @@
+# 配置 docker 开机自启动
+    shell> systemctl enable docker
+
+# 配置 docker 守护进程可以远程操作
+    shell> sudo systemctl edit docker.service           # 编辑服务配置文件
+        # 修改成以下格式
+        [Service]
+        ExecStart=
+        ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
+    shell> sudo systemctl daemon-reload                 # 重新加载服务配置文件
+    shell> sudo systemctl restart docker.service        # 重新启动服务
+    shell> vim /etc/docker/daemon.json                  # 绑定 socket 文件 和 IP 地址
