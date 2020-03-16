@@ -1,55 +1,55 @@
-################## Maven µÄÑ§Ï°±Ê¼Ç ###################################
+################## Maven çš„å­¦ä¹ ç¬”è®° ###################################
 
-1 ÏÂÔØ²¢½âÑ¹Maven{
-	ÏÂÔØ£ºapache-maven-3.5.0-bin.zip
-	½âÑ¹µ½¸ÃÄ¿Â¼ÏÂ£ºD:\Maven
+1 ä¸‹è½½å¹¶è§£å‹Maven{
+	ä¸‹è½½ï¼šapache-maven-3.5.0-bin.zip
+	è§£å‹åˆ°è¯¥ç›®å½•ä¸‹ï¼šD:\Maven
 }
 
 
-2 ÅäÖÃ»·¾³±äÁ¿£¨MAVEN_HOME£¬Path£©{
+2 é…ç½®ç¯å¢ƒå˜é‡ï¼ˆMAVEN_HOMEï¼ŒPathï¼‰{
 	MAVEN_HOME = D:\Maven\apache-maven-3.5.0
 	Path = %MAVEN_HOME%\bin
 }
 
 
-3 ²âÊÔ Maven ÊÇ·ñ°²×°³É¹¦{
-	ÔËĞĞ - cmd - ÊäÈë£ºmvn -version - Enter
-	Èç¹û³öÏÖ Maven °æ±¾Ôò±íÃ÷°²×°³É¹¦
+3 æµ‹è¯• Maven æ˜¯å¦å®‰è£…æˆåŠŸ{
+	è¿è¡Œ - cmd - è¾“å…¥ï¼šmvn -version - Enter
+	å¦‚æœå‡ºç° Maven ç‰ˆæœ¬åˆ™è¡¨æ˜å®‰è£…æˆåŠŸ
 }
 
 
-4 ÅäÖÃMavenµÄÅäÖÃÎÄ¼ş£¨±¾µØ²Ö¿âÎÄ¼ş£¬¾µÏñ£©{
+4 é…ç½®Mavençš„é…ç½®æ–‡ä»¶ï¼ˆæœ¬åœ°ä»“åº“æ–‡ä»¶ï¼Œé•œåƒï¼‰{
 
-	4.0 ÃüÁîĞĞ´°¿ÚÊäÈë mvn help:system   ÓÃÓÚ´´½¨maven±¾µØ²Ö¿â²¢ÏÂÔØ±ØÒªµÄÒÀÀµ°ü
+	4.0 å‘½ä»¤è¡Œçª—å£è¾“å…¥ mvn help:system   ç”¨äºåˆ›å»ºmavenæœ¬åœ°ä»“åº“å¹¶ä¸‹è½½å¿…è¦çš„ä¾èµ–åŒ…
 
-	4.1 Maven È«Çò²Ö¿âµØÖ·²é¿´£º%MAVEN_HOME% Ä¿Â¼ÏÂËÑË÷ maven-model-builder-3.5.0.jar £¬´ò¿ª¸Ã jar °ü£¬ÕÒµ½ÀïÃæµÄ pom-4.0.0.xml ÎÄ¼ş¼´¿É¿´µ½ÖĞÑë²Ö¿âµØÖ·£ºhttps://repo.maven.apache.org/maven2
+	4.1 Maven å…¨çƒä»“åº“åœ°å€æŸ¥çœ‹ï¼š%MAVEN_HOME% ç›®å½•ä¸‹æœç´¢ maven-model-builder-3.5.0.jar ï¼Œæ‰“å¼€è¯¥ jar åŒ…ï¼Œæ‰¾åˆ°é‡Œé¢çš„ pom-4.0.0.xml æ–‡ä»¶å³å¯çœ‹åˆ°ä¸­å¤®ä»“åº“åœ°å€ï¼šhttps://repo.maven.apache.org/maven2
 
-	4.2 ³£ÓÃ¹úÄÚ¾µÏñ{
+	4.2 å¸¸ç”¨å›½å†…é•œåƒ{
 		http://maven.net.cn/content/groups/public
 		http://maven.aliyun.com/nexus/content/groups/public
 	}
 	
 	
-	4.3 Maven ±¾µØ²Ö¿âµÄÅäÖÃ{
-		4.3.1 Ä¬ÈÏ±¾µØ²Ö¿âÎ»ÖÃ£º%HOME%\.m2    // %HOME% = C:\Users\Kasei
-		4.3.2 ĞŞ¸ÄÄ¬ÈÏ²Ö¿âÎ»ÖÃ£º{
-			´´½¨±¾µØ²Ö¿âÄ¿Â¼£ºD:/repository	
-			¸´ÖÆ %MAVEN%/conf/settins.xml µ½ .m Ä¿Â¼ÏÂ²¢ĞŞ¸Ä		
-			ĞŞ¸Ä %HOME%\.m2\settings.xml ÎÄ¼şÖĞ£¬±¾µØ²Ö¿âµØÖ·±êÇ©£º <localRepository>D:/repository</localRepository> ¼´¿É
-			²âÊÔÊÇ·ñ³É¹¦£º±àÒëÒ»¸öÏîÄ¿£¬²é¿´±¾µØ²Ö¿âÖĞÊÇ·ñÏÂÔØÁËÒÀÀµ°ü
+	4.3 Maven æœ¬åœ°ä»“åº“çš„é…ç½®{
+		4.3.1 é»˜è®¤æœ¬åœ°ä»“åº“ä½ç½®ï¼š%HOME%\.m2    // %HOME% = C:\Users\Kasei
+		4.3.2 ä¿®æ”¹é»˜è®¤ä»“åº“ä½ç½®ï¼š{
+			åˆ›å»ºæœ¬åœ°ä»“åº“ç›®å½•ï¼šD:/repository	
+			å¤åˆ¶ %MAVEN%/conf/settins.xml åˆ° .m2 ç›®å½•ä¸‹å¹¶ä¿®æ”¹		
+			ä¿®æ”¹ %HOME%\.m2\settings.xml æ–‡ä»¶ä¸­ï¼Œæœ¬åœ°ä»“åº“åœ°å€æ ‡ç­¾ï¼š <localRepository>D:/repository</localRepository> å³å¯
+			æµ‹è¯•æ˜¯å¦æˆåŠŸï¼šç¼–è¯‘ä¸€ä¸ªé¡¹ç›®ï¼ŒæŸ¥çœ‹æœ¬åœ°ä»“åº“ä¸­æ˜¯å¦ä¸‹è½½äº†ä¾èµ–åŒ…
 		}
 	}
 	
 	
-	4.4 Maven ¾µÏñÅäÖÃ{
+	4.4 Maven é•œåƒé…ç½®{
 	
-		ĞŞ¸Ä±¾µØ²Ö¿âÏÂµÄ settings.xml ÎÄ¼şÈçÏÂ£º
+		ä¿®æ”¹æœ¬åœ°ä»“åº“ä¸‹çš„ settings.xml æ–‡ä»¶å¦‚ä¸‹ï¼š
 		<mirrors>
 			<mirror>
 			   <id>UK/id>
 			      <mirroOf>central</mirrorOf>
 			      <name>K Central</name>
-			      <url>htp://uk.maven.org/maven2</url><!-- Ê¹ÓÃÓ¢¹úµÄ¾µÏñ£¬ÀàËÆÍøÒ×yumÔ´ -->
+			      <url>htp://uk.maven.org/maven2</url><!-- ä½¿ç”¨è‹±å›½çš„é•œåƒï¼Œç±»ä¼¼ç½‘æ˜“yumæº -->
 			</mirror>
 		</mirrors>
 	}
@@ -57,68 +57,68 @@
 
 
 
-5 Maven ÏîÄ¿Ä¿Â¼½á¹¹{  
+5 Maven é¡¹ç›®ç›®å½•ç»“æ„{  
 
 	MavenWeb
-		©À©¤ pom.xml 
-		©À©¤ target   //´æ·ÅÔËĞĞÉú³ÉµÄÎÄ¼ş
-		©¸©¤ src
-			©À©¤ test
-			©¦	©¸©¤ java
-			©¦		©¸©¤ ×Ô¶¨Òå°ü
-			©¦
-			©¦
-			©¸©¤ main
-				©À©¤ webapp   
-				©À©¤ resources   //´æ·Å×ÊÔ´ÎÄ¼ş
-				©¸©¤ java
-					©¸©¤ ×Ô¶¨Òå°ü	
+		â”œâ”€ pom.xml 
+		â”œâ”€ target   //å­˜æ”¾è¿è¡Œç”Ÿæˆçš„æ–‡ä»¶
+		â””â”€ src
+			â”œâ”€ test
+			â”‚	â””â”€ java
+			â”‚		â””â”€ è‡ªå®šä¹‰åŒ…
+			â”‚
+			â”‚
+			â””â”€ main
+				â”œâ”€ webapp   
+				â”œâ”€ resources   //å­˜æ”¾èµ„æºæ–‡ä»¶
+				â””â”€ java
+					â””â”€ è‡ªå®šä¹‰åŒ…	
  
 	                         
-		×¢Òâ£ºËùÓĞÄ¿Â¼ºÍÎÄ¼ş²»ÄÜÈ±£¬È±ÁË»á´í
+		æ³¨æ„ï¼šæ‰€æœ‰ç›®å½•å’Œæ–‡ä»¶ä¸èƒ½ç¼ºï¼Œç¼ºäº†ä¼šé”™
 }
 
 
 
-6 ÊÖ¹¤ Mavean ÏîÄ¿µÄ´î½¨{	
+6 æ‰‹å·¥ Mavean é¡¹ç›®çš„æ­å»º{	
 
-	6.1 ´´½¨mavenÍêÕûµÄÄ¿Â¼½á¹¹
-	6.2 ÔÚÔ´´úÂëÄ¿Â¼ÏÂ±àĞ´´úÂë
-	6.3 ÔÚ pom.xml ÎÄ¼şÖĞÅäÖÃÏîÄ¿µÄÒÀÀµ°ü
-	6.4 ¹ÜÀíÔ±È¨ÏŞ cmd£¬cd ½øÈëĞ´ºÃµÄÏîÄ¿ MavenWeb Ä¿Â¼ÏÂ
-	6.5 Ö´ĞĞ mvn compile ÃüÁî£¬¶Ô¸ÃÏîÄ¿½øĞĞ±àÒë
-	6.6 Ö´ĞĞ mvn test ÃüÁî£¬Ö´ĞĞ MavenWeb/src/test/java Ä¿Â¼ÏÂ junit µÄ²âÊÔ³ÌĞò
-	6.7 Ö´ĞĞ mvn package ÃüÁî£¬»á¶ÔÏîÄ¿½øĞĞ´ò°ü£¬Éú³ÉµÄÎÄ¼şÔÚ target Ä¿Â¼ÏÂÃæ£¬°Ñ¸ÃÎÄ¼ş¿½±´µ½ tomcat webapp Â·¾¶ÏÂ¼´¿ÉÔËĞĞ
-	6.8 Ö´ĞĞ mvn clean ÃüÁî£¬É¾³ı target Ä¿Â¼
-	6.9 Ö´ĞĞ mvn install ÃüÁî£¬°²×°ÏîÄ¿´ò°üºÃµÄ jar °üµ½±¾µØ²Ö¿âÖĞ
-	mvn dependency:tree ¸ÃÃüÁî»á´òÓ¡Ò»¸öµ±Ç°ÏîÄ¿µÄÒÀÀµÊ÷
+	6.1 åˆ›å»ºmavenå®Œæ•´çš„ç›®å½•ç»“æ„
+	6.2 åœ¨æºä»£ç ç›®å½•ä¸‹ç¼–å†™ä»£ç 
+	6.3 åœ¨ pom.xml æ–‡ä»¶ä¸­é…ç½®é¡¹ç›®çš„ä¾èµ–åŒ…
+	6.4 ç®¡ç†å‘˜æƒé™ cmdï¼Œcd è¿›å…¥å†™å¥½çš„é¡¹ç›® MavenWeb ç›®å½•ä¸‹
+	6.5 æ‰§è¡Œ mvn compile å‘½ä»¤ï¼Œå¯¹è¯¥é¡¹ç›®è¿›è¡Œç¼–è¯‘
+	6.6 æ‰§è¡Œ mvn test å‘½ä»¤ï¼Œæ‰§è¡Œ MavenWeb/src/test/java ç›®å½•ä¸‹ junit çš„æµ‹è¯•ç¨‹åº
+	6.7 æ‰§è¡Œ mvn package å‘½ä»¤ï¼Œä¼šå¯¹é¡¹ç›®è¿›è¡Œæ‰“åŒ…ï¼Œç”Ÿæˆçš„æ–‡ä»¶åœ¨ target ç›®å½•ä¸‹é¢ï¼ŒæŠŠè¯¥æ–‡ä»¶æ‹·è´åˆ° tomcat webapp è·¯å¾„ä¸‹å³å¯è¿è¡Œ
+	6.8 æ‰§è¡Œ mvn clean å‘½ä»¤ï¼Œåˆ é™¤ target ç›®å½•
+	6.9 æ‰§è¡Œ mvn install å‘½ä»¤ï¼Œå®‰è£…é¡¹ç›®æ‰“åŒ…å¥½çš„ jar åŒ…åˆ°æœ¬åœ°ä»“åº“ä¸­
+	mvn dependency:tree è¯¥å‘½ä»¤ä¼šæ‰“å°ä¸€ä¸ªå½“å‰é¡¹ç›®çš„ä¾èµ–æ ‘
 	
-	6.10 Ö´ĞĞ mvn archetype:generate ÃüÁî£¬×Ô¶¨´´½¨ Maven Ä¿Â¼¹Ç¼Ü
-		Ò»²½µ½Î»µÄ´´½¨¹Ç¼ÜÃüÁî£ºmvn archetype:generate -DgroupId=com.kasei -DartifactId=MavenWeb -DarchetypeArtifactId=maven-archetype-webapp
+	6.10 æ‰§è¡Œ mvn archetype:generate å‘½ä»¤ï¼Œè‡ªå®šåˆ›å»º Maven ç›®å½•éª¨æ¶
+		ä¸€æ­¥åˆ°ä½çš„åˆ›å»ºéª¨æ¶å‘½ä»¤ï¼šmvn archetype:generate -DgroupId=com.kasei -DartifactId=MavenWeb -DarchetypeArtifactId=maven-archetype-webapp
 }
 
 
 
 
-7 ÔÚ eclipse ÖĞ¼¯³É maven ²å¼ş {
+7 åœ¨ eclipse ä¸­é›†æˆ maven æ’ä»¶ {
 
-	5.1 ¼ì²é eclipse ÊÇ·ñÒÑ¾­°²×° maven ²å¼ş£ºWindow - Preferences ²é¿´×ó²à±ßÀ¸ÓĞÃ»ÓĞ Maven Ñ¡Ïî£¬ÓĞÔòËµÃ÷²å¼şÒÑ¾­°²×°
+	5.1 æ£€æŸ¥ eclipse æ˜¯å¦å·²ç»å®‰è£… maven æ’ä»¶ï¼šWindow - Preferences æŸ¥çœ‹å·¦ä¾§è¾¹æ æœ‰æ²¡æœ‰ Maven é€‰é¡¹ï¼Œæœ‰åˆ™è¯´æ˜æ’ä»¶å·²ç»å®‰è£…
 	
-	5.2 Maven ²å¼ş°²×°£ºÏÂÔØ eclipse ÖĞ m2e µÄ²å¼ş£¬²¢½«Æä¸´ÖÆµ½ %eclipse%/dropins Ä¿Â¼ÏÂÖØÆô eclipse ¼´¿É
+	5.2 Maven æ’ä»¶å®‰è£…ï¼šä¸‹è½½ eclipse ä¸­ m2e çš„æ’ä»¶ï¼Œå¹¶å°†å…¶å¤åˆ¶åˆ° %eclipse%/dropins ç›®å½•ä¸‹é‡å¯ eclipse å³å¯
 	
-	5.3 ²å¼şµÄÅäÖÃ{
+	5.3 æ’ä»¶çš„é…ç½®{
 	
-		5.3.1 ĞŞ¸Ä %eclipse%/eclipse.ini ÎÄ¼ş£¬Ìí¼ÓÒÔÏÂÄÚÈİ{
+		5.3.1 ä¿®æ”¹ %eclipse%/eclipse.ini æ–‡ä»¶ï¼Œæ·»åŠ ä»¥ä¸‹å†…å®¹{
 			-vm
-			%JAVA_HOME%/bin/javaw.exe           // Êµ¼ÊÅäÖÃÊ±°Ñ±äÁ¿ %JAVA_HOME% Ìæ»»³É¾ßÌåÖµ	
+			%JAVA_HOME%/bin/javaw.exe           // å®é™…é…ç½®æ—¶æŠŠå˜é‡ %JAVA_HOME% æ›¿æ¢æˆå…·ä½“å€¼	
 		}
 		
-		5.3.2 ĞŞ¸Ä eclipse µÄ jre : Window - Preferences - Java - Installed JREs - Add - Ñ¡Ôñ jre Ä¿Â¼Îª %JAVA_HOME% È·¶¨
+		5.3.2 ä¿®æ”¹ eclipse çš„ jre : Window - Preferences - Java - Installed JREs - Add - é€‰æ‹© jre ç›®å½•ä¸º %JAVA_HOME% ç¡®å®š
  
-		5.3.3 ĞŞ¸Ä eclipse ÖĞ Maven µÄÄ¬ÈÏÅäÖÃ{
-			Window - Preferences - Maven - Installations - µã»÷Add°´Å¥ - ÕÒµ½ %MAVEN_HOME% Ìí¼Ó
-			Window - Preferences - Maven - User Settings - È·±£ User Settings Â·¾¶¿òÀïµÄÄÚÈİÊÇ: %HOME%\.m2\settings.xml
-			Window - Preferences - Maven - Global Settings - ¸ú User Settings Ò»Ñù
+		5.3.3 ä¿®æ”¹ eclipse ä¸­ Maven çš„é»˜è®¤é…ç½®{
+			Window - Preferences - Maven - Installations - ç‚¹å‡»AddæŒ‰é’® - æ‰¾åˆ° %MAVEN_HOME% æ·»åŠ 
+			Window - Preferences - Maven - User Settings - ç¡®ä¿ User Settings è·¯å¾„æ¡†é‡Œçš„å†…å®¹æ˜¯: %HOME%\.m2\settings.xml
+			Window - Preferences - Maven - Global Settings - è·Ÿ User Settings ä¸€æ ·
 		}
 	}
 }
@@ -126,54 +126,54 @@
 
 
 
-8 eclipse ÖĞ Mavean ÏîÄ¿µÄ´î½¨¼°Ê¹ÓÃ {	
+8 eclipse ä¸­ Mavean é¡¹ç›®çš„æ­å»ºåŠä½¿ç”¨ {	
 
-	8.1 eclipse ´´½¨Ò»¸ö Maven ÏîÄ¿{
+	8.1 eclipse åˆ›å»ºä¸€ä¸ª Maven é¡¹ç›®{
 		
-		Eclipse - Project Explorer ´°¿Ú - ¿Õ°×´¦ÓÒ¼ü - new - project 
-		- Maven - Maven Project - next - Ñ¡Ôñ quickstart 
+		Eclipse - Project Explorer çª—å£ - ç©ºç™½å¤„å³é”® - new - project 
+		- Maven - Maven Project - next - é€‰æ‹© quickstart 
 		- next - [Group Id]=com.kasei [Artifact Id]=quick 
 		- Finish
 	}
 	
-	8.2 maven ÏîÄ¿µÄÆô¶¯ {
-		ÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£ºcompile - µã»÷ Run 
-		- Èç¹û±¨´í - ĞèÒªÏò jre ´«µİÒ»¸ö²ÎÊı - Window - Preferences - Java - Installed JREs - Ñ¡ÖĞÊ¹ÓÃµÄ JRE - Edit 
-		 - ÔÚ Default VM Arguments ¿òÖĞÊäÈëÒıºÅÄÚÄÚÈİ£º"-Dmaven.multiModuleProjectDirectory=$MAVEN_HOME"
+	8.2 maven é¡¹ç›®çš„å¯åŠ¨ {
+		å³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼šcompile - ç‚¹å‡» Run 
+		- å¦‚æœæŠ¥é”™ - éœ€è¦å‘ jre ä¼ é€’ä¸€ä¸ªå‚æ•° - Window - Preferences - Java - Installed JREs - é€‰ä¸­ä½¿ç”¨çš„ JRE - Edit 
+		 - åœ¨ Default VM Arguments æ¡†ä¸­è¾“å…¥å¼•å·å†…å†…å®¹ï¼š"-Dmaven.multiModuleProjectDirectory=$MAVEN_HOME"
 		 - Finish
 	}
 	
 }
 
 
-9 eclipse Ê¹ÓÃ maven ¹¹½¨ web ÏîÄ¿{
-	eclipse ĞÂ½¨ object - maven object - next - Ñ¡Ôñ webapp - next - ÉèÖÃµ½²ÎÊı - finish
+9 eclipse ä½¿ç”¨ maven æ„å»º web é¡¹ç›®{
+	eclipse æ–°å»º object - maven object - next - é€‰æ‹© webapp - next - è®¾ç½®åˆ°å‚æ•° - finish
 	
-	ÒÀÀµ°ü×ø±ê²éÑ¯ÍøÖ·£ºhttps://www.mvnrepository.com
+	ä¾èµ–åŒ…åæ ‡æŸ¥è¯¢ç½‘å€ï¼šhttps://www.mvnrepository.com
 	
-	²¹È« maven Ä¿Â¼½á¹¹£ºsrc/main/java, src/test/java
+	è¡¥å…¨ maven ç›®å½•ç»“æ„ï¼šsrc/main/java, src/test/java
 	
-	ÉèÖÃ pom.xml ÎÄ¼şÖĞ  <packaging>war</packaging> Îª war£» Ìí¼Ó servlet ÒÀÀµ£»Ìí¼Ó jetty maven plugin ²å¼ş
+	è®¾ç½® pom.xml æ–‡ä»¶ä¸­  <packaging>war</packaging> ä¸º warï¼› æ·»åŠ  servlet ä¾èµ–ï¼›æ·»åŠ  jetty maven plugin æ’ä»¶
 	
-	¼ì²é±àÒëµ¼³öÂ·¾¶£ºÓÒ»÷ÏîÄ¿ - build path - configure build path... - Source Ñ¡Ïî¿¨ - ²é¿´Êä³öÄ¿Â¼ÊÇ·ñ¶¼ÊÇ /target/classes
+	æ£€æŸ¥ç¼–è¯‘å¯¼å‡ºè·¯å¾„ï¼šå³å‡»é¡¹ç›® - build path - configure build path... - Source é€‰é¡¹å¡ - æŸ¥çœ‹è¾“å‡ºç›®å½•æ˜¯å¦éƒ½æ˜¯ /target/classes
 	
-	½«ÏîÄ¿×ª»»³É web ÏîÄ¿£º ÓÒ»÷ÏîÄ¿ - properties - project facets - ¹´Ñ¡ dynamic web module, java, javascript ÈıÏî
+	å°†é¡¹ç›®è½¬æ¢æˆ web é¡¹ç›®ï¼š å³å‡»é¡¹ç›® - properties - project facets - å‹¾é€‰ dynamic web module, java, javascript ä¸‰é¡¹
 	
-	ĞŞ¸Ä²¿ÊğÊ±µÄÄ¬ÈÏÅäÖÃ£ºÓÒ»÷ÏîÄ¿ - properties - deployment assembly - É¾³ı /src/test/* Æ¥ÅäµÄÏî
+	ä¿®æ”¹éƒ¨ç½²æ—¶çš„é»˜è®¤é…ç½®ï¼šå³å‡»é¡¹ç›® - properties - deployment assembly - åˆ é™¤ /src/test/* åŒ¹é…çš„é¡¹
 		
 	
-	ÔËĞĞ·½·¨Ò»£º°Ñ´ò°üºÃµÄ war ÎÄ¼ş¿½±´µ½ web ÈİÆ÷ÖĞ¾Í¿ÉÒÔÔËĞĞÁË
+	è¿è¡Œæ–¹æ³•ä¸€ï¼šæŠŠæ‰“åŒ…å¥½çš„ war æ–‡ä»¶æ‹·è´åˆ° web å®¹å™¨ä¸­å°±å¯ä»¥è¿è¡Œäº†
 	
-	ÔËĞĞ·½·¨¶ş£ºpom.xml ÖĞÌí¼Ó jetty maven plugin ²å¼ş£¬È»ºóÆô¶¯ jetty maven plugin £ºÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£ºjetty:run£¬¾Í¿ÉÒÔ½øä¯ÀÀÆ÷·ÃÎÊÁË	
+	è¿è¡Œæ–¹æ³•äºŒï¼špom.xml ä¸­æ·»åŠ  jetty maven plugin æ’ä»¶ï¼Œç„¶åå¯åŠ¨ jetty maven plugin ï¼šå³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼šjetty:runï¼Œå°±å¯ä»¥è¿›æµè§ˆå™¨è®¿é—®äº†	
 	
-	ÔËĞĞ·½·¨Èı£º{
-		½ø tomcat ¹ÙÍø£¬×ó²à±ßÀ¸£¬ µã»÷ maven plugin£¬ µã»÷ version 2.2£¬ ¸´ÖÆ°¸Àıµ½ÏîÄ¿ÖĞµÄ pom.xml ÎÄ¼ş£¬²¢ÅäÖÃ
-		ÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£ºclean 
-		ÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£ºcompile
-		ÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£ºpackage
-		ÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£ºtomcat7:run
+	è¿è¡Œæ–¹æ³•ä¸‰ï¼š{
+		è¿› tomcat å®˜ç½‘ï¼Œå·¦ä¾§è¾¹æ ï¼Œ ç‚¹å‡» maven pluginï¼Œ ç‚¹å‡» version 2.2ï¼Œ å¤åˆ¶æ¡ˆä¾‹åˆ°é¡¹ç›®ä¸­çš„ pom.xml æ–‡ä»¶ï¼Œå¹¶é…ç½®
+		å³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼šclean 
+		å³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼šcompile
+		å³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼špackage
+		å³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼štomcat7:run
 		
-		»ò
+		æˆ–
 		<executions>
         	<execution>
         		<phase>package</phase>
@@ -182,7 +182,7 @@
         		</goals>
         	</execution>
         </executions>
-		ÓÒ»÷ÏîÄ¿ - run as - Maven build... - Goals¿òÖĞÊäÈë£º clean package 
+		å³å‡»é¡¹ç›® - run as - Maven build... - Goalsæ¡†ä¸­è¾“å…¥ï¼š clean package 
 	}
 }
 
