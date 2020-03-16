@@ -26,7 +26,11 @@ git 配置文件及配置命令详解
 
 配置 user.name 和 user.email
     shell> git config --global user.name "KaseiHaku"            # 配置你这台机器上所有 git 仓库的用户名，保证唯一性
-    shell> git config --global user.email "****@qq.com"    # 配置你这台机器上所有 git 仓库的邮箱，保证唯一性
+    shell> git config --global user.email "****@qq.com"         # 配置你这台机器上所有 git 仓库的邮箱，保证唯一性
+   
+清楚登录缓存：
+    shell> git config --system --unset credential.helper        # 清除登录缓存
+
 
 配置关联的 github 仓库
     # 使用 HTTPS 协议配置远程仓库
