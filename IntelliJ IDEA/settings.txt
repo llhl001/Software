@@ -7,7 +7,6 @@ Personalize Settings {
     }
 
     配置 IDEA Terminal 为 Git Bash {
-        File -> Settings -> Tools -> Plugins -> 搜索 Terminal -> 勾选 Terminal 插件
         File -> Settings -> Tools -> Terminal -> Shell path = E:\Git\Git\bin\bash.exe -> 重启 IDEA
     }
     
