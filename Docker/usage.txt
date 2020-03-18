@@ -24,9 +24,13 @@ CentOS7:
         shell> touch Dockerfile     # 创建 Dockerfile 并编辑内容        
         # shell> docker build 目标镜像名称  "Dockerfile 所在目录路径"
         shell> docker build kasei/centos:haku .
+        shell> docker build -t test/myapp .         # 测试 Dockerfile 语法是否正确
         
         # 设置镜像标签
         shell> docker tag 镜像ID 用户ID/仓库名:标签名
+        
+        # 设置构建成功时，镜像保存的仓库和标签
+        shell> docker build -t kasei/myapp:1.0.0 -t shykes/myapp:latest .
     
     容器生命周期管理：
         shell> docker create                                # 创建一个容器，但不运行，其他参数跟 run 一样
