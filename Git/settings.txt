@@ -80,7 +80,7 @@ git 配置文件及配置命令详解
 字符编码格式配置
     shell> git config --global i18n.commitencoding utf-8    # 设置 commit log 提交时使用 utf-8 编码，可避免服务器上乱码，同时与linux上的提交保持一致！
     shell> git config --global i18n.logoutputencoding utf-8 # 使得在 git log 时将 utf-8 编码转换成指定的编码，解决 Msys bash 中 git log 乱码。
-    shell> git config –-global core.quotepath false         # git bash 中文件名乱码
+    shell> git config --global core.quotepath false         # git bash 中文件名乱码
     shell> git config --global svn.pathnameencoding gbk     # 设置路径名称编码格式，windows 下需要设置 gbk 才能不乱码
     shell> git config --global gui.encoding utf-8           # 设置 git gui 的界面编码
     
