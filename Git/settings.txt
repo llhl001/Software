@@ -87,7 +87,7 @@ git 配置文件及配置命令详解
     export LESSCHARSET=utf-8                                # 该环境变量是指定 less 命令查看文件时，使用的编码格式
     alias ls='ls --show-control-chars --color=auto'         # 强制让 ls 命令的输出字符编码格式为 控制台配置的格式
 
-
+    打开 git-bash.exe 后，对窗口右键 -> Options -> Text -> Locale:zh_CN, Charactor set: UTF-8
 
 
 各个操作系统下的换行符一致性配置：默认值为 Win=\r\n; Linux=\n; Mac=\r
