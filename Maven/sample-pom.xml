@@ -1,128 +1,205 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  
-  
-  
-  
-  <modelVersion>4.0.0</modelVersion><!-- maven µÄ°æ±¾ -->
-  <name>MavenWeb Maven Webapp</name>
-  
-  <packaging>war</packaging><!-- Ä¬ÈÏÎª jar -->
-  
-  
-  <groupId>com.kasei.mavenweb</groupId><!-- ×éÖ¯Ãû.ÏîÄ¿Ãû -->
-  <artifactId>MavenWeb</artifactId><!-- ÏîÄ¿Ãû-Ä£¿éÃû£ºÒ»°ãÖ¸¶¨ÎªÏîÄ¿Ãû -->
-  <version>0.0.1-SNAPSHOT</version><!-- °æ±¾£º´ó°æ±¾.·ÖÖ§°æ±¾.Ð¡°æ±¾ -->
-  <url>http://maven.apache.org</url><!-- ÏîÄ¿µØÖ· -->
-  <name>this is maven web</name><!-- ÏîÄ¿ÃèÊöÃû -->
-  <description></description><!-- ÏîÄ¿ÃèÊö -->
-  
-  
-  <!-- ¸ÃÏîÄ¿ÖÐÊ¹ÓÃµ½µÄ°ü -->
-  <dependencies>
-  	
-  	<!-- Ä£°å -->
-    <dependency>
-	  <groupId></groupId><!-- ×éÖ¯Ãû£º -->
-	  <artifactId></artifactId><!-- Ä£¿éÃû£º -->
-	  <version></version><!-- °æ±¾£º -->
-	  <type></type>
-	  <scope>test</scope><!-- Ö¸ÒÀÀµ·¶Î§ -->
-	  <optional>true</optional><!-- ÉèÖÃÒÀÀµÊÇ·ñ¿ÉÑ¡£ºÈç¹û = true£¬Ôò×ÓÏîÄ¿±ØÐëÏÔÊ¾µÄÒýÓÃ¸ÃÒÀÀµ  -->
-	  <executions><!-- ÅÅ³ýÒÀÀµ´«µÝµÄÁÐ±í -->
-        	<execution>
-        		<phase>package</phase>
-        		<goals>
-        			<goal>run</goal>
-        		</goals>
-        	</execution>
-      </executions> 
-    </dependency>
-    
-    <!-- Servlet -->
-    <dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>javax.servlet-api</artifactId>
-	    <version>4.0.0</version>
-	    <scope>provided</scope>
-    </dependency>
- 
-  </dependencies>
-  
-  
-  <!-- ÒÀÀµ¹ÜÀíÆ÷ -->
-  <dependencyManagement>
-  	<dependencies>
-  		<dependency>
-  			<groupId>org.springframework</groupId>
-  			<artifactId>spring-framework-bom</artifactId>
-  			<version>${spring.version}</version><!-- Ê¹ÓÃ±äÁ¿ -->
-  			<type>pom</type>
-  			<scope>import</scope>
-  		</dependency>
-  	</dependencies>
-  </dependencyManagement>
-  
-  
-  
-  <!-- ÅäÖÃÏà¹Ø¹¹¼þ -->
-  <build>
-    <finalName>MavenWeb</finalName>
-    <plugins><!-- ²å¼þÁÐ±í -->
-    	
-	  <plugin>  <!-- ×÷ÓÃ£ºÔÚ package ¹ý³ÌÖÐ´ò°üÏîÄ¿Ô´Âë -->
-        <groupId>org.apache.maven.plugins</groupId>  
-        <artifactId>maven-source-plugin</artifactId>  
-        <version>2.4</version>  
-        <executions>
-        	<execution>
-        		<phase>package</phase>
-        		<goals>
-        			<goal>jar-no-fork</goal>
-        		</goals>
-        	</execution>
-        </executions> 
-      </plugin>
-      
-      <plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat7-maven-plugin</artifactId>
-          <version>2.2</version>
-          <configuration>
-            <port>80</port>
-            <path>/sshe</path>
-            <uriEncoding>UTF-8</uriEncoding>
-            <server>tomcat7</server>
-          </configuration>
-	  	  <executions>
-        	<execution>
-        		<phase>package</phase>
-        		<goals>
-        			<goal>run</goal>
-        		</goals>
-        	</execution>
-        </executions> 
-      </plugin>
-        
-    </plugins>
-  </build>
-  
-  
-  <parent></parent>
-  
-  
-  <modules>
-  	<modules></modules>
-  </modules>
-  
-  
-  <!-- ¶¨Òå±äÁ¿ -->
-  <properties>
-  	<commons-lang.version>2.6</commons-lang.version>
-  	<slf4j.version>1.7.6</slf4j.version>
-  	<spring.version>5.0.0.RELEASE</spring.version>
-  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+    <modelVersion>4.0.0</modelVersion><!-- POM çš„ç‰ˆæœ¬ -->
+
+    <!-- ! Basic -->
+    <groupId>kasei.mavenweb</groupId><!-- ç»„ç»‡å.é¡¹ç›®å -->
+    <artifactId>MavenWeb</artifactId><!-- é¡¹ç›®å-æ¨¡å—åï¼šä¸€èˆ¬æŒ‡å®šä¸ºé¡¹ç›®å -->
+    <version>0.0.1-SNAPSHOT</version><!-- ç‰ˆæœ¬ï¼šå¤§ç‰ˆæœ¬.åˆ†æ”¯ç‰ˆæœ¬.å°ç‰ˆæœ¬ -->
+    <packaging>war</packaging><!-- é»˜è®¤ä¸º jar -->
+    <url>http://maven.apache.org</url><!-- é¡¹ç›®åœ°å€ -->
+    <name>MavenWeb Maven Webapp</name><!-- é¡¹ç›®æè¿°å -->
+    <description></description><!-- é¡¹ç›®æè¿° -->
+    <!-- çˆ¶ POM-->
+    <parent>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>my-parent</artifactId>
+        <version>2.0</version>
+        <relativePath>../my-parent</relativePath>
+    </parent>
+    <!-- å®šä¹‰å˜é‡ -->
+    <properties>
+        <commons-lang.version>2.6</commons-lang.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <spring.version>5.0.0.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- More Project Information -->
+    <name>...</name>
+    <description>...</description>
+    <url>...</url>
+    <inceptionYear>...</inceptionYear>
+    <licenses>...</licenses>
+    <organization>...</organization>
+    <developers>...</developers>
+    <contributors>...</contributors>
+
+    <!-- ä¾èµ–ç®¡ç†å™¨ -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version><!-- ä½¿ç”¨å˜é‡ -->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <!-- è¯¥é¡¹ç›®ä¸­ä½¿ç”¨åˆ°çš„åŒ… -->
+    <dependencies>
+
+        <!-- æ¨¡æ¿ -->
+        <dependency>
+            <groupId>kasei.sample</groupId><!-- ç»„ç»‡åï¼š -->
+            <artifactId>pom</artifactId><!-- æ¨¡å—åï¼š -->
+            <version>1.0.0</version><!-- ç‰ˆæœ¬ï¼š -->
+            <type>d</type>
+            <scope>test</scope><!-- æŒ‡ä¾èµ–èŒƒå›´ -->
+            <optional>true</optional><!-- è®¾ç½®ä¾èµ–æ˜¯å¦å¯é€‰ï¼šå¦‚æžœ = trueï¼Œåˆ™å­é¡¹ç›®å¿…é¡»æ˜¾ç¤ºçš„å¼•ç”¨è¯¥ä¾èµ–  -->
+            <executions><!-- æŽ’é™¤ä¾èµ–ä¼ é€’çš„åˆ—è¡¨ -->
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </dependency>
+
+        <!-- Servlet -->
+        <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>4.0.0</version><scope>provided</scope></dependency>
+
+    </dependencies>
+
+
+
+
+
+
+
+
+    <!-- Build Settings -->
+    <build>
+        <finalName>MavenWeb</finalName>
+        <!-- æ’ä»¶åˆ—è¡¨ -->
+        <plugins>
+
+            <plugin>  <!-- ä½œç”¨ï¼šåœ¨ package è¿‡ç¨‹ä¸­æ‰“åŒ…é¡¹ç›®æºç  -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>80</port>
+                    <path>/sshe</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <server>tomcat7</server>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${project.name}/classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/classes</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <configuration>
+                    <programs>
+                        <program>
+                            <id>sample-pom</id>
+                            <!-- å¯åŠ¨ç±» -->
+                            <mainClass>org.ko.web.Application</mainClass>
+                            <jvmSettings>
+                                <extraArguments>
+                                    <extraArgument>-server</extraArgument>
+                                    <extraArgument>-Xmx2G</extraArgument>
+                                    <extraArgument>-Xms2G</extraArgument>
+                                </extraArguments>
+                            </jvmSettings>
+                        </program>
+                    </programs>
+
+                    <!-- ç”Ÿæˆlinux, windowsä¸¤ç§å¹³å°çš„æ‰§è¡Œè„šæœ¬ -->
+                    <platforms>
+                        <platform>windows</platform>
+                        <platform>unix</platform>
+                    </platforms>
+                    <!-- æ ¹ç›®å½• -->
+                    <assembleDirectory>${project.build.directory}/${project.name}</assembleDirectory>
+                    <!-- æ‰“åŒ…çš„jarï¼Œä»¥åŠmavenä¾èµ–çš„jaræ”¾åˆ°è¿™ä¸ªç›®å½•é‡Œé¢ -->
+                    <repositoryName>lib</repositoryName>
+                    <!-- å¯æ‰§è¡Œè„šæœ¬çš„ç›®å½• -->
+                    <binFolder>bin</binFolder>
+                    <!-- libç›®å½•ä¸­jarçš„å­˜æ”¾è§„åˆ™ï¼Œé»˜è®¤æ˜¯${groupId}/${artifactId}çš„ç›®å½•æ ¼å¼ï¼Œflatè¡¨ç¤ºç›´æŽ¥æŠŠjaræ”¾åˆ°libç›®å½• -->
+                    <repositoryLayout>flat</repositoryLayout>
+                    <encoding>UTF-8</encoding>
+                    <logsDirectory>logs</logsDirectory>
+                    <tempDirectory>tmp</tempDirectory>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>...</reporting>
+
+
+    <!-- Environment Settings -->
+    <issueManagement>...</issueManagement>
+    <ciManagement>...</ciManagement>
+    <mailingLists>...</mailingLists>
+    <scm>...</scm>
+    <prerequisites>...</prerequisites>
+    <repositories>...</repositories>
+    <pluginRepositories>...</pluginRepositories>
+    <distributionManagement>...</distributionManagement>
+    <profiles>...</profiles>
+
+
 
 </project>
