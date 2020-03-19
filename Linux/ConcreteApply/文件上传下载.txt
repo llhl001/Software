@@ -1,0 +1,5 @@
+shell> yum install lrzsz
+
+
+shell> rz     # 上传
+shell> sz     # 下载
