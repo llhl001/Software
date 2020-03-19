@@ -48,6 +48,7 @@ CentOS7:
         # 在容器内部执行一条命令
         shell> docker exec -d containerId /bin/bash
         shell> docker exec -it containerId /bin/bash
+        shell> /# exit                                      # 退出
         
         # 运行一个容器
         shell> docker run hello-world:latest                # 以 hello-world 镜像为模型，创建一个容器实例
