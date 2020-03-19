@@ -21,6 +21,7 @@ Maven 项目目录结构{
 
 Maven 命令结构 {
     shell> mvn [options] [<goal(s)>] [<phase(s)>]
+    shell> mvn help:help                                    # 查看 mvn 命令帮助
     shell> mvn archetype:generate                           # 运行插件中的 goal 
 }
 
