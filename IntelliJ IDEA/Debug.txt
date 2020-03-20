@@ -2,9 +2,9 @@ IDEA Debug {
 
     Ctrl+F8                 Set Break Point         点击编辑界面左侧行标列
 
-    F7                      Step Into               单步执行，进入方法
-    Shift+F7                Smart Step Into
-    Alt+Shift+F7            Force Step Into
+    F7                      Step Into               单步执行，进入方法，但是不会进入第三方类库的方法
+    Shift+F7                Smart Step Into         
+    Alt+Shift+F7            Force Step Into         强制进入方法，包括动态代理和三方类库
 
 
     F8                      Step Over               单步执行，跳过方法   
