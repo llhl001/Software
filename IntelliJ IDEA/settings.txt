@@ -8,6 +8,12 @@ Personalize Settings {
 
     配置 IDEA Terminal 为 Git Bash {
         File -> Settings -> Tools -> Terminal -> Shell path = E:\Git\Git\bin\bash.exe -> 重启 IDEA
+        
+        %GIT_HOME%\bin\bash.exe> git log 乱码问题 {
+            %GIT_HOME%\etc\bash.bashrc 末行追加一下内容
+            export LANG="zh_CN.UTF-8"
+            export LC_ALL="zh_CN.UTF-8"
+        }
     }
     
 
