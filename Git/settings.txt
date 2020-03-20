@@ -24,7 +24,7 @@ git 配置文件及配置命令详解
 
 
 Git 控制台字符配置 
-    %GIT_HOME%\bin\bash.exe> git log 乱码问题 {
+    %GIT_HOME%\bin\bash.exe> git log 乱码（Garbled）问题 {
         %GIT_HOME%\etc\bash.bashrc 末行追加一下内容
         export LANG="zh_CN.UTF-8"
         export LC_ALL="zh_CN.UTF-8"
