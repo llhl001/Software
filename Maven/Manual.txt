@@ -45,6 +45,10 @@ Maven 构建生命周期 {
     shell> mvn package          # 对项目进行打包，生成的文件在 target 目录下面，把该文件拷贝到 tomcat webapp 路径下即可运行
     shell> mvn install          # 安装打包好的当前项目的 jar 包到本地仓库中
     shell> mvn dependency:tree  # 该命令会打印一个当前项目的依赖树
+    
+# maven 命令进阶理解
+    shell> mvn pluginPrefix:goalName            # 其中 pluginPrefix 和 groupID:artifactId 是一一对应的，可以用 coordinate 来替代 pluginPrefix
+    shell> mvn -N io.takari:maven:0.7.7:wrapper -Dmaven=3.5.4       # 这里就是用坐标 io.takari:maven:0.7.7 替代了 pluginPrefix
 
 
 
