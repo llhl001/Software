@@ -19,14 +19,6 @@ Maven 项目目录结构{
 		注意：所有目录和文件不能缺，缺了会错
 }
 
-Maven 命令结构 {
-    shell> mvn [options] [<goal(s)>] [<phase(s)>]
-    shell> mvn help:help                                    # 查看 mvn 命令帮助
-    shell> mvn archetype:generate                           # 运行插件中的 goal 
-}
-
-
-
 
 Maven 构建生命周期 {
     shell> mvn validate    验证：     验证项目是否正确且所有必须信息是可用的
@@ -39,22 +31,25 @@ Maven 构建生命周期 {
     
 }
 
-6 手工 Mavean 项目的搭建{	
+# 创建项目目录结构
+    shell> mkdir NewProject && cd NewProject
+    shell> mvn archetype:generate
 
-	6.1 创建maven完整的目录结构
-	6.2 在源代码目录下编写代码
-	6.3 在 pom.xml 文件中配置项目的依赖包
-	6.4 管理员权限 cmd，cd 进入写好的项目 MavenWeb 目录下
-	6.5 执行 mvn compile 命令，对该项目进行编译
-	6.6 执行 mvn test 命令，执行 MavenWeb/src/test/java 目录下 junit 的测试程序
-	6.7 执行 mvn package 命令，会对项目进行打包，生成的文件在 target 目录下面，把该文件拷贝到 tomcat webapp 路径下即可运行
-	6.8 执行 mvn clean 命令，删除 target 目录
-	6.9 执行 mvn install 命令，安装项目打包好的 jar 包到本地仓库中
-	mvn dependency:tree 该命令会打印一个当前项目的依赖树
-	
-	6.10 执行 mvn archetype:generate 命令，自定创建 Maven 目录骨架
-		一步到位的创建骨架命令：mvn archetype:generate -DgroupId=com.kasei -DartifactId=MavenWeb -DarchetypeArtifactId=maven-archetype-webapp
-}
+# 生成 maven wrapper
+    shell> mvn -N io.takari:maven:0.7.7:wrapper -Dmaven=3.5.4
+    
+# 常用 maven 命令
+    shell> mvn clean            # 删除 target 目录
+    shell> mvn compile          # 对该项目进行编译
+    shell> mvn test             # 执行 MavenWeb/src/test/java 目录下 junit 的测试程序
+    shell> mvn package          # 对项目进行打包，生成的文件在 target 目录下面，把该文件拷贝到 tomcat webapp 路径下即可运行
+    shell> mvn install          # 安装打包好的当前项目的 jar 包到本地仓库中
+    shell> mvn dependency:tree  # 该命令会打印一个当前项目的依赖树
+
+
+
+
+
 
 
 
