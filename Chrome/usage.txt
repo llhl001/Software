@@ -47,3 +47,6 @@
  
 # Chrome 直接修改网页内容
     F12 -> Console -> document.body.contentEditable=true
+
+# Chrome Debug 中 Network 由于页面跳转无法看到请求信息的问题
+    F12 -> Network -> [✔]Preserve log    这样就会保留跳转前的 Network 请求
