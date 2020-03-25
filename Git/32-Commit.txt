@@ -40,6 +40,6 @@ Rollback {
 Query Different {
     shell> git log -p                           # 显示每次提交的差异
     shell> git log -p --word-diff -U4           # 显示每次提交的差异，并打印哪里的文本被改变了， -U4 表示打印修改文本的上下文，为前后 4 行上下文
-    
+    shell> git show commitId                    # 查看某一次提交修改了哪些文件
     
 }
