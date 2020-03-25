@@ -3,7 +3,7 @@
 }
 
 清空缓存区 {
-    
+    shell> git reset --mixed HEAD       # 使用当前版本库中的 HEAD 指针的指向的版本，重置缓存区
 }
 
 修改缓存区 {
