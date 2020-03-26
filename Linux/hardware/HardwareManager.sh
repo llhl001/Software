@@ -9,7 +9,7 @@ shell> lshw -short      # 查看所有硬件摘要信息
     shell> gdisk -l     # 分区工具，适用于 GPT 分区
     shell> parted -l    # 分区工具，
     
-#### Memery 内存
+#### Memory 内存
     shell> less /proc/meminfo   # 查看内存信息      
     shell> free -h -s 1     # 查看内存使用情况，-h 人类可读模式， 1秒输出一次
     
