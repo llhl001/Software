@@ -1,4 +1,18 @@
 Query {
+    shell> git log --pretty=oneline             # 当行显示每个 commit
+    shell> git log --oneline                    # 同上
+    shell> git log --graph                      # 图形结构显示
+    shell> git log --decorate=short             # 显示该次 commit 对应的分支 或 Tag 信息
+    shell> git log --abbrev-commit              # 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符
+    shell> git log --pretty=oneline  --graph --decorate=short  
+    shell> git log -- foo.py bar.py             # 按文件过滤 commit
+    
+    
+    shell> git log -p                           # 显示每次提交的差异
+    shell> git log -p --word-diff -U4           # 显示每次提交的差异，并打印哪里的文本被改变了， -U4 表示打印修改文本的上下文，为前后 4 行上下文
+    shell> git log --name-status -- .           # 查看提交的文件列表
+    shell> git show commitId                    # 查看某一次提交修改了哪些文件
+    
     # 打印格式
     # %h            # abbreviated commit hash 
     # %t            # abbreviated tree hash 
@@ -7,27 +21,15 @@ Query {
     # $ae           # author email
 
 
-
     # 配置 git log 打印格式 及 日期显示格式，具体参考官方文档
     shell> git log --pretty=format:"[%h][%t][%p][%an:%ae:%ad][%cn:%ce:%cd][%s]" --date=format:"%Y-%m-%d %H:%M:%S %z"
 
-    # --pretty=oneline      单行显示
-    # --abbrev-commit       仅显示 SHA-1 的前几个字符，而非所有的 40 个字符
-    # --graph               图形结构显示
-    # --decorate=short      显示该次 commit 对应的分支 或 Tag 信息
-    shell> git log --pretty=oneline --abbrev-commit --graph --decorate=short   
-    
-    # commit 过滤
-    shell> git log -- foo.py bar.py             # 按文件过滤 commit
 }
 
 Create {
-    shell> git commit
+    shell> git commit -m ''
 }
 
-Delete {
-
-}
 
 Rollback {
     shell> git reset --hard HEAD^               # HEAD^ 上个版本， HEAD^^ 上上个版本， HEAD~100 上100个版本
@@ -37,12 +39,3 @@ Rollback {
     shell> git revert 
 }
 
-Query Different {
-    shell> git log -p                           # 显示每次提交的差异
-    shell> git log -p --word-diff -U4           # 显示每次提交的差异，并打印哪里的文本被改变了， -U4 表示打印修改文本的上下文，为前后 4 行上下文
-    shell> git log --name-status -- .           # 查看提交的文件列表
-
-    
-    shell> git show commitId                    # 查看某一次提交修改了哪些文件
-    
-}
