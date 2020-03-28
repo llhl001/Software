@@ -17,9 +17,12 @@
     shell> ./java -javaagent:/root/agent.jar  # 加载 java 变成语言代理
     
     # Debug 方式启动 jvm 
-    # jvm 监听一个 debug 端口，等待 client 连接
-    shell> java -jar myapp.jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-    # jvm 向指定主机的指定端口发送 dubug 信息，client 监听本地对应的端口，
+    # Debug 模式：Attach to remote JVM : jvm 监听一个 debug 端口，等待 client 连接
+    # suspend=n     表示如果没有 debug client 连接，jvm 不会挂起，而是会执行代码
+    # suspend=n     表示如果没有 debug client 连接，jvm 会挂起，确保 client 连接后，再运行代码
+    shell> java -jar myapp.jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5505      # jdk 8
+    shell> java -jar myapp.jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5505    # jdk 9+ 
+    # Debug 模式：Listen to remote JVM : jvm 向指定主机的指定端口发送 dubug 信息，client 监听本地对应的端口，
     shell> java -jar myapp.jar -agentlib:jdwp=transport=dt_socket,server=n,address=Haku:5005,suspend=y,onthrow=<FQ exception class name>,onuncaught=<y/n>
 
 
