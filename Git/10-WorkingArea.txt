@@ -44,7 +44,7 @@
 
     从版本库恢复 {
         # 单文件
-        shell> git checkout commitId -- ./fileName          # 恢复指定文件到指定 commit     
+        shell> git checkout commitId -- ./fileName          # 恢复指定文件到指定 commit，此时工作区的文件已经变更，但是需要 commit 才生效    
         shell> git checkout branchName -- ./fileName        # 恢复指定分支的指定文件
         shell> git checkout -- fileName                     # 使用该命令放弃工作区修改，注意中间有 -- ，不加的话表示是分支名   
         shell> git ls-files -d | grep repository/mongo | xargs git checkout --    # 恢复被删除的文件
