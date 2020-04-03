@@ -50,7 +50,11 @@ Maven 构建生命周期 {
     shell> mvn pluginPrefix:goalName            # 其中 pluginPrefix 和 groupID:artifactId 是一一对应的，可以用 coordinate 来替代 pluginPrefix
     shell> mvn -N io.takari:maven:0.7.7:wrapper -Dmaven=3.5.4       # 这里就是用坐标 io.takari:maven:0.7.7 替代了 pluginPrefix
 
-
+# maven 帮助
+    shell> mvn --help                   # 查看 mvn 命令的使用帮助
+    shell> mvn help:help                # 查看 help 插件的帮助
+    shell> mvn help:describe -Ddetail -Dplugin=dependency -Dgoal=run
+    
 
 
 
