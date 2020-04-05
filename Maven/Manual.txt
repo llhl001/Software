@@ -52,8 +52,10 @@ Maven 构建生命周期 {
 
 # maven 帮助
     shell> mvn --help                   # 查看 mvn 命令的使用帮助
-    shell> mvn help:help                # 查看 help 插件的帮助
+    shell> mvn help:help                # 查看 help 插件的 help goal 的帮助
+    shell> mvn help:help -Ddetail=true  # 查看 help 插件的 help goal 的详细帮助
     shell> mvn help:describe -Ddetail -Dplugin=dependency -Dgoal=run
+    
     
 
 
