@@ -57,7 +57,12 @@ Maven 构建生命周期 {
     shell> mvn help:describe -Ddetail -Dplugin=dependency -Dgoal=run
     
     
+Maven 包依赖冲突处理 {
+    shell> mvn dependency:tree -Dverbose        # 查看所有依赖传递
+    shell> mvn dependency:tree -Dverbose | cat -n | grep -P 'jcl-over|spring-jcl'  # 查看冲突在哪一行
 
+    
+}
 
 
 
