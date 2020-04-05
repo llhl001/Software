@@ -101,12 +101,32 @@ Personalize Settings {
     }
     
     配置单行注释在代码前面，而不是在第一列 {
-        File -> Settings -> Editor -> Code Style -> Java -> Wrapping and Braces -> Keep when reformatting -> Comment at first column [不勾选]
         
-        File -> Settings -> Editor -> Code Style -> Java -> Code Generation -> Comment Code 选项卡
-        -> [不勾选] Line conmment at first column 
-        -> [勾选] Add a space at comment start
-        -> [不勾选] Block comment at first column
+        File
+            Settings
+                Editor
+                    Code Style
+                        Java
+                            Wrapping and Braces
+                                Keep when reformatting
+                                    Comment at first column [不勾选]
+                            Code Generation
+                                Comment Code 选项卡
+                                    [不勾选] Line conmment at first column 
+                                    [勾选] Add a space at comment start
+                                    [不勾选] Block comment at first column
+        
+                        JavaScript
+                            Wrapping and Braces
+                                Keep when reformatting
+                                    Comment at first column [不勾选]
+                            Code Generation
+                                Comments
+                                    [勾选] Add a space at comment start
+                        XML
+                            Code Generation
+                                [不勾选] Line conmment at first column
+                                [不勾选] Block conmment at first column
         
     }
     
