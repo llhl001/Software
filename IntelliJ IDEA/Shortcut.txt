@@ -82,7 +82,9 @@ Ctrl+Shift+J                合并两行
 Ctrl+Shift+Enter            完成当前行，并跳到下一行
 Ctrl+D                      复制并粘贴多行
 Ctrl+Shift+Up/Down          多行移动代码
-按住 Alt                     列编辑模式
+Alt+鼠标左键                 列编辑模式
+Ctrl+Shift+Alt+鼠标左键      多光标模式
+
 Ctrl+Slash                  行注释 //	
 Ctrl+Shift+Slash            块注释 /**/
 Ctrl+Alt+L                  格式化代码 
