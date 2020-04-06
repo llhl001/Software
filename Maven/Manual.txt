@@ -64,6 +64,12 @@ Maven 包依赖冲突处理 {
     
 }
 
+Maven 运行指定 main 方法 {
+    shell> mvn exec:java -Dexec.mainClass="kasei.Haku" -Dexec.args="arg0 arg1 arg2"  -Dexec.classpathScope=runtime
+}
+Maven 运行测试用例 {
+    shell> mvn test -Dtest=kasei.test.MyClassTest#test*Method*   # 支持统配符
+}
 
 
 
