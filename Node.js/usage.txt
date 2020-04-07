@@ -1,3 +1,10 @@
+帮助：
+    shell> npm -h                   # 查看 npm 命令的简洁帮助
+    shell> npm help npm             # 查看 npm 命令的详细帮助
+    shell> npm install -h           # 查看 install 子命令的简洁帮助
+    shell> npm help install         # 查看 install 子命令的详细帮助
+    
+
 更新：
     shell> npm install npm@latest -g
     shell> npm install npm@x.x.x -g    # x.x.x 版本号
