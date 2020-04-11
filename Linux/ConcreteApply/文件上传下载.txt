@@ -1,5 +1,34 @@
-shell> yum install lrzsz
+wget {
+    # 安装软件
+    shell> yum install wget
+    
+    # 下载文件
+    shell> wget http://www.google.com       # 下载文件，默认保存位置为当前工作目录
+    shell> wget -P ~/Download http://www.google.com # 下载文件，指定文件保存位置
+}
+
+curl {
+    # 安装软件
+    shell> yum install curl
+    
+    # POST 发送 json 数据，POST 必须大写
+    shell> curl -X POST -H 'Content-Type:application/json' -d '{"tags":["bpm","unitmail"],"logLevel":2,"msg":"test"}'  http://localhost:8190/Log
 
 
-shell> rz -be     # 上传
-shell> sz     # 下载
+    # 下载文件
+    shell> curl -C - -o output.zip url      # 其中 -C 后面的 - 是表示从原来位置断点续传
+}
+
+rzsz {
+    shell> yum install lrzsz
+    shell> rz -be     # 上传
+    shell> sz     # 下载
+}
+
+
+
+
+
+
+
+
