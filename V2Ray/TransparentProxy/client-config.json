@@ -10,7 +10,6 @@
       { "address": "223.5.5.5", "port": 53, "domains": [ "geosite:cn" ] },             // 常见国内网站域名 和 .cn 结尾的域名
       { "address": "8.8.8.8", "port": 53, "domains": [ "geosite:google", "geosite:facebook" ] },
       "1.1.1.1",
-      "223.5.5.5",                  // 防止 geosite:cn 未包含的国内域名，使用墙外的 dns 服务器解析不了
       "localhost"                   // localhost dns 请求流量，不受 v2ray 控制，需要额外的配置才能使用 v2ray 转发
     ],
     "tag": "dnsIn"                  // 当前内建 dns 发起的 dns 请求流量的标识，可以在路由中使用 inboundTag 进行匹配
