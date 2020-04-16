@@ -110,16 +110,12 @@
     }
   ],
   "routing": {
-    "domainStrategy": "IPOnDemand",
+    /** 
+     * IPIfNonMatch 当域名没有匹配任何规则时，将域名解析成 IP（A 记录或 AAAA 记录）再次进行匹配；
+     * IPOnDemand 碰到基于 ip 的规则时，立马解析成 ip 
+     */
+    "domainStrategy": "IPOnDemand", 
     "rules": [
-      /** todo 劫持 dns 流量，走 v2ray 内建 dns */
-      {
-        "type": "field",
-        "network": "tcp,udp",
-        "inboundTag": [ "transparentIn" ],
-        "port": "53,5353",
-        "outboundTag": "dnsOut"
-      },
       /** todo 拦截所有广告 */
       {
         "type": "field",
@@ -127,11 +123,32 @@
         "domain": [ "geosite:category-ads-all" ],
         "outboundTag": "block"
       },
+      /** todo 劫持 dns 流量，走 v2ray 内建 dns */
+      {
+        "type": "field",
+        "network": "udp",
+        "inboundTag": [ "transparentIn" ],
+        "port": "53", // 基于 udp 协议的 dns 解析请求目标端口为 53
+        "outboundTag": "dnsOut"
+      },
+      {
+        "type": "field",
+        "network": "tcp",
+        "inboundTag": [ "transparentIn" ],
+        "port": "5353", // 基于 udp 协议的 dns 解析请求目标端口为 5353
+        "outboundTag": "dnsOut"
+      },
+      
       /** todo 私有地址，国内域名，223.5.5.5 直连 */
       {
         "type": "field",
         "network": "tcp,udp",
-        "domain": [ "geosite:cn" ],
+        "domain": [ "geosite:cn" ], // 同时配置 domain 和 ip 是且的关系，所以此处要分成两个
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "network": "tcp,udp",
         "ip": [ "geoip:private", "geoip:cn", "223.5.5.5" ],
         "outboundTag": "direct"
       },
