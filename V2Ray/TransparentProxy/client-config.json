@@ -2,7 +2,7 @@
   "log": { "loglevel": "debug"  },
   "dns": {
     "hosts": { "domain:kasei.haku": "127.0.0.1" },    // 相当于系统的 hosts 文件
-    /** 
+    /** TODO
      * 假设要解析的 domain 在 domains 列表里面，则优先使用指定的 dns 服务器，否则按从上到下解析 
      * 坑：不要配多个相同地址的 dns，即使是不同类型的，比如 "8.8.8.8" 和 { "address": "8.8.8.8" }
      */
@@ -35,7 +35,7 @@
         "followRedirect": true   // 这里要为 true 才能接受来自 iptables 的流量
       },
       "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }, // 透明代理必须开启，否则无法使用域名进行路由选择
-      /** todo inbound 中的 streamSettings 是配置接收到的数据是采用什么样的传输方式的 */
+      /** TODO inbound 中的 streamSettings 是配置接收到的数据是采用什么样的传输方式的 */
       "streamSettings": {
         "sockopt": { 
           "tcpFastOpen": true, 
@@ -114,13 +114,13 @@
     }
   ],
   "routing": {
-    /** 
+    /** TODO
      * IPIfNonMatch 当域名没有匹配任何规则时，将域名解析成 IP（A 记录或 AAAA 记录）再次进行匹配；
      * IPOnDemand 碰到基于 ip 的规则时，立马解析成 ip 
      */
     "domainStrategy": "IPOnDemand", 
     "rules": [
-      /** todo 劫持 dns 流量，走 v2ray 内建 dns */
+      /** TODO 劫持 dns 流量，走 v2ray 内建 dns */
       {
         "type": "field",
         "network": "udp",
@@ -139,14 +139,14 @@
        * 不然的话要是时间误差超出允许范围(90s)，要使用 NTP 校准时间就要先连上代理，
        * 但是连代理又要确保时间准确，结果就是既连不上代理，也无法自动校准时间；
        * */
-      { // 直连 123 端口 UDP 流量（NTP 协议）
+      { 
         "type": "field",
         "inboundTag": [ "transparentIn" ],
         "port": 123,
         "network": "udp",
         "outboundTag": "direct" 
       }, 
-      /** todo 私有地址，国内域名，223.5.5.5 直连 */
+      /** TODO 私有地址，国内域名，223.5.5.5 直连 */
       {
         "type": "field",
         "network": "tcp,udp",
@@ -159,7 +159,7 @@
         "ip": [ "geoip:private", "geoip:cn", "223.5.5.5" ],
         "outboundTag": "direct"
       },
-      /** todo 走 vps */
+      /** TODO 走 vps */
       {
         "type": "field",
         "network": "tcp,udp",
