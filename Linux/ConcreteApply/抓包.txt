@@ -1,0 +1,2 @@
+shell> tcpdump -D               # 查看可以抓包的网卡
+shell> tcpdump -i eth0          # 抓取指定网卡的包
