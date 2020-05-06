@@ -11,12 +11,7 @@
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "v2ray.com"
-          }
-        },
+        "wsSettings": { "path": "/" },
         "security": "none"
       }
     }
