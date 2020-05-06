@@ -11,7 +11,7 @@
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": { "path": "/" },
+        "wsSettings": { "path": "/ws" },
         "security": "none"
       }
     }
