@@ -11,20 +11,18 @@
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "v2ray.com"
-          }
-        },
+        "wsSettings": { "path": "/ws" },
         "security": "tls",
         "tlsSettings": {
-          "serverName": "v2ray.com",
+          "serverName": "1291114093.ml",
           "allowInsecure": false,
           "alpn": ["http/1.1"],
           "disableSystemRoot": false,
           "certificates": [
-            { "usage": "encipherment", "certificateFile": "/path/to/certificate.crt", "keyFile": "/path/to/key.key" }
+            // issue: 当前证书必须是 CA 证书，每个客户端连接都用该证书签发一个适用于当前 serverName 的证书
+            { "usage": "issue", "certificateFile": "/path/to/certificate.crt", "keyFile": "/path/to/key.key" },
+            // encipherment: 当前证书用于 TLS 认证和加密
+            { "usage": "encipherment", "certificateFile": "/path/to/certificate.crt", "keyFile": "/path/to/key.key" }           
           ],
         },
       }
