@@ -36,8 +36,8 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": { "path": "/" },
-        "security": "tls"
-      },
+        "security": "none"
+      }
     }
   ],
   "routing": {
