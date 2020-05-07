@@ -1,0 +1,7 @@
+topic = partition + partition + ...
+partition = record + record + ...
+record =　key + value + timestamp
+
+每一个 record 在当前分区都有一个唯一的序列号（不能跨分区），
+多个 client 消费同一个 topic 时，队列中的实际 record 不会被删除，仅仅是修改该 client 在队列中的 offset，
+每一个 client 都有独立的 offset 互不影响
